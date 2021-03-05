@@ -17,6 +17,9 @@ function Navbar() {
         <li>
           <Link to='/main'>Главная</Link>
         </li>
+        <li>
+          <Link to='/deck'>Deckboard</Link>
+        </li>
 
         {/* isLogged */}
         <li>
