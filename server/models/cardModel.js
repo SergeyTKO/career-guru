@@ -7,5 +7,4 @@ export default mongoose.model('card', mongoose.Schema({
   count: Number,
   theme: String,
   tags: [String]
-
 }))
