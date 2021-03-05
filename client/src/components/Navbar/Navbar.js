@@ -10,11 +10,14 @@ function Navbar() {
           <Link to="/login">Войти</Link>
         </li>
         <li>
-          <Link to="/signup">Зареристрироваться</Link>
+          <Link to="/signup">Зарегистрироваться</Link>
         </li>
-    <li>
-      <Link to="/main">Главная</Link>
-    </li>
+        <li>
+          <Link to="/main">Главная</Link>
+        </li>
+        <li>
+          <Link to="/button">Кнопка</Link>
+        </li>
       </ul>
     </nav>
 

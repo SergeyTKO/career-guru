@@ -3,10 +3,22 @@ import React from 'react';
 function CardAnswer() {
   return (
     <div>
-      <div>Вариант 1</div>
-      <div>Вариант 2</div>
-      <div>Вариант 3</div>
-      <div>Вариант 4</div>
+      <div>
+        <h3>Вариант 1</h3>
+        <p></p>
+      </div>
+      <div>
+        <h3>Вариант 2</h3>
+        <p></p>
+      </div>
+      <div>
+        <h3>Вариант 3</h3>
+        <p></p>
+      </div>
+      <div>
+        <h3>Вариант 4</h3>
+        <p></p>
+      </div>
     </div>
   );
 }
