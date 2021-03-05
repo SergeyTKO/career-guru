@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CardQuestion() {
+function QuestionCard() {
   return (
     <div>
       Вопрос:
@@ -8,4 +8,4 @@ function CardQuestion() {
   );
 }
 
-export default CardQuestion;
+export default QuestionCard;
