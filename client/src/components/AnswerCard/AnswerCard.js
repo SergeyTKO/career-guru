@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CardAnswer() {
+function AnswerCard() {
   return (
     <div>
       <div>
@@ -23,4 +23,4 @@ function CardAnswer() {
   );
 }
 
-export default CardAnswer;
+export default AnswerCard;

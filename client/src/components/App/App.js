@@ -8,21 +8,16 @@ import Main from '../Main/Main'
 
 function App() {
   return (
-    <div className="App">
-
       <Router>
+    <div className="App">
         <Navbar />
         <Switch>
-
-          <Route exact path="/main">
+          <Route path="/main">
             <Main />
           </Route>
-
-
-
         </Switch>
-      </Router>
     </div>
+      </Router>
   );
 }
 

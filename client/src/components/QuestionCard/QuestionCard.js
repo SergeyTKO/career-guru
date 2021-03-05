@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CardQuestion() {
+function QuestionCard() {
   return (
     <div>
      <h3>Вопрос:</h3> 
@@ -9,4 +9,4 @@ function CardQuestion() {
   );
 }
 
-export default CardQuestion;
+export default QuestionCard;
