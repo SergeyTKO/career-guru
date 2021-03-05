@@ -1,0 +1,27 @@
+@import "../variables.scss";
+@import '../mixins.scss';
+
+.menu {
+  width: 80%;
+
+  h3{text-align: center; margin: 1rem 0;}
+    
+  ul {
+    margin-top: 1rem;
+    list-style: none;
+    width: 100%;
+    
+      li:first-child{margin-top: 1rem;}
+    
+      li {
+        @include centered-elements;  
+        width: 100%;
+        padding: 0.8rem 0;
+        cursor: pointer;
+    
+        &:hover {
+          background-color: $shadow-color;
+        }
+      }
+  }
+}
