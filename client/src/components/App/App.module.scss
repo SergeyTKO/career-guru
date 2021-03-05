@@ -1,0 +1,33 @@
+@import "../variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-family;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: $bg-color;
+  color: $font-color;
+  letter-spacing: 0.1rem;
+}
+
+a{
+    text-decoration: none;
+    color: $font-color;
+}
+
+button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.container {
+  position: relative;
+  width: inherit;
+  height: 85%;
+}

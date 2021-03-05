@@ -1,23 +1,26 @@
-import './App.module.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-// import store from '../../redux/store'
-// import { Provider } from 'react-redux'
+import React from 'react'
+import './App.module.scss';
+import { Switch, Route, useLocation} from "react-router-dom"
 import Navbar from '../Navbar/Navbar'
 import Main from '../Main/Main'
+import Modal from '../Modal/Modal'
+import styles from './App.module.scss'
 
 
 function App() {
+  const location = useLocation();
+  const background = location.state && location.state.background;
+
   return (
-      <Router>
-    <div className="App">
+    <React.Fragment>
         <Navbar />
-        <Switch>
-          <Route path="/main">
-            <Main />
-          </Route>
-        </Switch>
+      <Switch location={background || location}>
+    <div className={styles.container}>
+          <Route path="/main"><Main /></Route> 
     </div>
-      </Router>
+      </Switch>
+       {background && <Route path="/menu"><Modal /></Route>}
+    </React.Fragment>
   );
 }
 
