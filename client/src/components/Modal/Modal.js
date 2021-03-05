@@ -1,5 +1,7 @@
 function Modal(){
-    return()
+    return(
+        <div></div>
+    )
 }
 
-export default Modal 
+export default Modal   
