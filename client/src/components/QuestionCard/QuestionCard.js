@@ -3,7 +3,8 @@ import React from 'react';
 function QuestionCard() {
   return (
     <div>
-      Вопрос:
+     <h3>Вопрос:</h3> 
+     <p></p>
     </div>
   );
 }
