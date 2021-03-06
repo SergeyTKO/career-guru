@@ -1,10 +1,10 @@
 import React from 'react';
 
-function QuestionCard() {
+function QuestionCard({question}) {
   return (
     <div>
      <h3>Вопрос:</h3> 
-     <p></p>
+     <p>{question}</p>
     </div>
   );
 }

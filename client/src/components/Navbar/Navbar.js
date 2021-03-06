@@ -1,10 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Button from '../Button/Button'
+import { Link,useLocation } from 'react-router-dom'
+import styles from './Navbar.module.scss'
 
 function Navbar() {
+  const location = useLocation();
+  
   return (
-    <nav>
+    <nav className={styles.navbar}>
       <ul>
         <li>
           <Link to="/login">Войти</Link>
@@ -13,11 +15,17 @@ function Navbar() {
           <Link to="/signup">Зарегистрироваться</Link>
         </li>
         <li>
-          <Link to="/main">Главная</Link>
+          <Link to='/main'>Главная</Link>
         </li>
         <li>
-          <Link to="/button">Кнопка</Link>
+          <Link to='/deck'>Deckboard</Link>
         </li>
+
+        {/* isLogged */}
+        <li>
+          <Link to={{pathname: "/menu", state: { background: location }}}>avatar</Link>
+        </li>
+
       </ul>
     </nav>
 

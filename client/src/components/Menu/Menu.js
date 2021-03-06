@@ -3,13 +3,14 @@ import styles from './Menu.module.scss'
 function Menu(){
     return(
         <div className={styles.menu}>
-            <ui>
+                <h3>Меню</h3>
+                <hr/>
+            <ul>
                 <li>Избранное</li>
                 <li>Пройденные тесты</li>
                 <li>К изучению</li>
-                <hr/>
                 <li>Выйти</li>
-            </ui>
+            </ul>
         </div>
     )
 }
