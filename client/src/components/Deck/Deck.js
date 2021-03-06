@@ -36,7 +36,7 @@ function Deck() {
                 </div>
             </animated.div>
         </animated.div>
-    ))
+    )).reverse()
 }
 
 export default Deck;
