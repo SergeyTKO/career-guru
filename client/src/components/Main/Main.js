@@ -1,15 +1,12 @@
 import React from 'react';
-import AnswerCard from '../AnswerCard/AnswerCard'
-import QuestionCard from '../QuestionCard/QuestionCard'
-
+import Card from "../Card/Card";
 
 function Main() {
-  return (
-    <div>
-      <QuestionCard />
-      <AnswerCard />
-    </div>
-  );
+    return (
+        <div>
+           <Card/>
+        </div>
+    );
 }
 
 export default Main;
