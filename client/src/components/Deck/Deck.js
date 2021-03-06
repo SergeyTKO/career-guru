@@ -32,7 +32,7 @@ function Deck() {
                           style={{transform: interpolate([rot, scale], trans)}}>
                 <div className="card">
                     <h4>Вопрос: {cardsTest[i].question}</h4>
-                    <h5>Ответ: {cardsTest[i].answer}</h5>
+                    <h5>Ответ: {cardsTest[i].answer.filter(el => el.validity)[0].answer}</h5>
                 </div>
             </animated.div>
         </animated.div>

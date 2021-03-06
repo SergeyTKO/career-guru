@@ -7,8 +7,6 @@ const initialState = {
 export const reducerUser = (state = initialState, action) => {
     switch (action.payload) {
         case INIT_CARDS:
-            return {...state, user: action.payload};
-        default:
-            return state;
+            return {...state, user: action.payload}
     }
 }
