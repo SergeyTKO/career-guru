@@ -8,9 +8,9 @@ function Navbar() {
   
   return (
     <nav className={styles.navbar}>
-    <Link to='/'>Главная</Link>
-          <Link to="/login">Войти</Link>
-          <Link to="/signup">Зарегистрироваться</Link>
+    <Link to='/' className={styles.main}></Link>
+          <Link to="/login" className={styles.login}></Link>
+          <Link to="/signup" className={styles.auth}></Link>
 
         {/* isLogged */}
           <Link to={{pathname: "/menu", state: { background: location }}}></Link>

@@ -9,3 +9,7 @@
     @include forms-redact;
   }
 }
+
+@media screen and (max-width: 640px){
+  .authForm{width: 80%;}
+}

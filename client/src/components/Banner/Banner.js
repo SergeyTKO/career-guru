@@ -5,7 +5,7 @@ function Banner(){
     return(
         <div className={styles.banner}>
             <div>
-            <h1>Мы прокачаем твои <span style={{color:"#A2000C"}}>hard-skills</span></h1>
+            <h1>Мы прокачаем твои <span>hard-skills</span></h1>
             <HashLink smooth to='/#anchor' >Попробовать</HashLink>
             </div>
         </div>

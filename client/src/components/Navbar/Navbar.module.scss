@@ -28,6 +28,18 @@
     }
   }
 
+  .login::before {
+    content: "Войти";
+  }
+
+  .auth::before {
+    content: "Зарегистрироваться";
+  }
+
+  .main::before {
+    content: "Главная";
+  }
+
   a + a {
     margin-left: 1rem;
   }
@@ -35,10 +47,25 @@
 
 @media screen and (max-width: 640px) {
   .navbar {
-    a:last-child::before {
-      content: "\f0c9";
+    a::before {
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
+    }
+
+    a:last-child::before {
+      content: "\f0c9";
+    }
+
+    .login::before {
+      content: "\f2f6";
+    }
+
+    .auth::before {
+      content: "\f234";
+    }
+
+    .main::before {
+      content: "\f015";
     }
   }
 }
