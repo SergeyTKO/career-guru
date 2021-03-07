@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: $font-family;
+  font-size: 1rem;
 }
 
 body {
@@ -20,10 +21,59 @@ a {
   color: $font-color;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+
+  input,
+  button,
+  select {
+    width: 100%;
+    min-height: 2rem;
+    border-radius: 4px;
+    border: 1px solid $border-color;
+    outline: none;
+    background-color: transparent;
+    color: $font-color;
+    transition: box-shadow 0.5s linear;
+    
+  }
+
+  input, select, option{ padding-left: 1rem;}
+
+  select option {
+    color: $bg-color;
+  }
+
+  input + input {
+    margin-top: 1rem;
+  }
+
+  input {
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0px 0px 5px 1px $border-color;
+    }
+  }
+
+  select,
+  button {
+    margin-top: 1rem;
+  }
+}
+
 button {
   border: none;
   outline: none;
   background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn-hover-color;
+  }
 }
 
 .container {

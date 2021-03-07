@@ -1,32 +1,20 @@
 import React from 'react'
 import { Link,useLocation } from 'react-router-dom'
 import styles from './Navbar.module.scss'
+import Button from '../Button/Button'
 
 function Navbar() {
   const location = useLocation();
   
   return (
     <nav className={styles.navbar}>
-      <ul>
-        <li>
+    <Link to='/'>Главная</Link>
           <Link to="/login">Войти</Link>
-        </li>
-        <li>
           <Link to="/signup">Зарегистрироваться</Link>
-        </li>
-        <li>
-          <Link to='/main'>Главная</Link>
-        </li>
-        <li>
-          <Link to='/cards'>cards</Link>
-        </li>
 
         {/* isLogged */}
-        <li>
-          <Link to={{pathname: "/menu", state: { background: location }}}>avatar</Link>
-        </li>
+          <Link to={{pathname: "/menu", state: { background: location }}}></Link>
 
-      </ul>
     </nav>
 
   )
