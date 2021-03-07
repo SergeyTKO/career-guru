@@ -1,0 +1,23 @@
+@mixin centered-elements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin forms-redact {
+  text-align: center;
+
+  p {
+    a {
+      text-decoration: underline;
+    }
+  }
+  p,
+  a {
+    font-size: 0.7rem;
+  }
+
+  button {
+    margin-bottom: 1rem;
+  }
+}

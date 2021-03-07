@@ -1,6 +1,6 @@
 import morgan from 'morgan'
 import express from 'express'
-
+import cors from 'cors'
 
 
 const appConfig = (application) => {
@@ -11,7 +11,7 @@ const appConfig = (application) => {
 
   application.use(express.urlencoded({ extended: true }));
   application.use(express.json());
-
+  application.use(cors())
 
 }
 
