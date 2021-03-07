@@ -1,11 +1,14 @@
 import express from 'express'
 const router = express.Router()
+import Cards from '../models/cards.js'
 
 router.route('/')
-  .get((req, res) => {
-    res.render('main')
-    
-  })
+    .get(async (req, res) => {
+        const cards = await Cards.find();
+        if (cards) {
+            res.json(cards);
+        }
+    });
 
 
 

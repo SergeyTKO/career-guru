@@ -1,8 +1,6 @@
 import React from 'react';
-import {initCardsAC} from '../../redux/actionCreators'
 
 function AdminForm() {
-
 
     function addCard(e) {
         e.preventDefault()

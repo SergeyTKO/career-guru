@@ -6,5 +6,4 @@ export const initCardsFetchAC = () => (dispatch) => {
         const cards = res.data;
         dispatch(initCardsAC(cards))
     }))
-
 };
