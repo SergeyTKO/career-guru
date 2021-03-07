@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {useSprings, animated, interpolate} from 'react-spring'
 import {useGesture} from 'react-use-gesture'
-import './styles.css'
+import styles from './Deck.module.scss'
 import {cardsTest} from "./cardsTest";
 
 const to = i => ({x: 0, y: i * -4, scale: 1, rot: -10 + Math.random() * 20, delay: i * 100})
