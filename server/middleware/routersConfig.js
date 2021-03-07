@@ -1,12 +1,13 @@
-import mainRouter from '../routers/main.js'
-// import googleRouter from '../routers/google.js'
+import mainRouter from "../routers/main.js";
+import authRouter from "../routers/auth.js";
+import loginRouter from "../routers/login.js";
+import logoutRouter from "../routers/logout.js";
 
+const routersConfig = (application) => {
+  application.use(mainRouter);
+  application.use("/auth", authRouter);
+  application.use("/login", loginRouter);
+  application.use("/logout", logoutRouter);
+};
 
-
-const routersConfig =(application) =>{
-application.use(mainRouter)
-// application.use('/auth/google', googleRouter)
-
-}
-
-export default routersConfig
+export default routersConfig;

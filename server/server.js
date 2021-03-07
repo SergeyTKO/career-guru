@@ -11,72 +11,61 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user);
-  });
-});
 
-// ------------------JWT--------------------------------
+app.use(passport.initialize());
+app.use(passport.session());
 
-import JwtStrategy from "passport-jwt";
-const jwtStrategy = JwtStrategy.Strategy;
-import ExtractJwt from "passport-jwt";
-const extractJwt = ExtractJwt.ExtractJwt;
-var opts = {};
-opts.jwtFromRequest = extractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = "dfgfdgdfgdfgdgdfgdfgsdafa";
-opts.issuer = "accounts.examplesoft.com";
-opts.audience = "yoursite.net";
-passport.use(
-  new jwtStrategy(opts, function (jwt_payload, done) {
-    User.findOne({ id: jwt_payload.sub }, function (err, user) {
-      if (err) {
-        return done(err, false);
-      }
-      if (user) {
-        return done(null, user);
-      } else {
-        return done(null, false);
-        // or you could create a new account
-      }
-    });
-  })
-);
-var cookieExtractor = function(req) {
-  var token = null;
-  if (req && req.cookies)
-  {
-      token = req.cookies['jwt'];
-  }
-  return token;
-};
-
-app.post('/profile', passport.authenticate('jwt', { session: false }),
-    function(req, res) {
-        res.send(req.user.profile);
-    }
-);
-
-// ------------------GOOGLE--------------------------------
+// ------------------GOOGLE AUTH--------------------------------
 import GoogleStrategy from "passport-google-oauth20";
 const googleStrategy = GoogleStrategy.Strategy;
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
 
 passport.use(
   new googleStrategy(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://www.example.com/auth/google/callback",
+      callbackURL: "http://localhost:4000/auth/google/callback",
     },
-    function (accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        return cb(err, user);
+    function(accessToken, refreshToken, profile, done) {
+      //check user table for anyone with a facebook ID of profile.id
+      User.findOne({
+        googleId: profile.id 
+      }, function(err, user) {
+          if (err) {
+              return done(err);
+          }
+        
+          if (!user) {
+        
+              user = new User({
+                googleId: profile.id,
+                firstName: profile.displayName,
+                username: profile.username,
+                provider: 'google',
+                avatar: profile.photos[0].value,
+                status:'beginner',
+                score:0,
+                isAdmin:false
+              });
+              user.save(function(err) {
+                  if (err) console.log(err);
+                  return done(err, user);
+              });
+          } else {
+              //found user. Return
+              return done(err, user);
+          }
       });
-    }
+  }
   )
 );
 
@@ -94,8 +83,7 @@ app.get(
   }
 );
 
-app.use(passport.initialize());
-app.use(passport.session());
+// ------------------GOOGLE AUTH--------------------------------
 
 const server = http.createServer(app);
 const PORT = process.env.PORT || 4000;
