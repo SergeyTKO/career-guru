@@ -3,9 +3,9 @@ import app from "./app.js";
 
 import appConfig from "./middleware/config.js";
 import routersConfig from "./middleware/routersConfig.js";
-
+import dbConnect from './seeder/dbConnect.js'
 import passport from "passport";
-import User from "./models/userModel.js";
+import User from "./models/users.js";
 
 import dotenv from "dotenv";
 
@@ -79,7 +79,7 @@ app.get(
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect("/");
+    res.status(201).end();
   }
 );
 
@@ -89,6 +89,7 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 4000;
 
 appConfig(app);
+dbConnect()
 routersConfig(app);
 
 server.listen(PORT, () => console.log(`server on ${PORT}`));

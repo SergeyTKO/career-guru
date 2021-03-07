@@ -1,0 +1,15 @@
+@import "../mixins.scss";
+
+.formWrapper {
+  @include centered-elements;
+  width: 100%;
+  height: 100vh;
+
+  .loginForm {
+   @include forms-redact;
+  }
+}
+
+@media screen and (max-width: 640px){
+  .loginForm{width: 80%;}
+}

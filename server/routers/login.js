@@ -2,7 +2,7 @@ import express from 'express'
 const router = express.Router()
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import User from "../models/userModel.js";
+import User from "../models/users.js";
 
 const privateKey = 'secret';
 

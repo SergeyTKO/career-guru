@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: $font-family;
+  font-size: 1rem;
 }
 
 body {
@@ -13,21 +14,169 @@ body {
   background-color: $bg-color;
   color: $font-color;
   letter-spacing: 0.1rem;
+
+  a, p, h1, h2, h3, span{
+    &::selection{
+      background-color: $bg-color;
+    }
+  }
 }
 
-a{
-    text-decoration: none;
-    color: $font-color;
+a {
+  text-decoration: none;
+  color: $font-color;
 }
 
-button{
-    border: none;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+
+  input,
+  button,
+  select {
+    width: 100%;
+    min-height: 2rem;
+    border-radius: 4px;
+    border: 1px solid $border-color;
     outline: none;
     background-color: transparent;
+    color: $font-color;
+    transition: box-shadow 0.5s linear;
+    
+  }
+
+  input, select, option{ 
+    padding-left: 1rem;
+  &::placeholder{color: $font-color;}
+  }
+
+  select option {
+    color: $bg-color;
+  }
+
+  input + input {
+    margin-top: 1rem;
+  }
+
+  input {
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0px 0px 5px 1px $border-color;
+    }
+  }
+
+  select,
+  button {
+    margin-top: 1rem;
+  }
+}
+
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn-hover-color;
+  }
 }
 
 .container {
   position: relative;
   width: inherit;
   height: 85%;
+
+  .cardsWrapper {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+    div {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      will-change: transform;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      div {
+        padding: 5px;
+        background-color: white;
+        background-size: auto 85%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 45vh;
+        max-width: 300px;
+        height: 85vh;
+        max-height: 570px;
+        overflow: auto;
+        will-change: transform;
+        border-radius: 10px;
+        box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4),
+          0 10px 10px -10px rgba(50, 50, 73, 0.3);
+
+        &::-webkit-scrollbar {
+          width: 0;
+        }
+      }
+    }
+
+    img {
+      height: 380px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    button[aria-label="previous"],
+    button[aria-label="next"] {
+      background: salmon !important;
+      color: black !important;
+    }
+
+    h2 {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    h2:nth-of-type(2) {
+      opacity: 0.7;
+      font-size: 1.35rem;
+    }
+
+    h5 {
+      margin-top: 20px;
+      margin-left: 3px;
+      color: gray;
+    }
+    h5:last-of-type {
+      color: gray;
+    }
+
+    h4:last-of-type {
+      margin-top: 20px;
+      margin-left: 3px;
+      color: gray;
+    }
+    .card > div {
+      height: 380px !important;
+    }
+
+    .card {
+      height: 500px !important;
+    }
+
+    .slider-control-bottomcenter {
+      bottom: -15px !important;
+    }
+
+    .slider-control-bottomcenter > ul > li > button {
+      color: salmon !important;
+    }
+  }
 }

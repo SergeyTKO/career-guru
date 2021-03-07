@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
 import bcrypt from "bcrypt";
-import User from "../models/userModel.js";
+import User from "../models/users.js";
 import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 

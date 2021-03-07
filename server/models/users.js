@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 
-export default mongoose.model('user', mongoose.Schema({
+export default mongoose.model('users', mongoose.Schema({
   avatar: String,
   googleId:  String,
   accessToken: String,
@@ -10,10 +10,7 @@ export default mongoose.model('user', mongoose.Schema({
   password: String,
   email: String,
   status: String,
-  toLearn: [{ type: mongoose.Types.ObjectId, ref: "card" }],
   score: Number,
   isAdmin: Boolean,
   provider:String
-
-
 }))
