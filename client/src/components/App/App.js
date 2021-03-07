@@ -8,7 +8,7 @@ import LoginPage from '../LoginPage/LoginPage'
 import StartPage from '../StartPage/StartPage'
 import Deck from '../Deck/Deck'
 import styles from './App.module.scss'
-
+import AdminPage from '../AdminForm/AdminForm'
 
 function App() {
   const location = useLocation();
@@ -24,6 +24,7 @@ function App() {
        <Route path='/login'><LoginPage /></Route>
        <Route path='/signup'><AuthPage /></Route>
        <Route path='/cards'><div className={styles.cardsWrapper}><Deck /></div></Route>
+       <Route path='/admin'><AdminPage /></Route>
 
       {/* isLogin */}
       <Route path="/main"><Main /></Route> 
