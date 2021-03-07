@@ -3,6 +3,8 @@ import { initCardsAC } from '../../redux/actionCreators'
 function AdminForm() {
 
 
+
+
   function addCard(e) {
     e.preventDefault()
 
@@ -24,8 +26,20 @@ function AdminForm() {
       .then(res => res.json())
       .then(data => console.log(data))
 
+  }
 
+  function deleteCard(e){
+    const {id} = e.target
 
+    fetch('http://localhost:4000/admin',{
+      method:'DELETE',
+      headers:{
+        'Content-Type':'Application/json'
+      },
+      body: JSON.stringify({_id: id})
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
   }
 
   return (
