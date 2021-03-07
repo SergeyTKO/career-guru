@@ -1,22 +1,40 @@
-import Image from "../Image/Image";
+import {Link} from 'react-router-dom'
 import styles from "./IntrodusingBlock.module.scss";
-import img from '../../image/brain.jpg'
 
 function IntrodusingBlock() {
   return (
-    <div className="introBlock">
+    <div className={styles.introBlock}>
+
+<div className={styles.block}>
+        <Link to='/tests' className={styles.clickable}>
       <div className={styles.imgWrapper}>
-        <Image imgSrc={'./test.jpeg'} imgAlt={'тестирование'}/>
-        <p>Выбери свой уровен и проходи тесты, которые походят именно тебе!</p>
+      <span><i class="fas fa-lightbulb"></i></span>
       </div>
+        <p>Выбери свой уровень и проходи тесты, которые походят именно тебе!</p>
+    </Link>
+    </div>
+
+    
+        <div className={styles.block}>
+        <Link to='/popular' className={styles.clickable}>
       <div className={styles.imgWrapper}>
-        <Image imgSrc={'./job.png'} imgAlt={'задачи от работодателей'}/>
+      <span><i class="fas fa-atom"></i></span>
+      </div>
         <p>Изучай самые популярные вопросы и задачи на собеседовании от работодателей.</p>
-      </div>
+    </Link>
+    </div>
+
+    
+        <div className={styles.block}>
+        <Link to='/cards' className={styles.clickable}>
       <div className={styles.imgWrapper}>
-        <Image imgSrc={img} imgAlt={'прокачка навыков'}/>
-        <p>Прокачивай себя!</p>
+      <span><i class="fas fa-brain"></i></span>
       </div>
+        <p>Прокачивай себя!</p>
+</Link>
+    </div>
+    
+
     </div>
   );
 }
