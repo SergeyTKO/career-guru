@@ -19,6 +19,12 @@ router.route('/admin')
 
   })
 
+  .delete('/admin', async(req,res)=>{
+    const{_id}=req.body
+    const deleteCard = await Cards.findByIdAndDelete({_id:_id})
+    res.json(deleteCard._id)
+  })
+
 
 
 
