@@ -7,23 +7,23 @@ router.route('/admin')
   
     const { question, answer, count, theme, tags } = req.body
     console.log(req.body);
-    await Cards.create({
-      questinon: question,
-      answer: answer,
-      count: count,
-      theme: theme,
-      tags: tags
+    const card = await Cards.create({
+      question,
+      answer,
+      count,
+      theme,
+      tags,
     })
 
-    res.redirect('/admin')
+    res.json(card)
 
   })
 
-  .delete('/admin', async(req,res)=>{
-    const{_id}=req.body
-    const deleteCard = await Cards.findByIdAndDelete({_id:_id})
-    res.json(deleteCard._id)
-  })
+  // .delete('/admin', async(req,res)=>{
+  //   const{_id}=req.body
+  //   const deleteCard = await Cards.findByIdAndDelete({_id:_id})
+  //   res.json(deleteCard._id)
+  // })
 
 
 
