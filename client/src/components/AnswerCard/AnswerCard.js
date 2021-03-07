@@ -2,7 +2,7 @@ import React from 'react';
 import Button from "../Button/Button";
 
 function AnswerCard({answer}) {
-
+    console.log(answer)
     const buttonHandler = () => {
         console.log('log')
     }

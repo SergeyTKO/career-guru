@@ -1,6 +1,5 @@
 import morgan from "morgan";
 import express from "express";
-import dbConnect from "./dbConnect.js";
 import cookieParser from 'cookie-parser'
 import session from "express-session";
 import sessionFileStore from "session-file-store";
@@ -9,7 +8,6 @@ import cors from 'cors'
 const FileStore = sessionFileStore(session);
 
 const appConfig = (application) => {
-  dbConnect();
   application.use(morgan("dev"));
   application.use(express.urlencoded({ extended: true }));
   application.use(express.json());

@@ -34,7 +34,8 @@ router.post("/", async function (req, res) {
         });
         res
           .cookie("jwt", token, { maxAge: 60 * 60000, httpOnly: true })
-          .redirect("/admin");
+          .status(201)
+          .json({admin});
       } else {
         const user = new User({
           firstName: req.body.firstName.toLowerCase(),
@@ -52,6 +53,7 @@ router.post("/", async function (req, res) {
         res
           .cookie("jwt", token, { maxAge: 60 * 60000, httpOnly: true })
           .status(201)
+          .json({user});
       }
     }
   } catch (err) {

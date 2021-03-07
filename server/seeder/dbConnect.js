@@ -1,19 +1,19 @@
 import mongoose from 'mongoose'
 import Cards from '../models/cards.js'
 import Users from '../models/users.js'
+import dotenv from 'dotenv';
 
-
-
+dotenv.config();
 const dbConnect = () => {
-  mongoose.connect('mongodb+srv://Sergey:mongodbatlas@cluster0.ombdm.mongodb.net/hardSkills?retryWrites=true&w=majority', {
-    // mongoose.connect('mongodb://localhost/TestBase',{
+  const atlas = `mongodb+srv://${process.env.LOGIN}:${process.env.PASSWORD}@cluster0.ombdm.mongodb.net/${process.env.DB_NAME}`
+  mongoose.connect(atlas, {
+    useUnifiedTopology: true,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useCreateIndex: true,
+    useFindAndModify: false,
   });
 
 };
-
-
 
 
 async function addUser() {
