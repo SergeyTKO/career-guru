@@ -20,6 +20,7 @@ function App() {
                 <Route path="/deck" ><Deck/></Route>
                 <div className={styles.container}>
                     <Route path="/main"><Main/></Route>
+                    <Route path='/cards'><div className={styles.cardsWrapper}><Deck /></div></Route>
                 </div>
             </Switch>
             {background && <Route path="/menu"><Modal/></Route>}
