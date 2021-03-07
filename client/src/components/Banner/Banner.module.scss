@@ -9,6 +9,14 @@
     background-size: auto, cover;
     background-position: center, center;
 
+    h1{
+        span{
+            color: #A2000C;
+            text-shadow: 0 0 10px #fff;
+            
+        }
+    }
+
     &::before{
         content: '\f078';
         position: absolute;
