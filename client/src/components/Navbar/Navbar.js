@@ -14,7 +14,7 @@ function Navbar() {
 
       {isAuth ? (
         <>
-          <Link to="/logout">Logout</Link>
+       
           <Link to="/home"> Home </Link>
           {/* isLogged */}
           <Link

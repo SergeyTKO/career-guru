@@ -1,4 +1,4 @@
-import {INIT_CARDS, ADD_CARDS, DELETE_CARDS, AUTH_SUCSESSFULLY, LOGOUT} from "./actionTypes";
+import {INIT_CARDS, ADD_CARDS, DELETE_CARDS, AUTH_SUCSESSFULLY, LOGOUT, ERROR} from "./actionTypes";
 
 //ADMIN
 export const initCardsAC = (cards) => ({
@@ -14,6 +14,7 @@ export const deleteCardsAC = (card) => ({
     type: DELETE_CARDS,
     payload: card,
 })
-export const authSucsessAC = (user) => ({ type: AUTH_SUCSESSFULLY, payload: user });
+export const authSucsessAC = (payload) => ({ type: AUTH_SUCSESSFULLY, payload });
 
 export const logoutAC = () => ({ type: LOGOUT });
+export const errorAC = (payload) => ({ type: ERROR, payload });

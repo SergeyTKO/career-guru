@@ -10,3 +10,6 @@ export const RESULT_COUNTER = 'RESULT_COUNTER';
 
 export const AUTH_SUCSESSFULLY = "AUTH_SUCSESSFULLY";
 export const LOGOUT = "LOGOUT";
+
+
+export const ERROR = "ERROR";

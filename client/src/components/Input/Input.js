@@ -1,6 +1,6 @@
-function Input({inpType, inpPlaceholder}){
+function Input({inpType, inpPlaceholder,inpRef,inpHandler}){
     return(
-        <input type={inpType} placeholder={inpPlaceholder}/>
+        <input type={inpType} ref={inpRef} placeholder={inpPlaceholder} />
     )
 }
 

@@ -7,6 +7,7 @@ import User from "../models/users.js";
 const privateKey = "secret";
 
 router.post("/", async function (req, res) {
+  console.log(req.body);
   const { email, password } = req.body;
   let user;
   try {
@@ -51,9 +52,7 @@ router.post("/", async function (req, res) {
             },
           });
         }
-        // } else {
-        //   res.json({ msg: "Неверный логин или Пароль" });
-        // }
+      
       }else {
         res.json({ msg: "Неверный Логин или пароль" });
       }

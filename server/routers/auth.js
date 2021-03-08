@@ -11,6 +11,7 @@ const adminKey = "bullet";
 
 
 router.post("/", async (req, res) => {
+
   const { email, lastName, password, checkPsw, firstName } = req.body;
   const foundUser = await User.findOne({ email });
   try {
@@ -44,6 +45,7 @@ router.post("/", async (req, res) => {
           isAdmin:false
         });
         await user.save();
+      
       }
      
       const token = jwt.sign({ _id: user._id },process.env.JWT_KEY, {
@@ -59,6 +61,7 @@ router.post("/", async (req, res) => {
 });
 
 router.post('/checktoken', (req,res)=>{
+
         const token = req.body.token
         jwt.verify(token, process.env.JWT_KEY, function(err, decoded){
             if(err){res.json({success:false})}
@@ -69,5 +72,6 @@ router.post('/checktoken', (req,res)=>{
         })
         console.log(token)
     })
+
 
 export default router;
