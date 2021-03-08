@@ -1,4 +1,5 @@
 @import "../variables.scss";
+@import '../mixins.scss';
 
 .block {
 
@@ -30,18 +31,37 @@
     background-color: $block-hover-color;
   }
 
-  &:nth-child(even) {
-    .clickable {
-      flex-direction: row-reverse;
-      text-align: end;
-      background-color: $cards-bg-color;
-      justify-content: flex-start;
+  // &:nth-child(even) {
+  //   .clickable {
+  //     flex-direction: row-reverse;
+  //     text-align: end;
+  //     background-color: $cards-bg-color;
+  //     justify-content: flex-start;
 
-      .imgWrapper {
-        margin-left: 1rem;
-      }
-    }
-  }
+  //     .imgWrapper {
+  //       margin-left: 1rem;
+  //     }
+  //   }
+  // }
+
+  // &:nth-child(odd) {
+  //   .clickable {
+  //     justify-content: flex-start;
+  //     background-color: $modal-bg-color;
+
+  //     .imgWrapper {
+  //       margin-right: 1rem;
+  //     }
+  //   }
+  // }
+
+  
+  
+}
+
+@media screen and (min-width: 470px){
+  .block{
+
 
   &:nth-child(odd) {
     .clickable {
@@ -54,7 +74,29 @@
     }
   }
 
+    &:nth-child(even) {
+      .clickable {
+        flex-direction: row-reverse;
+        text-align: end;
+        background-color: $cards-bg-color;
+        justify-content: flex-start;
   
-  
+        .imgWrapper {
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
 }
 
+@media screen and (max-width: 470px){
+  .block{
+    .clickable{
+      @include centered-elements;
+      flex-direction: column;
+      text-align: center;
+    }
+
+ 
+}
+}

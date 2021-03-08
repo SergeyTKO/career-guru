@@ -7,11 +7,13 @@ function Navbar() {
 
     return (
         <nav className={styles.navbar}>
+             {/* !isLogged */}
             <Link to='/' className={styles.main}></Link>
             <Link to="/login" className={styles.login}></Link>
             <Link to="/signup" className={styles.auth}></Link>
 
             {/* isLogged */}
+            <Link to='/home' className={styles.main}></Link>
             <Link to={{pathname: "/menu", state: {background: location}}}></Link>
 
         </nav>
