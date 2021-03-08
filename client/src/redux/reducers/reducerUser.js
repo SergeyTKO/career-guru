@@ -23,7 +23,7 @@ export const reducerUser = (state = initialState, action) => {
         case REST_TO_FINISH:
             return {...state, result: {...state.result, numOfRestQuestions: state.result.numOfRestQuestions - 1}};
         case RESET_RESULTS:
-            return {...state, result: {...state.result, resultCounter: state.result.resultCounter = 0, resultCounter: state.result.resultCounter = 0}};
+            return {...state, result: {...state.result, resultCounter: state.result.resultCounter = 0, numOfRestQuestions: state.result.numOfRestQuestions = 0}};
         default:
             return state;
     }
