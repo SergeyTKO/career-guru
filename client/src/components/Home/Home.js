@@ -1,3 +1,4 @@
+import Button from '../Button/Button'
 import styles from './Home.module.scss'
 
 function Home(){
