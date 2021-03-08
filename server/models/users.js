@@ -3,6 +3,8 @@ import mongoose from 'mongoose'
 
 export default mongoose.model('users', mongoose.Schema({
   avatar: String,
+  googleId:  String,
+  accessToken: String,
   firstName: String,
   lastName: String,
   password: String,
@@ -10,5 +12,6 @@ export default mongoose.model('users', mongoose.Schema({
   status: String,
   solvedCards: [{type: mongoose.Schema.Types.ObjectId, ref: 'Card'}],
   score: Number,
-  isAdmin: Boolean
+  isAdmin: Boolean,
+  provider:String
 }))
