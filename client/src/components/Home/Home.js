@@ -1,11 +1,12 @@
 import Button from '../Button/Button'
 import styles from './Home.module.scss'
+import {Link} from 'react-router-dom'
 
 function Home(){
     return(
         <div className={styles.homePage}>
-            <Button btnValue={'Популярные вопросы на собеседовании'}/>
-            <Button btnValue={'Пройти тестирование'}/>
+            <Link to='/cards'>Популярные вопросы на собеседовании</Link>
+            <Link to='/test'>Пройти тестирование</Link>
         </div>
     )
 }

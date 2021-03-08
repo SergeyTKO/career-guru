@@ -15,6 +15,7 @@ import TestingPage from "../TestingPage/TestingPage";
 import Home from "../Home/Home";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import { checkTokenAC } from "../../redux/thunk/checkToken";
+import ResultPage from "../ResultPage/ResultPage";
 
 function App() {
   const location = useLocation();
@@ -50,7 +51,9 @@ function App() {
           <Route path="/admin">
             <AdminPage />
           </Route>
-
+          <Route path="/results">
+            <ResultPage />
+          </Route>
           {/* isLogin */}
           <PrivateRoute path="/home" children={<Home />} />
 
