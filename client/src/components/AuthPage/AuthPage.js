@@ -45,36 +45,42 @@ function AuthPage() {
           inpPlaceholder={"Укажите Ваше имя"}
           onChange={handleChange}
           inpRef={firstName}
+          required
         />
         <Input
           inpType={"text"}
           inpPlaceholder={"Укажите Вашу фамилию"}
           onChange={handleChange}
           inpRef={lastName}
+          required
         />
         <Input
           inpType={"email"}
           inpPlaceholder={"Укажите Ваш email"}
           onChange={handleChange}
           inpRef={email}
+          required
         />
         <Input
           inpType={"password"}
           inpPlaceholder={"Придумайте пароль"}
           onChange={handleChange}
           inpRef={password}
+          required
         />
         <Input
           inpType={"password"}
           inpPlaceholder={"Подтвердите пароль"}
           onChange={handleChange}
           inpRef={checkPsw}
+          required
         />
         <Input
           inpType={"text"}
           inpPlaceholder={"Admin key"}
           onChange={handleChange}
           inpRef={secretKey}
+          required
         />
 
         <Selector

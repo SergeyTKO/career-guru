@@ -7,7 +7,7 @@ import Button from "../Button/Button";
 function Navbar() {
   const location = useLocation();
   const isAuth = useSelector((state) => state.auth.isAuth);
-  const state = useSelector((state) => state);
+
   return (
     <nav className={styles.navbar}>
       <Link to="/" className={styles.main}></Link>

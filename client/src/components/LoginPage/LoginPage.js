@@ -33,12 +33,14 @@ function LoginPage() {
           inpPlaceholder={"Введите еmail"}
           onChange={handleChange}
           inpRef={email}
+          required
         />
         <Input
           inpType={"password"}
           inpPlaceholder={"Введите пароль"}
           onChange={handleChange}
           inpRef={password}
+          required
         />
       
         <Button btnValue={"Войти"} buttonHandler={handleSubmit}/>

@@ -10,6 +10,7 @@ export default mongoose.model('users', mongoose.Schema({
   password: String,
   email: String,
   status: String,
+  solvedCards: [{type: mongoose.Schema.Types.ObjectId, ref: 'Card'}],
   score: Number,
   isAdmin: Boolean,
   provider:String

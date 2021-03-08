@@ -1,4 +1,5 @@
 @import "../variables.scss";
+@import '../mixins.scss';
 
 .block {
 
@@ -21,27 +22,21 @@
 
     .imgWrapper {
       text-align: center;
-      width: 15%;
+      width: 20%;
       height: 15%;
     }
 
   }
-  &:hover{
-    background-color: $block-hover-color;
-  }
 
-  &:nth-child(even) {
-    .clickable {
-      flex-direction: row-reverse;
-      text-align: end;
-      background-color: $cards-bg-color;
-      justify-content: flex-start;
+  
+}
 
-      .imgWrapper {
-        margin-left: 1rem;
-      }
+@media screen and (min-width: 470px){
+  .block{
+
+    &:hover{
+      background-color: $block-hover-color;
     }
-  }
 
   &:nth-child(odd) {
     .clickable {
@@ -54,7 +49,33 @@
     }
   }
 
+    &:nth-child(even) {
+      .clickable {
+        flex-direction: row-reverse;
+        text-align: end;
+        background-color: $cards-bg-color;
+        justify-content: flex-start;
   
-  
+        .imgWrapper {
+          margin-left: 1rem;
+        }
+      }
+    }
+  }
 }
 
+@media screen and (max-width: 470px){
+  .block{
+    .clickable{
+      @include centered-elements;
+      flex-direction: column;
+      text-align: center;
+    }
+
+ 
+}
+}
+
+.block+.block{
+  border-top: 1px solid $border-color;
+}
