@@ -1,6 +1,7 @@
 @import "../variables.scss";
 
 .block {
+
   .clickable {
     display: flex;
     padding: 1rem;
@@ -23,6 +24,10 @@
       width: 15%;
       height: 15%;
     }
+
+  }
+  &:hover{
+    background-color: $block-hover-color;
   }
 
   &:nth-child(even) {
@@ -30,7 +35,7 @@
       flex-direction: row-reverse;
       text-align: end;
       background-color: $cards-bg-color;
-      justify-content: flex-end;
+      justify-content: flex-start;
 
       .imgWrapper {
         margin-left: 1rem;
@@ -48,4 +53,8 @@
       }
     }
   }
+
+  
+  
 }
+

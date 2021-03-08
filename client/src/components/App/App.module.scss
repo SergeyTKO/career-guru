@@ -81,14 +81,14 @@ button {
   cursor: pointer;
 
   &:hover {
-    background-color: $btn-hover-color;
+    border-color: $btn-hover-color;
   }
 }
 
 .container {
   position: relative;
   width: inherit;
-  height: 85%;
+  height: 90%;
 
   .cardsWrapper {
     position: fixed;
