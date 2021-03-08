@@ -4,7 +4,7 @@ import QuestionCard from "../QuestionCard/QuestionCard";
 import AnswerCard from "../AnswerCard/AnswerCard";
 
 function Card(props) {
-    const cards = useSelector(state => state.user.user);
+    const cards = useSelector(state => state.admin.cards);
 
     return (
         <div>

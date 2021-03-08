@@ -9,7 +9,7 @@ import StartPage from '../StartPage/StartPage'
 import Deck from '../Deck/Deck'
 import styles from './App.module.scss'
 import AdminPage from '../AdminForm/AdminForm'
-import {initCardsFetchAC} from "../../redux/thunk/userFetchAC";
+import {initCardsFetchAC} from "../../redux/thunk/adminFetchAC";
 import {useDispatch} from "react-redux";
 
 function App() {

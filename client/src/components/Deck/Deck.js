@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {animated, interpolate} from 'react-spring'
 import {useSprings} from 'react-spring'
 import {useGesture} from 'react-use-gesture'
@@ -9,7 +9,7 @@ const from = i => ({x: 0, rot: 0, scale: 1.5, y: -1000})
 const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 10}deg) rotateZ(${r / 10}deg) scale(${s})`
 
 function Deck() {
-    const cards = useSelector(state => state.user.user);
+    const cards = useSelector(state => state.admin.cards);
     const [gone] = useState(() => new Set())
     const [props, set] = useSprings(cards.length, i => ({...to(i), from: from(i)}))
     const bind = useGesture(({args: [index], down, delta: [xDelta], distance, direction: [xDir], velocity}) => {
