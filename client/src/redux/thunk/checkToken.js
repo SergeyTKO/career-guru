@@ -3,7 +3,7 @@ import axios from "axios";
 export const checkTokenAC = () => {
     const token = window.localStorage.getItem("jwt");
     return (dispatch) => {
-    axios.post(`${process.env.REACT_APP_MAIN_URL}/auth/checktoken`, {
+    axios.post(`${process.env.REACT_APP_URL}/auth/checktoken`, {
    
         token
  
