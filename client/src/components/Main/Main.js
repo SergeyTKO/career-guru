@@ -4,7 +4,7 @@ import Card from "../Card/Card";
 function Main() {
     return (
         <div>
-            <Card/>
+                    <Card/>
         </div>
     );
 }
