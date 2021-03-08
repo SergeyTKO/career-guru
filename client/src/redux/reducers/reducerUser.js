@@ -2,7 +2,9 @@ import {INIT_TEST, RIGHT_ANSWERS, RESULT_COUNTER} from "../actionTypes";
 
 const initialState = {
     result: [{
-        right
+        rightAnswers: [{}],
+        resultCounter: null,
+        numOfRestQuestions: null,
     }]
 };
 
