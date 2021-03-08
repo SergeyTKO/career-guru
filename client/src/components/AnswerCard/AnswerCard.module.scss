@@ -1,4 +1,5 @@
 @import '../variables.scss';
+@import '../mixins.scss';
 
 .answerCard{
     display: flex;
@@ -10,10 +11,13 @@
     gap: 10%;
 
     button{
+        @include centered-elements;
         border: 1px solid red;
         color: $font-color;
         width: 44%;
         max-height: 44%;
         height: 10rem;
     }
+
+    // button+button{margin-top: 1rem;}
 }

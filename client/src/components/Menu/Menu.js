@@ -12,7 +12,7 @@ function Menu() {
         <li>Избранное</li>
         <li>Пройденные тесты</li>
         <li><Link to='/cards'>К изучению</Link></li>
-        <li>Выйти</li>
+        <li><Link to='/logout'>Выйти</Link></li>
       </ul>
     </div>
   );
