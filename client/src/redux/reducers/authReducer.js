@@ -10,7 +10,7 @@ if (windowState) {
 } else {
   preloadedState = { isAuth: false, user: { email: "", firstName: "" } };
 }
-const authReducer = (state = preloadedState, action) => {
+export const authReducer = (state = preloadedState, action) => {
   switch (action.type) {
     case AUTH_SUCSESSFULLY:
       return {
@@ -29,4 +29,3 @@ const authReducer = (state = preloadedState, action) => {
   }
 };
 
-export default authReducer;

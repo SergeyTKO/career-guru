@@ -1,11 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;600&display=swap');
 
-$bg-color: #2e3141;
-$font-color: #e5dfe2;
-$border-color: #4e5160;
-$modal-bg-color: #4c5c96;
-$cards-bg-color: #45558d;
-$shadow-color: #3f4e85;
-$btn-hover-color: rgba(255, 255, 255, 0.025);
+// $bg-color: #2e3141;
+// $font-color: #e5dfe2;
+// $bright-font-color: #4e6bd1;
+// $border-color: #4e5160;
+// $modal-bg-color: #4c5c96;
+// $cards-bg-color: #45558d;
+// $shadow-color: #3f4e85;
+// $btn-hover-color: rgba(255, 255, 255, 0.025);
 
 $font-family: 'Raleway', sans-serif;
+
+$bg-color: #000;
+$font-color: #fff;
+$bright-font-color: #d72323;
+$border-color: #d72323;
+$modal-bg-color: #333;
+$cards-bg-color: #333;
+$shadow-color: #d72323;
+$btn-hover-color: #fff;
+$block-hover-color:#d72323;
