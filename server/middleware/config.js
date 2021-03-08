@@ -13,19 +13,19 @@ const appConfig = (application) => {
   application.use(express.json());
   application.use(cookieParser('your secret here'));
   application.use(cors())
-  application.use(
-    session({
-      store: new FileStore(),
-      secret: process.env.SESSION_SECRET,
-      resave: true,
-      rolling: true,
-      saveUninitialized: false,
-      cookie: {
-        maxAge: 10 * 60 * 1000,
-        httpOnly: false,
-      },
-    })
-  );
+  // application.use(
+  //   session({
+  //     store: new FileStore(),
+  //     secret: process.env.SESSION_SECRET,
+  //     resave: true,
+  //     rolling: true,
+  //     saveUninitialized: false,
+  //     cookie: {
+  //       maxAge: 10 * 60 * 1000,
+  //       httpOnly: false,
+  //     },
+  //   })
+  // );
 };
 
 export default appConfig;

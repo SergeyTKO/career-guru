@@ -9,6 +9,8 @@ import StartPage from '../StartPage/StartPage'
 import Deck from '../Deck/Deck'
 import styles from './App.module.scss'
 import AdminPage from '../AdminForm/AdminForm'
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import Logout from '../Logout/Logout';
 
 function App() {
   const location = useLocation();
@@ -25,9 +27,10 @@ function App() {
        <Route path='/signup'><AuthPage /></Route>
        <Route path='/cards'><div className={styles.cardsWrapper}><Deck /></div></Route>
        <Route path='/admin'><AdminPage /></Route>
+       <Route path='/logout'><Logout /></Route>
 
       {/* isLogin */}
-      <Route path="/main"><Main /></Route> 
+      <PrivateRoute path='/main'><Main /></PrivateRoute> 
     </div>
       </Switch>
        {background && <Route path="/menu"><Modal /></Route>}
