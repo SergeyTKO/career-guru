@@ -15,7 +15,7 @@ function Card({card}) {
             dispatch(answerAC(card))
             dispatch(resultPlusOneAC())
             dispatch(restToFinishAC())
-        }
+        } else dispatch(restToFinishAC())
     }
         if ( result === 0) {
             history.push('/results')
