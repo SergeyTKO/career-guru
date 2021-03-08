@@ -9,7 +9,7 @@ const server = http.createServer(app)
 const PORT = process.env.PORT || 4000
 
 appConfig(app);
-dbConnect()
+// dbConnect()
 routersConfig(app);
 
 server.listen(PORT, ()=>console.log(`server on ${PORT}`))

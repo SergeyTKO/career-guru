@@ -4,7 +4,7 @@ import Cards from '../models/cards.js'
 
 router.route('/admin')
   .post(async (req, res) => {
-  
+
     const { question, answer, count, theme, tags } = req.body
     // console.log(req.body);
     const card = await Cards.create({
@@ -19,11 +19,14 @@ router.route('/admin')
 
   })
 
-  .delete(async(req,res)=>{
-    const{_id}=req.body
-    const deleteCard = await Cards.findByIdAndDelete({_id:_id})
-    console.log(deleteCard);
-    res.json(deleteCard._id)
+  
+  .delete(async (req, res) => {
+   
+    const { id } = req.body
+  // console.log(id);
+    const deleteCard = await Cards.findByIdAndDelete({ _id: id })
+    // console.log(deleteCard);
+    res.json(deleteCard.id)
   })
 
 

@@ -1,65 +1,40 @@
 import React from 'react';
-import { initCardsAC } from '../../redux/actionCreators'
-import { cardsTest } from "../Deck/cardsTest";
-import QuestionCard from "../QuestionCard/QuestionCard";
-import AnswerCard from "../AnswerCard/AnswerCard";
+import { adminFetchAC } from "../../redux/thunk/adminFetchAC";
+import { useDispatch, useSelector } from "react-redux";
+import { initCardsFetchAC } from '../../redux/thunk/adminFetchAC'
+import Card from '../Card/Card'
+import {deleteFetchAC} from '../../redux/thunk/adminFetchAC'
+// import styles from '../../components/TestingPage.module.scss'
+
 
 function AdminForm() {
+  const dispatch = useDispatch();
+  const cards = useSelector(state => state.admin.cards)
 
 
-  function addCard(e) {
+  function addCardAC(e) {
     e.preventDefault()
 
     const { question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags } = e.target
-
-    fetch('http://localhost:4000/admin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      body: JSON.stringify({
-        question: question.value,
-        answer: [{
-          answer: answerTrue.value,
-          validity: true,
-        }, {
-          answer: answerFalse1.value,
-          validity: false
-        }, {
-          answer: answerFalse2.value,
-          validity: false
-        }, {
-          answer: answerFalse3.value,
-          validity: false
-        }
-        ],
-        count: count.value,
-        theme: theme.value,
-        tags: tags.value
-      })
-    })
-      .then(res => res.json())
-    // .then(data => console.log(data))
-
+    dispatch(adminFetchAC(question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags))
   }
 
-  function deleteCard(e) {
-    const { id } = e.target
-    // console.log('>>>>>>>>>',{id});
-    fetch('http://localhost:4000/admin', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      body: JSON.stringify({ _id: id })
-    })
-      .then(res => res.json())
-    // .then(data => console.log(data))
+  // function initCard(e) {
+  //   dispatch(initCardsFetchAC)
+  // }
+
+  function deleteCard(e){
+    const {id} = e.target
+    console.log(id);
+    e.preventDefault()
+    dispatch(deleteFetchAC(id))
   }
+
+
 
   return (
     <div>
-      <form onSubmit={addCard}>
+      <form onSubmit={addCardAC}>
         <input type="text" name="question" placeholder="вопрос" />
         <input type="text" name="answerTrue" placeholder="Правильный ответ" />
         <input type="text" name="answerFalse1" placeholder="Неправильный ответ" />
@@ -71,15 +46,12 @@ function AdminForm() {
         <button>Добавить</button>
       </form>
       <div>
-        {cardsTest && cardsTest.map(el => <div key={Math.random()}>
-          <QuestionCard question={el.question} />
-          <AnswerCard answer={el.answer} />
-          {console.log('>>>>>',el)}
-          <button id={el._id} onClick={(deleteCard)}>Удалить</button>
+        {cards && cards.map(card => <div><Card key={card._id} card={card} />
+          <button id={card._id} style={{ background: 'white' }} onClick={deleteCard}>Удалить</button>
         </div>)}
+
       </div>
     </div>
-
   );
 }
 
