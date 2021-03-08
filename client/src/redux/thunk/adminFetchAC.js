@@ -33,6 +33,5 @@ export const adminFetchAC = (question, answerTrue, answerFalse1, answerFalse2, a
     .then (function (card) {
         dispatch(addCardsAC(card.data))
     })
-
-
 }
+
