@@ -30,7 +30,7 @@
       flex-direction: row-reverse;
       text-align: end;
       background-color: $cards-bg-color;
-      justify-content: flex-end;
+      justify-content: flex-start;
 
       .imgWrapper {
         margin-left: 1rem;
@@ -47,5 +47,9 @@
         margin-right: 1rem;
       }
     }
+  }
+
+  &:hover{
+    background-color: $shadow-color;
   }
 }
