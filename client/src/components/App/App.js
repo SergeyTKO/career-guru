@@ -24,9 +24,9 @@ function App() {
   useEffect(() => {
     dispatch(initCardsFetchAC());
   }, [dispatch]);
-      useEffect(()=>{
-  dispatch(checkTokenAC())
-      },[])
+  useEffect(() => {
+    dispatch(checkTokenAC());
+  }, []);
   return (
     <React.Fragment>
       <Navbar />
@@ -40,7 +40,7 @@ function App() {
             {isAuth ? <Redirect to="/home" /> : <LoginPage />}
           </Route>
           <Route path="/signup">
-            <AuthPage />
+            {isAuth ? <Redirect to="/home" /> : <AuthPage />}
           </Route>
           <Route path="/cards">
             <div className={styles.cardsWrapper}>
