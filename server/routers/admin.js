@@ -6,7 +6,7 @@ router.route('/admin')
   .post(async (req, res) => {
   
     const { question, answer, count, theme, tags } = req.body
-    console.log(req.body);
+    // console.log(req.body);
     const card = await Cards.create({
       question,
       answer,
@@ -19,11 +19,12 @@ router.route('/admin')
 
   })
 
-  // .delete('/admin', async(req,res)=>{
-  //   const{_id}=req.body
-  //   const deleteCard = await Cards.findByIdAndDelete({_id:_id})
-  //   res.json(deleteCard._id)
-  // })
+  .delete(async(req,res)=>{
+    const{_id}=req.body
+    const deleteCard = await Cards.findByIdAndDelete({_id:_id})
+    console.log(deleteCard);
+    res.json(deleteCard._id)
+  })
 
 
 

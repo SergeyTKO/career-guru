@@ -18,10 +18,10 @@ const dbConnect = () => {
 
 async function addUser() {
   Users.create({
-    firstName: 'Ivan',
-    lastName: 'Ivanov',
+    firstName: 'Fedor',
+    lastName: 'Fedorov',
     password: '123',
-    email: 'ivanov@ivanov.com',
+    email: 'fedor@ivanov.com',
     status: 'trainee',
     score: 100,
     isAdmin: false
@@ -37,7 +37,7 @@ async function addCard() {
   })
 }
 
-// addUser()
+addUser()
 // addCard()
 
 export default dbConnect
