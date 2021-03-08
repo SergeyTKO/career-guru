@@ -11,6 +11,8 @@ import styles from './App.module.scss'
 import AdminPage from '../AdminForm/AdminForm'
 import {initCardsFetchAC} from "../../redux/thunk/adminFetchAC";
 import {useDispatch} from "react-redux";
+import TestingPage from '../TestingPage/TestingPage'
+import Home from '../Home/Home'
 
 function App() {
     const location = useLocation();
@@ -36,7 +38,8 @@ function App() {
                     <Route path='/admin'><AdminPage/></Route>
 
                     {/* isLogin */}
-                    <Route path="/main"><Main/></Route>
+                    <Route path='/home'><Home /></Route>
+                    <Route path="/test"><TestingPage/></Route>
 
                 </Switch>
             </div>

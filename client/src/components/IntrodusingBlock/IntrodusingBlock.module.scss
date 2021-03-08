@@ -1,6 +1,7 @@
 @import "../variables.scss";
 
 .block {
+
   .clickable {
     display: flex;
     padding: 1rem;
@@ -23,6 +24,10 @@
       width: 15%;
       height: 15%;
     }
+
+  }
+  &:hover{
+    background-color: $block-hover-color;
   }
 
   &:nth-child(even) {
@@ -49,7 +54,7 @@
     }
   }
 
-  &:hover{
-    background-color: $shadow-color;
-  }
+  
+  
 }
+
