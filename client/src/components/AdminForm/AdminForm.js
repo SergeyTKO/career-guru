@@ -1,32 +1,58 @@
 import React from 'react';
-import {adminFetchAC} from "../../redux/thunk/adminFetchAC";
-import {useDispatch} from "react-redux";
+import { adminFetchAC } from "../../redux/thunk/adminFetchAC";
+import { useDispatch, useSelector } from "react-redux";
+import { initCardsFetchAC } from '../../redux/thunk/adminFetchAC'
+import Card from '../Card/Card'
+import {deleteFetchAC} from '../../redux/thunk/adminFetchAC'
+// import styles from '../../components/TestingPage.module.scss'
+
 
 function AdminForm() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const cards = useSelector(state => state.admin.cards)
 
-    function addCardAC(e) {
-        e.preventDefault()
 
-        const {question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags} = e.target
-        dispatch(adminFetchAC(question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags))
-    }
+  function addCardAC(e) {
+    e.preventDefault()
 
-    return (
-        <div>
-            <form onSubmit={addCardAC}>
-                <input type="text" name="question" placeholder="вопрос"/>
-                <input type="text" name="answerTrue" placeholder="Правильный ответ"/>
-                <input type="text" name="answerFalse1" placeholder="Неправильный ответ"/>
-                <input type="text" name="answerFalse2" placeholder="Неправильный ответ"/>
-                <input type="text" name="answerFalse3" placeholder="Неправильный ответ"/>
-                <input type="number" name="count" placeholder="счет"/>
-                <input type="text" name="theme" placeholder="тема"/>
-                <input type="text" name="tags" placeholder="тег"/>
-                <button>Добавить</button>
-            </form>
-        </div>
-    );
+    const { question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags } = e.target
+    dispatch(adminFetchAC(question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags))
+  }
+
+  // function initCard(e) {
+  //   dispatch(initCardsFetchAC)
+  // }
+
+  function deleteCard(e){
+    const {id} = e.target
+    console.log(id);
+    e.preventDefault()
+    dispatch(deleteFetchAC(id))
+  }
+
+
+
+  return (
+    <div>
+      <form onSubmit={addCardAC}>
+        <input type="text" name="question" placeholder="вопрос" />
+        <input type="text" name="answerTrue" placeholder="Правильный ответ" />
+        <input type="text" name="answerFalse1" placeholder="Неправильный ответ" />
+        <input type="text" name="answerFalse2" placeholder="Неправильный ответ" />
+        <input type="text" name="answerFalse3" placeholder="Неправильный ответ" />
+        <input type="number" name="count" placeholder="счет" />
+        <input type="text" name="theme" placeholder="тема" />
+        <input type="text" name="tags" placeholder="тег" />
+        <button>Добавить</button>
+      </form>
+      <div>
+        {cards && cards.map(card => <div><Card key={card._id} card={card} />
+          <button id={card._id} style={{ background: 'white' }} onClick={deleteCard}>Удалить</button>
+        </div>)}
+
+      </div>
+    </div>
+  );
 }
 
 export default AdminForm;
