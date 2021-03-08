@@ -22,46 +22,21 @@
 
     .imgWrapper {
       text-align: center;
-      width: 15%;
+      width: 20%;
       height: 15%;
     }
 
   }
-  &:hover{
-    background-color: $block-hover-color;
-  }
 
-  // &:nth-child(even) {
-  //   .clickable {
-  //     flex-direction: row-reverse;
-  //     text-align: end;
-  //     background-color: $cards-bg-color;
-  //     justify-content: flex-start;
-
-  //     .imgWrapper {
-  //       margin-left: 1rem;
-  //     }
-  //   }
-  // }
-
-  // &:nth-child(odd) {
-  //   .clickable {
-  //     justify-content: flex-start;
-  //     background-color: $modal-bg-color;
-
-  //     .imgWrapper {
-  //       margin-right: 1rem;
-  //     }
-  //   }
-  // }
-
-  
   
 }
 
 @media screen and (min-width: 470px){
   .block{
 
+    &:hover{
+      background-color: $block-hover-color;
+    }
 
   &:nth-child(odd) {
     .clickable {
@@ -99,4 +74,8 @@
 
  
 }
+}
+
+.block+.block{
+  border-top: 1px solid $border-color;
 }
