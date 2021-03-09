@@ -7,10 +7,11 @@ function TestingPage() {
     const dispatch = useDispatch();
     const cards = useSelector(state => state.admin.cards);
     dispatch(initTestAC(cards));
+    const cardsToTest = useSelector(state => state.user.result.currentTest)
 
     return (
         <div className={styles.testingPage}>
-            {cards && <Card cards={cards}/>}
+            {cardsToTest && <Card cardsToTest={cardsToTest}/>}
         </div>
     )
 }
