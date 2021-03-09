@@ -40,11 +40,7 @@ function Card({cardsToTest}) {
             <div>Вопрос {i + 1} из {result.currentTest.length}</div>
             <div>{state}</div>
             <QuestionCard question={cardsToTest[i].question}/>
-<<<<<<< HEAD
-            <AnswerCard answer={cardsToTest[i].answer} buttonHandler={buttonHandler} state={state}/>
-=======
             <AnswerCard answer={cardsToTest[i].answer} divHandler={divHandler}/>
->>>>>>> f0eeed874cbbd9f8a13b9a82b8c0294f166cf8d1
         </div>
     );
 }

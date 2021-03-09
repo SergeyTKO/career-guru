@@ -1,14 +1,8 @@
 import React, { useEffect } from 'react';
 import { adminFetchAC } from "../../redux/thunk/adminFetchAC";
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD
-import { initCardsFetchAC } from '../../redux/thunk/adminFetchAC'
-import Card from '../Card/Card'
-import { deleteFetchAC } from '../../redux/thunk/adminFetchAC'
-// import styles from '../../components/TestingPage.module.scss'
-=======
 import {deleteFetchAC} from '../../redux/thunk/adminFetchAC'
->>>>>>> f0eeed874cbbd9f8a13b9a82b8c0294f166cf8d1
+import {initCardsFetchAC} from '../../redux/thunk/adminFetchAC'
 
 
 function AdminForm() {
@@ -25,17 +19,8 @@ function AdminForm() {
     dispatch(adminFetchAC(question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags))
   }
 
-<<<<<<< HEAD
-  // function initCard(e) {
-  //   dispatch(initCardsFetchAC)
-  // }
-
-  function deleteCard(e) {
-    const { id } = e.target
-=======
   function deleteCard(e){
     const {id} = e.target
->>>>>>> f0eeed874cbbd9f8a13b9a82b8c0294f166cf8d1
     console.log(id);
     e.preventDefault()
     dispatch(deleteFetchAC(id))
