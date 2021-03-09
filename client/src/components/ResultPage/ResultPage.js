@@ -11,7 +11,7 @@ function ResultPage(props) {
     }
     return (
         <div>
-            <div>Мамкин программист, ты ответил(-а) на {results.resultCounter} из {results.currentTest.length}</div>
+            <div>Мамкин программист, ты ответил(-а) на {results.resultCounter} из {results.currentTest.length} и набрал {results.count} баллов</div>
             <div><Link to='/' onClick={clickHandler}>Вернуться на главную</Link></div>
         </div>
     );

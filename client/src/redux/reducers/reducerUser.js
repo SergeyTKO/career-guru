@@ -6,7 +6,8 @@ const initialState = {
         rightAnswers: [],
         resultCounter: 0,
         numOfRestQuestions: 0,
-        testProgress: 0
+        testProgress: 0,
+        count: 0
     }
 };
 
@@ -18,7 +19,7 @@ export const reducerUser = (state = initialState, action) => {
                 result: {...state.result, currentTest: action.payload, numOfRestQuestions: action.payload.length}
             }
         case RIGHT_ANSWERS:
-            return {...state, result: {...state.result, rightAnswers: [...state.result.rightAnswers, action.payload]}};
+            return {...state, result: {...state.result, rightAnswers: [...state.result.rightAnswers, action.payload], count: state.result.count + action.payload.count}};
         case RESULT_COUNTER:
             return {...state, result: {...state.result, resultCounter: state.result.resultCounter + 1}};
         case REST_TO_FINISH:
