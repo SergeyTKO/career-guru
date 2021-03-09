@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Switch, Route, useLocation, Redirect } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import Main from "../Main/Main";
 import Modal from "../Modal/Modal";
 import AuthPage from "../AuthPage/AuthPage";
 import LoginPage from "../LoginPage/LoginPage";
@@ -22,6 +21,8 @@ function App() {
   const background = location.state && location.state.background;
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.auth.isAuth);
+  const isAdmin = useSelector(state=>state.auth.user.isAdmin)
+
   useEffect(() => {
     dispatch(initCardsFetchAC());
   }, [dispatch]);
@@ -38,7 +39,11 @@ function App() {
             <StartPage />
           </Route>
           <Route path="/login">
-            {isAuth ? <Redirect to="/home" /> : <LoginPage />}
+            {isAuth && isAdmin ? <Redirect to="/admin" />
+             : isAuth ? <Redirect to='/home' />
+             : <LoginPage />
+            
+            }
           </Route>
           <Route path="/signup">
             {isAuth ? <Redirect to="/home" /> : <AuthPage />}
@@ -48,16 +53,15 @@ function App() {
               <Deck />
             </div>
           </Route>
-          <Route path="/admin">
-            <AdminPage />
-          </Route>
-          <Route path="/results">
-            <ResultPage />
-          </Route>
+        
           {/* isLogin */}
-          <PrivateRoute path="/home" children={<Home />} />
+          <PrivateRoute path="/admin" children={<AdminPage />} /> 
 
+          <PrivateRoute path="/home" children={<Home />} />
+                    
           <PrivateRoute path="/test" children={<TestingPage />} />
+
+          <PrivateRoute path="/results" children={<ResultPage />} />
         </Switch>
       </div>
       {background && (
