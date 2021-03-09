@@ -12,18 +12,19 @@ function Card({cardsToTest}) {
     const dispatch = useDispatch()
     const result = useSelector(state => state.user.result)
     const i = useSelector(state => state.user.result.testProgress)
-    const buttonHandler = (event) => {
+    const buttonHandler = (event,_id) => {
+      console.log(event,_id);
         if (event.target.value === cardsToTest[i].answer[0].answer) {
             dispatch(answerAC(cardsToTest[i]))
             dispatch(resultPlusOneAC())
-            setState('Правильно')
+            setState(true)
             setTimeout(() => {
                 dispatch(restToFinishAC())
                 dispatch(testProgressAC())
                 setState('');
             }, 1500);
         } else {
-            setState('Неправильно')
+            setState(false)
             setTimeout(() => {
                 dispatch(restToFinishAC());
                 dispatch(testProgressAC())
@@ -41,7 +42,7 @@ function Card({cardsToTest}) {
             <div>Вопрос {i + 1} из {result.currentTest.length} </div>
             <div>{state}</div>
             <QuestionCard question={cardsToTest[i].question}/>
-            <AnswerCard answer={cardsToTest[i].answer} buttonHandler={buttonHandler}/>
+            <AnswerCard answer={cardsToTest[i].answer} buttonHandler={buttonHandler} state={state}/>
         </div>
     );
 }
