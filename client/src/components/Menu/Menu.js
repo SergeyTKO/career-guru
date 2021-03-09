@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 function Menu() {
   const history = useHistory();
   const dispatch = useDispatch();
+
   function logout (){
       
       dispatch(logoutAC());
@@ -14,6 +15,8 @@ function Menu() {
     };
   
   return (
+
+    
     <div className={styles.menu}>
       <h3>Меню</h3>
       <hr />

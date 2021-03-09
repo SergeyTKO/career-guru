@@ -19,8 +19,8 @@
         width: 100%;
         padding: 0.8rem 0;
         cursor: pointer;
-    
-        &:hover a{
+
+        &:last-child:hover, &:hover a{
           color: $hover-color;
         }
       }

@@ -12,8 +12,7 @@ function Card({cardsToTest}) {
     const dispatch = useDispatch()
     const result = useSelector(state => state.user.result)
     const i = useSelector(state => state.user.result.testProgress)
-    const buttonHandler = (event,_id) => {
-      console.log(event,_id);
+    const divHandler = (event) => {
         if (event.target.value === cardsToTest[i].answer[0].answer) {
             dispatch(answerAC(cardsToTest[i]))
             dispatch(resultPlusOneAC())
@@ -22,27 +21,30 @@ function Card({cardsToTest}) {
                 dispatch(restToFinishAC())
                 dispatch(testProgressAC())
                 setState('');
-            }, 1500);
+            }, 1200);
         } else {
             setState(false)
             setTimeout(() => {
                 dispatch(restToFinishAC());
                 dispatch(testProgressAC())
                 setState('');
-            }, 1500)
+            }, 1200)
         }
     }
     if (result.numOfRestQuestions === 0) {
         history.push('/results')
-    }
-    ;
+    };
 
     return (
         <div className={styles.card}>
-            <div>Вопрос {i + 1} из {result.currentTest.length} </div>
+            <div>Вопрос {i + 1} из {result.currentTest.length}</div>
             <div>{state}</div>
             <QuestionCard question={cardsToTest[i].question}/>
+<<<<<<< HEAD
             <AnswerCard answer={cardsToTest[i].answer} buttonHandler={buttonHandler} state={state}/>
+=======
+            <AnswerCard answer={cardsToTest[i].answer} divHandler={divHandler}/>
+>>>>>>> f0eeed874cbbd9f8a13b9a82b8c0294f166cf8d1
         </div>
     );
 }
