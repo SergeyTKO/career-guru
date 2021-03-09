@@ -17,7 +17,6 @@ function Card({cards}) {
             dispatch(answerAC(cards[i]))
             dispatch(resultPlusOneAC())
             setState('Правильно')
-
             setTimeout(() => {
                 dispatch(restToFinishAC())
                 dispatch(testProgressAC())
@@ -25,7 +24,6 @@ function Card({cards}) {
             }, 1500);
         } else {
             setState('Неправильно')
-
             setTimeout(() => {
                 dispatch(restToFinishAC());
                 dispatch(testProgressAC())
