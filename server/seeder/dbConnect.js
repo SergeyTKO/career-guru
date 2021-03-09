@@ -37,7 +37,7 @@ async function addCard() {
   })
 }
 
-addUser()
+// addUser()
 // addCard()
 
 export default dbConnect
