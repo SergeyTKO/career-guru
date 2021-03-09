@@ -5,11 +5,13 @@ import styles from './Card.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {answerAC, resultPlusOneAC, restToFinishAC, testProgressAC} from "../../redux/actionCreators";
 import {useHistory} from "react-router-dom";
+import {customerFetchAC} from "../../redux/thunk/customerFetchAC";
 
 function Card({cardsToTest}) {
     const [state, setState] = useState('');
     const history = useHistory()
     const dispatch = useDispatch()
+    const user = useSelector(state => state.auth.user)
     const result = useSelector(state => state.user.result)
     const i = useSelector(state => state.user.result.testProgress)
     const divHandler = (event) => {
@@ -32,8 +34,8 @@ function Card({cardsToTest}) {
         }
     }
     if (result.numOfRestQuestions === 0) {
+        dispatch(customerFetchAC(result.count, result.rightAnswers, user))
         history.push('/results')
-
     };
 
     return (
