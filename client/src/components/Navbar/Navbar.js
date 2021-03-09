@@ -1,12 +1,23 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { logoutAC } from "../../redux/actionCreators";
 import styles from "./Navbar.module.scss";
-import Button from "../Button/Button";
 
 function Navbar() {
   const location = useLocation();
+  const history = useHistory();
+  const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.auth.isAuth);
+  const isAdmin = useSelector(state => state.auth.user.isAdmin)
+
+  function logout (){
+      
+    dispatch(logoutAC());
+    history.push("/");
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -14,9 +25,12 @@ function Navbar() {
       {isAuth ? (
         <React.Fragment>
           <Link to="/home" className={styles.main}></Link>
+
+          {isAdmin ? <p className={styles.logoutBtn} onClick={logout}></p> : 
           <Link
             to={{ pathname: "/menu", state: { background: location } }}
           className={styles.menu}></Link>
+                    }
         </React.Fragment>
       ) : (
         <React.Fragment>

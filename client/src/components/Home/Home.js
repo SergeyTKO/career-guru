@@ -1,4 +1,3 @@
-import Button from '../Button/Button'
 import styles from './Home.module.scss'
 import {Link} from 'react-router-dom'
 import {useDispatch} from "react-redux";

@@ -1,18 +1,20 @@
 @import "../variables.scss";
-@import '../mixins.scss';
+@import "../mixins.scss";
 
 .block {
-
   .clickable {
     display: flex;
     padding: 1rem;
     align-items: center;
     width: 100%;
+    background-color: $cards-bg-color;
     height: inherit;
 
-    span {
+    &::before, span{
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
+    }
+    span {
       i {
         color: $bright-font-color;
         font-size: 4rem;
@@ -22,40 +24,43 @@
 
     .imgWrapper {
       text-align: center;
-      width: 20%;
       height: 15%;
     }
-
   }
-
-  
 }
 
-@media screen and (min-width: 470px){
-  .block{
+@media screen and (min-width: 470px) {
+  .block {
+    &:hover {
+      .clickable {
+        .imgWrapper {
+          width: 20%;
+        }
 
-    &:hover{
-      background-color: $block-hover-color;
-    }
-
-  &:nth-child(odd) {
-    .clickable {
-      justify-content: flex-start;
-      background-color: $modal-bg-color;
-
-      .imgWrapper {
-        margin-right: 1rem;
+        span {
+          i {
+            text-shadow: 0 0 10px white;
+          }
+        }
       }
     }
-  }
+
+    &:nth-child(odd) {
+      .clickable {
+        justify-content: flex-start;
+
+        .imgWrapper {
+          margin-right: 1rem;
+        }
+      }
+    }
 
     &:nth-child(even) {
       .clickable {
         flex-direction: row-reverse;
         text-align: end;
-        background-color: $cards-bg-color;
         justify-content: flex-start;
-  
+
         .imgWrapper {
           margin-left: 1rem;
         }
@@ -64,18 +69,36 @@
   }
 }
 
-@media screen and (max-width: 470px){
-  .block{
-    .clickable{
-      @include centered-elements;
-      flex-direction: column;
-      text-align: center;
+@media screen and (max-width: 470px) {
+  .block {
+
+
+    .clickable {
+      position: relative;
+      justify-content: flex-start;
+      gap: .9rem;
+
+      p{
+        width: 85%;
+      }
+
+      &::before{
+        content: '\f0a9';
+        position: absolute;
+        right: 0;
+        margin-right: 1rem;
+        color: $bright-font-color;
+        font-size: 2rem;
+
+      }
+
+      span i {
+        display: none;
+      }
     }
-
- 
-}
+  }
 }
 
-.block+.block{
+.block + .block {
   border-top: 1px solid $border-color;
 }

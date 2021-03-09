@@ -8,14 +8,21 @@
   height: 10%;
   justify-content: flex-start;
 
-  a {
+  a, .logoutBtn {
     @include centered-elements;
     transition: background-color 0.2s ease-in-out;
     height: 100%;
     padding: 0.5rem 1rem;
-    text-transform: uppercase;
+    text-transform: uppercase;  
+  }
 
-    
+  .logoutBtn{
+    margin-left: auto;
+    cursor: pointer;
+
+    &::before {
+      content: "выйти";
+    }
   }
 
   .menu{
@@ -42,11 +49,11 @@
 
 @media screen and (min-width: 640px){
 .navbar{
-  a{
+  a, .logoutBtn{
 
     &:hover {
       background-color: $btn-hover-color;
-      
+      color: $bg-color;
     }
   }
 }
@@ -55,17 +62,21 @@
 @media screen and (max-width: 640px) {
   .navbar {
 
-    a:focus::before, a:active::before{
+    a:focus::before, a:active::before, .logoutBtn:active::before, .logoutBtn:focus::before{
       color: $btn-hover-color;
      }
 
-    a::before {
+    a::before, .logoutBtn::before {
       font-family: "Font Awesome 5 Free";
       font-weight: 900;
     }
 
    .menu::before {
       content: "\f0c9";
+    }
+
+    .logoutBtn::before {
+      content: "\f2f5";
     }
 
     .login::before {
