@@ -10,7 +10,7 @@ function TestingPage() {
 
     return (
         <div className={styles.testingPage}>
-            {cards && cards.map((card) => <Card key={card._id} card={card}/>)}
+            {cards && <Card cards={cards}/>}
         </div>
     )
 }
