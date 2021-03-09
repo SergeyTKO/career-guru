@@ -27,16 +27,31 @@ export const reducerUser = (state = initialState, action) => {
                 result: {...state.result, currentTest: action.payload, numOfRestQuestions: action.payload.length}
             }
         case RIGHT_ANSWERS:
-            return {...state, result: {...state.result, rightAnswers: [...state.result.rightAnswers, action.payload], count: state.result.count + action.payload.count}};
+            return {...state,
+                result: {
+                    ...state.result,
+                    rightAnswers: [...state.result.rightAnswers, action.payload],
+                    count: state.result.count + action.payload.count
+                }
+            };
         case RESULT_COUNTER:
             return {...state, result: {...state.result, resultCounter: state.result.resultCounter + 1}};
         case REST_TO_FINISH:
             return {...state, result: {...state.result, numOfRestQuestions: state.result.numOfRestQuestions - 1}};
         case RESET_RESULTS:
-            return {...state, result: {...state.result, resultCounter: state.result.resultCounter = 0, numOfRestQuestions: state.result.numOfRestQuestions = 0, testProgress: state.result.testProgress = 0}};
+            return {...state,
+                result: {
+                    ...state.result,
+                    rightAnswers: state.result.rightAnswers = [],
+                    resultCounter: state.result.resultCounter = 0,
+                    numOfRestQuestions: state.result.numOfRestQuestions = 0,
+                    testProgress: state.result.testProgress = 0,
+                    count: state.result.count = 0
+                }
+            };
         case TEST_PROGRESS:
-            return {...state, result: {...state.result, testProgress: state.result.testProgress + 1,}};
-            default:
+            return {...state, result: {...state.result, testProgress: state.result.testProgress + 1}};
+        default:
             return state;
     }
 }
