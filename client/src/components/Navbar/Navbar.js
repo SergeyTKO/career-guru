@@ -13,10 +13,10 @@ function Navbar() {
 
       {isAuth ? (
         <React.Fragment>
-          <Link to="/home"> Главная </Link>
+          <Link to="/home" className={styles.main}></Link>
           <Link
             to={{ pathname: "/menu", state: { background: location } }}
-          ></Link>
+          className={styles.menu}></Link>
         </React.Fragment>
       ) : (
         <React.Fragment>

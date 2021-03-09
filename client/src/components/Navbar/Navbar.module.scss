@@ -15,14 +15,15 @@
     padding: 0.5rem 1rem;
     text-transform: uppercase;
 
-    &:last-child {
-      margin-left: auto;
+    
+  }
 
-      &::before {
-        content: "меню";
-      }
+  .menu{
+    margin-left: auto;
+
+    &::before {
+      content: "меню";
     }
-
   }
 
   .login::before {
@@ -54,8 +55,7 @@
 @media screen and (max-width: 640px) {
   .navbar {
 
-
-    a:active::before, a:focus::before {
+    a:focus::before, a:active::before{
       color: $btn-hover-color;
      }
 
@@ -64,7 +64,7 @@
       font-weight: 900;
     }
 
-    a:last-child::before {
+   .menu::before {
       content: "\f0c9";
     }
 
