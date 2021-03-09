@@ -4,7 +4,7 @@ import IntrodusingBlock from '../IntrodusingBlock/IntrodusingBlock'
 
 function StartPage(){
     return(
-        <div className={styles.startPage} id="anchor">
+        <div className={styles.startPage}>
             <Banner />
             <IntrodusingBlock />
         </div>

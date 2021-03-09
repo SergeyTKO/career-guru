@@ -25,7 +25,7 @@ function IntrodusingBlock() {
     </div>
 
     
-        <div className={styles.block}>
+        <div className={styles.block} id="anchor">
         <Link to='/cards' className={styles.clickable}>
       <div className={styles.imgWrapper}>
       <span><i class="fas fa-brain"></i></span>
