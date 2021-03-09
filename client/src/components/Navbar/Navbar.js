@@ -10,22 +10,20 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <Link to="/" className={styles.main}></Link>
 
       {isAuth ? (
-        <>
-       
-          <Link to="/home"> Home </Link>
-          {/* isLogged */}
+        <React.Fragment>
+          <Link to="/home"> Главная </Link>
           <Link
             to={{ pathname: "/menu", state: { background: location } }}
           ></Link>
-        </>
+        </React.Fragment>
       ) : (
-        <>
+        <React.Fragment>
+          <Link to="/" className={styles.main}></Link>
           <Link to="/login" className={styles.login}></Link>
           <Link to="/signup" className={styles.auth}></Link>
-        </>
+        </React.Fragment>
       )}
     </nav>
   );
