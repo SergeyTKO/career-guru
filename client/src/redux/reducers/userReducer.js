@@ -19,7 +19,7 @@ if (windowState && windowState.user) {
     };
 }
 
-export const reducerUser = (state = initialState, action) => {
+export const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case INIT_TEST:
             return {

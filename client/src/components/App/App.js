@@ -22,15 +22,15 @@ function App() {
   const background = location.state && location.state.background;
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.auth.isAuth);
-  const isAdmin = useSelector(state=>state.auth.user.isAdmin)
+  const isAdmin = useSelector((state) => state.auth.user.isAdmin);
 
   useEffect(() => {
     dispatch(initCardsFetchAC());
   }, [dispatch]);
-  useEffect(()=>{
-    dispatch(googleFetchAC())
-        },[])
-    
+  useEffect(() => {
+    dispatch(googleFetchAC());
+  }, []);
+
   // useEffect(() => {
   //   dispatch(checkTokenAC());
   // }, []);
@@ -38,42 +38,47 @@ function App() {
     <React.Fragment>
       <Navbar />
       <div className={styles.container}>
+
         <Switch location={background || location}>
           {/* !isLogin */}
-          <Route exact path="/">
-            <StartPage />
-          </Route>
+          <Route exact path="/"><StartPage /></Route>
           <Route path="/login">
-            {isAuth && isAdmin ? <Redirect to="/admin" />
-             : isAuth ? <Redirect to='/home' />
-             : <LoginPage />
-            
-            }
+            {isAuth && isAdmin ? (
+              <Redirect to="/admin" />
+            ) : isAuth ? (
+              <Redirect to="/home" />
+            ) : (
+              <LoginPage />
+            )}
           </Route>
+
           <Route path="/signup">
             {isAuth ? <Redirect to="/home" /> : <AuthPage />}
           </Route>
+
           <Route path="/cards">
             <div className={styles.cardsWrapper}>
               <Deck />
             </div>
           </Route>
-        
+
           {/* isLogin */}
-          <PrivateRoute path="/admin" children={<AdminPage />} /> 
+          <PrivateRoute path="/admin" children={<AdminPage />} />
 
           <PrivateRoute path="/home" children={<Home />} />
-                    
+
           <PrivateRoute path="/test" children={<TestingPage />} />
 
           <PrivateRoute path="/results" children={<ResultPage />} />
         </Switch>
       </div>
+
       {background && (
         <Route path="/menu">
           <Modal />
         </Route>
       )}
+
     </React.Fragment>
   );
 }
