@@ -15,6 +15,7 @@ import Home from "../Home/Home";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import { checkTokenAC } from "../../redux/thunk/checkToken";
 import ResultPage from "../ResultPage/ResultPage";
+import { googleFetchAC } from "../../redux/thunk/googleFetchAC";
 
 function App() {
   const location = useLocation();
@@ -26,9 +27,13 @@ function App() {
   useEffect(() => {
     dispatch(initCardsFetchAC());
   }, [dispatch]);
-  useEffect(() => {
-    dispatch(checkTokenAC());
-  }, []);
+  useEffect(()=>{
+    dispatch(googleFetchAC())
+        },[])
+    
+  // useEffect(() => {
+  //   dispatch(checkTokenAC());
+  // }, []);
   return (
     <React.Fragment>
       <Navbar />

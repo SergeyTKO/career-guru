@@ -64,7 +64,8 @@ router.post("/", async (req, res) => {
 
 router.post('/checktoken', (req,res)=>{
 
-        const token = req.body.token
+  const token = req.body.token
+
         jwt.verify(token, process.env.JWT_KEY, function(err, decoded){
             if(err){res.json({success:false})}
             else{
