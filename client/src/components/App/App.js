@@ -24,9 +24,9 @@ function App() {
   useEffect(() => {
     dispatch(initCardsFetchAC());
   }, [dispatch]);
-  useEffect(() => {
-    dispatch(checkTokenAC());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(checkTokenAC());
+  // }, []);
   return (
     <React.Fragment>
       <Navbar />
