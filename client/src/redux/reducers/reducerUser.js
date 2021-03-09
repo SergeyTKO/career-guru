@@ -1,15 +1,23 @@
 import {INIT_TEST, RIGHT_ANSWERS, RESULT_COUNTER, REST_TO_FINISH, RESET_RESULTS, TEST_PROGRESS} from "../actionTypes";
 
-const initialState = {
-    result: {
-        currentTest: [],
-        rightAnswers: [],
-        resultCounter: 0,
-        numOfRestQuestions: 0,
-        testProgress: 0,
-        count: 0
-    }
-};
+const windowState = JSON.parse(window.localStorage.getItem('state'));
+let initialState = {};
+if (windowState && windowState.user) {
+    initialState = {
+        result: windowState.user.result,
+    };
+} else {
+    initialState = {
+        result: {
+            currentTest: [],
+            rightAnswers: [],
+            resultCounter: 0,
+            numOfRestQuestions: 0,
+            testProgress: 0,
+            count: 0
+        }
+    };
+}
 
 export const reducerUser = (state = initialState, action) => {
     switch (action.type) {

@@ -53,7 +53,7 @@ router.post("/", async (req, res) => {
         delete user._doc.password  
       res.json({user, token, success:true});
     }else if(!validator.isStrongPassword(password)){
-      res.json({msg: 'Пароль должен содержать минимум 1 заглавную букву, 1 цифру и 1 спецсимвол.'})
+      res.json({msg: 'Пароль должен содержать 8 символов, которые включают хотя бы 1 заглавную букву, 1 цифру и 1 спецсимвол.'})
     }else if (password !== checkPsw) {
       res.json({ msg: "Проверьте пароль" });
     } 

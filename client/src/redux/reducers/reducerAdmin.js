@@ -1,8 +1,16 @@
 import {ADD_CARDS, DELETE_CARDS, INIT_CARDS} from "../actionTypes";
 
-const initialState = {
-    cards: []
-};
+const windowState = JSON.parse(window.localStorage.getItem('state'));
+let initialState = {};
+if (windowState && windowState.admin) {
+    initialState = {
+        cards: windowState.admin.cards,
+    };
+} else {
+    initialState = {
+        cards: []
+    };
+}
 
 export const reducerAdmin = (state = initialState, action) => {
     switch (action.type) {
