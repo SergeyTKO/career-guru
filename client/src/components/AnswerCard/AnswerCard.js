@@ -1,17 +1,14 @@
 import React from 'react';
-import Button from "../Button/Button";
 import styles from './AnswerCard.module.scss'
+import PushTheAnswer from "../PushTheAnswer/PushTheAnswer";
 
-function AnswerCard({answer, buttonHandler}) {
-
+function AnswerCard({answer, divHandler}) {
     return (
-    <div className={styles.answerCard}>
-          <Button btnValue={answer[0].answer} buttonHandler={buttonHandler}/>
-          <Button btnValue={answer[1].answer} buttonHandler={buttonHandler}/>
-          <Button btnValue={answer[2].answer} buttonHandler={buttonHandler}/>
-          <Button btnValue={answer[3].answer} buttonHandler={buttonHandler}/>
-    </div>
-  );
+        <div className={styles.answerCard}>
+            {answer && answer.map(el =>
+                <PushTheAnswer key={answer._id} divValue={el} divHandler={divHandler}/>)}
+        </div>
+    );
 }
 
 export default AnswerCard;
