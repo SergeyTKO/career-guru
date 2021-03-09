@@ -6,7 +6,7 @@ function AnswerCard({answer, divHandler}) {
     return (
         <div className={styles.answerCard}>
             {answer && answer.map(el =>
-                <PushTheAnswer key={answer._id} divValue={el} divHandler={divHandler}/>)}
+                <PushTheAnswer key={el._id} divValue={el} divHandler={divHandler}/>)}
         </div>
     );
 }
