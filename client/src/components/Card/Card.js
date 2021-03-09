@@ -33,6 +33,7 @@ function Card({cardsToTest}) {
     }
     if (result.numOfRestQuestions === 0) {
         history.push('/results')
+
     };
 
     return (
