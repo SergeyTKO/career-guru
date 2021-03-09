@@ -6,10 +6,18 @@ import routersConfig from "./middleware/routersConfig.js";
 import dbConnect from "./seeder/dbConnect.js";
 import passport from "passport";
 import User from "./models/users.js";
+import cors from "cors";
 
 import dotenv from "dotenv";
 
 dotenv.config();
+app.use(
+  cors({
+    origin: "http://localhost:3000", // allow to server to accept request from different origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // allow session cookie from browser to pass through
+  })
+);
 app.use(passport.initialize());
 // app.use(passport.session());
 
@@ -74,15 +82,32 @@ app.get(
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
+app.get("/auth/login/success", (req, res) => {
+  if (req.user) {
+    res.json({
+      message: "User Authenticated",
+      user: req.user,
+    });
+  } else
+    res.status(400).json({
+      message: "User Not Authenticated",
+      user: null,
+    });
+});
+
+app.get("/auth/login/failed", (req, res) => {
+  res.status(401).json({
+    success: false,
+    message: "user failed to authenticate.",
+  });
+});
+
 app.get(
   "/auth/google/callback",
-  passport.authenticate("google", { failureRedirect: "/login" }),
-  function (req, res) {
-    console.log("88888");
-    // Successful authentication, redirect home.
-    // res.status(201).json("zashel");
-    res.redirect('http://localhost:3000')
-  }
+  passport.authenticate("google", {
+    successRedirect: process.env.CLIENT_HOME_PAGE_URL,
+    failureRedirect: "/auth/login/failed",
+  })
 );
 
 // app.use(passport.session());

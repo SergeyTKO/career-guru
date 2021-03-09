@@ -26,10 +26,12 @@ function LoginPage() {
     );
   };
   const googleHandler = (event) => {
-    // event.preventDefault();
-    dispatch(
-      googleFetchAC()
-    );
+    event.preventDefault();
+    window.open("http://localhost:4000/auth/google", "_self");
+
+    // dispatch(
+    //   googleFetchAC()
+    // );
   };
   return (
     <div className={styles.formWrapper}>

@@ -15,6 +15,8 @@ import TestingPage from "../TestingPage/TestingPage";
 import Home from "../Home/Home";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import { checkTokenAC } from "../../redux/thunk/checkToken";
+import ResultPage from "../ResultPage/ResultPage";
+import { googleFetchAC } from "../../redux/thunk/googleFetchAC";
 
 function App() {
   const location = useLocation();
@@ -24,6 +26,10 @@ function App() {
   useEffect(() => {
     dispatch(initCardsFetchAC());
   }, [dispatch]);
+  useEffect(()=>{
+    dispatch(googleFetchAC())
+        },[])
+    
   // useEffect(() => {
   //   dispatch(checkTokenAC());
   // }, []);
@@ -50,7 +56,9 @@ function App() {
           <Route path="/admin">
             <AdminPage />
           </Route>
-
+          <Route path="/results">
+            <ResultPage />
+          </Route>
           {/* isLogin */}
           <PrivateRoute path="/home" children={<Home />} />
 
