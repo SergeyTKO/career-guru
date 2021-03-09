@@ -12,7 +12,7 @@
 
     button{
         @include centered-elements;
-        border: 1px solid red;
+        border: none;
         color: $font-color;
         width: 44%;
         max-height: 44%;

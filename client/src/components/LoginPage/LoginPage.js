@@ -6,6 +6,7 @@ import { googleFetchAC } from "../../redux/thunk/googleFetchAC";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import styles from "./LoginPage.module.scss";
+import logo from '../../image/Google__G__Logo.svg'
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -53,8 +54,15 @@ function LoginPage() {
         />
       
         <Button btnValue={"Войти"} buttonHandler={handleSubmit}/>
-        <Button btnValue={"Google"} buttonHandler={googleHandler}/>
-        <a href="http://localhost:4000/auth/google"> ggggggg</a>
+        {/* <Button btnValue={"Google"} buttonHandler={googleHandler}/> */}
+        {/* <a href="http://localhost:4000/auth/google" onClick={googleHandler} className={styles.googleBtn}> </a> */}
+       
+        <div class={styles.googleBtn}>
+  <div class={styles.googleIconWrapper}>
+    <img class={styles.googleIcon} src={logo}/>
+  </div>
+  <p class={styles.googleBtnText}>Войти с помощью Google</p>
+</div>
         <p>
           Еще нет аккаунта? <Link to="/signup">Зарегистрироваться.</Link>
         </p>
