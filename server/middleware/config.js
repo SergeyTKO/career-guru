@@ -12,7 +12,13 @@ const appConfig = (application) => {
   application.use(express.urlencoded({ extended: true }));
   application.use(express.json());
   application.use(cookieParser('your secret here'));
-  application.use(cors())
+  // application.use(
+  //   cors({
+  //     origin: "http://localhost:3000", // allow to server to accept request from different origin
+  //     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  //     credentials: true // allow session cookie from browser to pass through
+  //    })
+  // );
   // application.use(
   //   session({
   //     store: new FileStore(),
