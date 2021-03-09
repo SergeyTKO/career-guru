@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { adminFetchAC } from "../../redux/thunk/adminFetchAC";
 import { useDispatch, useSelector } from "react-redux";
 import {deleteFetchAC} from '../../redux/thunk/adminFetchAC'
+import {initCardsFetchAC} from '../../redux/thunk/adminFetchAC'
 
 
 function AdminForm() {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(initCardsFetchAC());
+  }, [dispatch]);
   const cards = useSelector(state => state.admin.cards)
 
   function addCardAC(e) {

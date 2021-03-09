@@ -18,14 +18,14 @@ function Card({cardsToTest}) {
         if (event.target.value === cardsToTest[i].answer[0].answer) {
             dispatch(answerAC(cardsToTest[i]))
             dispatch(resultPlusOneAC())
-            setState('Правильно')
+            setState(true)
             setTimeout(() => {
                 dispatch(restToFinishAC())
                 dispatch(testProgressAC())
                 setState('');
             }, 1200);
         } else {
-            setState('Неправильно')
+            setState(false)
             setTimeout(() => {
                 dispatch(restToFinishAC());
                 dispatch(testProgressAC())
