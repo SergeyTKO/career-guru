@@ -1,4 +1,4 @@
-import {INIT_TEST, RIGHT_ANSWERS, RESULT_COUNTER, REST_TO_FINISH, RESET_RESULTS} from "../actionTypes";
+import {INIT_TEST, RIGHT_ANSWERS, RESULT_COUNTER, REST_TO_FINISH, RESET_RESULTS, TEST_PROGRESS} from "../actionTypes";
 
 const initialState = {
     result: {
@@ -6,6 +6,7 @@ const initialState = {
         rightAnswers: [],
         resultCounter: 0,
         numOfRestQuestions: 0,
+        testProgress: 0
     }
 };
 
@@ -23,8 +24,10 @@ export const reducerUser = (state = initialState, action) => {
         case REST_TO_FINISH:
             return {...state, result: {...state.result, numOfRestQuestions: state.result.numOfRestQuestions - 1}};
         case RESET_RESULTS:
-            return {...state, result: {...state.result, resultCounter: state.result.resultCounter = 0, numOfRestQuestions: state.result.numOfRestQuestions = 0}};
-        default:
+            return {...state, result: {...state.result, resultCounter: state.result.resultCounter = 0, numOfRestQuestions: state.result.numOfRestQuestions = 0, testProgress: state.result.testProgress = 0}};
+        case TEST_PROGRESS:
+            return {...state, result: {...state.result, testProgress: state.result.testProgress + 1,}};
+            default:
             return state;
     }
 }
