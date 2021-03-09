@@ -3,7 +3,7 @@ const router = express.Router();
 import bcrypt from "bcrypt";
 import User from "../models/users.js";
 import jwt from "jsonwebtoken";
-
+import validator from 'validator'
 
 const adminKey = "bullet";
 
@@ -17,9 +17,7 @@ router.post("/", async (req, res) => {
   try {
     if (foundUser) {
       res.json({ msg: "Такой пользователь уже существует" });
-    } else if (password !== checkPsw) {
-      res.json({ msg: "Проверьте пароль" });
-    } else {
+    }else if(validator.isStrongPassword(password) && password === checkPsw) {
       let user
       const salt = await bcrypt.genSalt(10);
       const hashedPsw = await bcrypt.hash(password, salt);
@@ -54,7 +52,11 @@ router.post("/", async (req, res) => {
        
         delete user._doc.password  
       res.json({user, token, success:true});
-    }
+    }else if(!validator.isStrongPassword(password)){
+      res.json({msg: 'Пароль должен содержать минимум 1 заглавную букву, 1 цифру и 1 спецсимвол.'})
+    }else if (password !== checkPsw) {
+      res.json({ msg: "Проверьте пароль" });
+    } 
   } catch (err) {
     res.json({ msg: err.msg });
   }
