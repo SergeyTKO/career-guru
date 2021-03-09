@@ -12,7 +12,7 @@ if (windowState && windowState.admin) {
     };
 }
 
-export const reducerAdmin = (state = initialState, action) => {
+export const adminReducer = (state = initialState, action) => {
     switch (action.type) {
         case INIT_CARDS:
             return {...state, cards: action.payload}
