@@ -15,9 +15,9 @@ function ResultPage(props) {
         dispatch(customerFetchAC(user.score, user.solvedCards, user))
     }, [dispatch])
     return (
-        <div>
-            <div>Мамкин программист, ты ответил(-а) на {results.resultCounter} из {results.currentTest.length} и набрал {results.count} баллов</div>
-            <div><Link to='/' onClick={clickHandler}>Вернуться на главную</Link></div>
+        <div className={styles.resultPage}>
+            <div>Мамкин программист, ты ответил(-а) на {results.resultCounter} вопроса из {results.currentTest.length} и набрал <span>{results.count}</span> баллов</div>
+            <Link to='/' onClick={clickHandler}>Вернуться на главную</Link>
         </div>
     );
 }

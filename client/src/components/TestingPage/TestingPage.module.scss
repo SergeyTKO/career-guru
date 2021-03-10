@@ -2,9 +2,8 @@
 @import '../mixins.scss';
 
 .testingPage{
-    // @include centered-elements;
+    @include centered-elements;
     width: 80%;
     height: auto;
-    border: 1px solid white;
     margin: 0 auto;
 }
