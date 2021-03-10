@@ -27,9 +27,9 @@ function App() {
   useEffect(() => {
     dispatch(initCardsFetchAC());
   }, [dispatch]);
-  useEffect(()=>{
-    dispatch(googleFetchAC())
-        },[])
+  // useEffect(()=>{
+  //   dispatch(googleFetchAC())
+  //       },[dispatch])
     
   // useEffect(() => {
   //   dispatch(checkTokenAC());

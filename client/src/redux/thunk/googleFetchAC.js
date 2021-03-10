@@ -26,5 +26,6 @@ export const googleFetchAC = () => {
         "Access-Control-Allow-Credentials": true,
       },
     }).then((res)=>res.json()).then((data)=>console.log(data))
+   
   };
 };
