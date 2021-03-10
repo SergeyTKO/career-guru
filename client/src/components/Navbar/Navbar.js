@@ -21,7 +21,9 @@ function Navbar() {
   return (
     <nav className={styles.navbar}>
       {auth.isAuth && isAdmin ? 
-            <p className={styles.logoutBtn} onClick={logout}></p> :
+        <>
+            <h1>АДМИН</h1>
+            <p className={styles.logoutBtn} onClick={logout}></p> </>:
         auth.isAuth && !isAdmin ?
           
           <><Link to="/home" className={styles.main}></Link>

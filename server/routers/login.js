@@ -30,7 +30,7 @@ router.post("/", async function (req, res) {
               status: user.status,
               score: user.score,
               isAdmin: true,
-              solvedCards: [],
+              solvedCards: user.solvedCards,
             },
           });
         } else if (!user.isAdmin) {
@@ -49,15 +49,15 @@ router.post("/", async function (req, res) {
               status: user.status,
               score: user.score,
               isAdmin: false,
-              solvedCards: [],
+              solvedCards: user.solvedCards,
             },
           });
         }
       } else {
-        res.json({ msg: "Неверный Логин или пароль" });
+        res.json({ msg: "Неверный логин или пароль" });
       }
     } else {
-      res.json({ msg: "Неверный Логин или пароль" });
+      res.json({ msg: "Неверный логин или пароль" });
     }
   } catch (err) {
     res.json({ msg: err.msg });
