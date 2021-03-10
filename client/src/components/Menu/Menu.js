@@ -23,7 +23,9 @@ function Menu() {
           <Link to="/home">Главная</Link>
         </li>
         <li>Избранное</li>
-        <li>Пройденные тесты</li>
+        <li>
+          <Link to="/passed">Пройденные тесты</Link>
+        </li>
         <li>
           <Link to="/cards">К изучению</Link>
         </li>
