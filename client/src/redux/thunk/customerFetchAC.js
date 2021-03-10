@@ -7,5 +7,5 @@ export const customerFetchAC = (score, solvedCards, user) => (dispatch) => {
         solvedCards,
         user,
     })
-        .then(res => console.log(res.data))
+        .then(res => res.data)
 }

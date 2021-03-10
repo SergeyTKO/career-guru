@@ -5,6 +5,7 @@ import styles from './Card.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {answerAC, resultPlusOneAC, restToFinishAC, testProgressAC, updateUserStatsAC} from "../../redux/actionCreators";
 import {useHistory} from "react-router-dom";
+import _shuffleSelf from "lodash-es/_shuffleSelf";
 
 function Card({cardsToTest}) {
     const [state, setState] = useState('');
@@ -35,6 +36,9 @@ function Card({cardsToTest}) {
         dispatch(updateUserStatsAC(result))
         history.push('/results')
     };
+    const arr = [0,1,2,3];
+    _shuffleSelf(arr,4)
+    console.log(arr)
 
     return (
         <div className={styles.card}>
