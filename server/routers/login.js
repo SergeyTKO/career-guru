@@ -31,6 +31,7 @@ router.post("/", async function (req, res) {
               status: user.status,
               score: user.score,
               isAdmin: true,
+              solvedCards: [],
             },
           });
         } else if (!user.isAdmin) {
@@ -49,6 +50,7 @@ router.post("/", async function (req, res) {
               status: user.status,
               score: user.score,
               isAdmin: false,
+              solvedCards: [],
             },
           });
         }

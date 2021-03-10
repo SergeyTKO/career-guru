@@ -1,6 +1,7 @@
 import express from 'express'
-const router = express.Router()
 import Cards from '../models/cards.js'
+
+const router = express.Router()
 
 router.route('/')
     .get(async (req, res) => {
