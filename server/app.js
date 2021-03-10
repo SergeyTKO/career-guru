@@ -1,8 +1,7 @@
-import express from 'express'
+import express from "express";
 import dbConnect from "./seeder/dbConnect.js";
-const app = express()
+const app = express();
 
-dbConnect()
+dbConnect();
 
-
-export default app
+export default app;

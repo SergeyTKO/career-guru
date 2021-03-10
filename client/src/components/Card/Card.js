@@ -11,10 +11,10 @@ function Card({cardsToTest}) {
     const history = useHistory()
     const dispatch = useDispatch()
     const result = useSelector(state => state.user.result)
-    const i = useSelector(state => state.user.result.testProgress)
+    const index = useSelector(state => state.user.result.testProgress)
     const divHandler = (event) => {
-        if (event.target.value === cardsToTest[i].answer[0].answer) {
-            dispatch(answerAC(cardsToTest[i]))
+        if (event.target.value === cardsToTest[index].answer[0].answer) {
+            dispatch(answerAC(cardsToTest[index]))
             dispatch(resultPlusOneAC())
             setState('Правильно')
             setTimeout(() => {
@@ -38,10 +38,10 @@ function Card({cardsToTest}) {
 
     return (
         <div className={styles.card}>
-            <div>Вопрос {i + 1} из {result.currentTest.length}</div>
+            <div>Вопрос {index + 1} из {result.currentTest.length}</div>
             <div>{state}</div>
-            <QuestionCard question={cardsToTest[i].question}/>
-            <AnswerCard answer={cardsToTest[i].answer} divHandler={divHandler}/>
+            <QuestionCard question={cardsToTest[index].question}/>
+            <AnswerCard answer={cardsToTest[index].answer} divHandler={divHandler}/>
         </div>
     );
 }

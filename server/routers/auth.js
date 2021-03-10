@@ -4,10 +4,9 @@ const router = express.Router();
 import bcrypt from "bcrypt";
 import User from "../models/users.js";
 import jwt from "jsonwebtoken";
-import validator from 'validator'
+import validator from "validator";
 
 const adminKey = "bullet";
-
 
 router.post("/", async (req, res) => {
 
@@ -67,16 +66,13 @@ router.post('/checktoken', (req, res) => {
 
     const token = req.body.token
 
-    jwt.verify(token, process.env.JWT_KEY, function (err, decoded) {
-        if (err) {
-            res.json({success: false})
-        } else {
-            console.log('decoded', decoded)
-            res.json({success: true})
-        }
-    })
-    console.log(token)
-})
-
+  jwt.verify(token, process.env.JWT_KEY, function (err, decoded) {
+    if (err) {
+      res.json({ success: false });
+    } else {
+      res.json({ success: true });
+    }
+  });
+});
 
 export default router;

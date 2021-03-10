@@ -15,7 +15,6 @@ router.post("/", async function (req, res) {
     if (user) {
       const validPassword = await bcrypt.compare(password, user.password);
       if (validPassword) {
-        console.log(validPassword);
         if (user.isAdmin) {
           const token = jwt.sign({ _id: user._id }, privateKey, {
             expiresIn: 60 * 60000,
@@ -54,8 +53,7 @@ router.post("/", async function (req, res) {
             },
           });
         }
-      
-      }else {
+      } else {
         res.json({ msg: "Неверный Логин или пароль" });
       }
     } else {

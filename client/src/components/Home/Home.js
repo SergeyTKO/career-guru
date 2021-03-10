@@ -3,14 +3,12 @@ import {Link} from 'react-router-dom'
 import {useDispatch} from "react-redux";
 import {resetResultsAC} from "../../redux/actionCreators";
 import {useEffect} from 'react';
-import {googleFetchAC} from '../../redux/thunk/googleFetchAC';
 
 function Home() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(resetResultsAC());
     }, [dispatch])
-
 
     return (
         <div className={styles.homePage}>
