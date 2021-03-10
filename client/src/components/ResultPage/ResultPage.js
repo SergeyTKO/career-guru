@@ -2,6 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {resetResultsAC} from "../../redux/actionCreators";
+import styles from './ResultPage.module.scss'
 
 function ResultPage(props) {
     const dispatch = useDispatch();
@@ -10,9 +11,9 @@ function ResultPage(props) {
         dispatch(resetResultsAC())
     }
     return (
-        <div>
-            <div>Мамкин программист, ты ответил(-а) на {results.resultCounter} из {results.currentTest.length} и набрал {results.count} баллов</div>
-            <div><Link to='/' onClick={clickHandler}>Вернуться на главную</Link></div>
+        <div className={styles.resultPage}>
+            <div>Мамкин программист, ты ответил(-а) на {results.resultCounter} вопроса из {results.currentTest.length} и набрал <span>{results.count}</span> баллов</div>
+            <Link to='/' onClick={clickHandler}>Вернуться на главную</Link>
         </div>
     );
 }

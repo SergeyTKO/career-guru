@@ -3,6 +3,7 @@ import {animated, interpolate} from 'react-spring'
 import {useSprings} from 'react-spring'
 import {useGesture} from 'react-use-gesture'
 import {useSelector} from "react-redux";
+import styles from '../App/App.module.scss'
 
 const to = i => ({x: 0, y: i * -4, scale: 1, rot: -10 + Math.random() * 20, delay: i * 100})
 const from = i => ({x: 0, rot: 0, scale: 1.5, y: -1000})
@@ -31,8 +32,8 @@ function Deck() {
         <animated.div key={i} style={{transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)}}>
             <animated.div {...bind(i)}
                           style={{transform: interpolate([rot, scale], trans)}}>
-                <div className="card">
-                    <h4>Вопрос: {cards[i].question}</h4>
+                <div className={styles.card}>
+                    <h4>Вопрос:{cards[i].question}</h4>
                     <h5>Ответ: {cards[i].answer.filter(el => el.validity)[0].answer}</h5>
                 </div>
             </animated.div>
