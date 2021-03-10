@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
   try {
     if (foundUser) {
       res.json({ msg: "Такой пользователь уже существует" });
-    } else if (validator.isStrongPassword(password) && password === checkPsw) {
+    } else if (validator.isStrongPassword(password, { minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 0}) && password === checkPsw) {
       let user;
       const salt = await bcrypt.genSalt(10);
       const hashedPsw = await bcrypt.hash(password, salt);
@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
       delete user._doc.password;
       res.json({ user, token, success: true });
     } else if (
-      !validator.isStrongPassword(password, { minLength: 8, minUppercase: 1, minNumbers: 1})
+      !validator.isStrongPassword(password, { minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 0})
     ) {
       res.json({
         msg:
