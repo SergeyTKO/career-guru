@@ -12,6 +12,7 @@
     @include forms-redact;
     .error{
       color: $error-color;
+      font-size: .9rem;
     }
   }
 }

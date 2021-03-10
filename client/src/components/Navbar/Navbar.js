@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { logoutAC } from "../../redux/actionCreators";
 import styles from "./Navbar.module.scss";
+import logo from '../../image/icon.png'
 
 function Navbar() {
   const location = useLocation();
@@ -20,6 +21,8 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar}>
+
+    <img src={logo} alt="logo" className={styles.logo}/>
       {auth.isAuth && isAdmin ? 
         <>
             <h1>АДМИН</h1>
