@@ -14,6 +14,8 @@
 //     })
 //   };
 // };
+import { authSucsessAC, errorAC } from "../actionCreators";
+
 
 export const googleFetchAC = () => {
   return (dispatch) => {
@@ -25,7 +27,7 @@ export const googleFetchAC = () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Credentials": true,
       },
-    }).then((res)=>res.json()).then((data)=>console.log(data))
+    }).then((res)=>res.json()).then((data)=>dispatch(authSucsessAC(data)))
    
   };
 };

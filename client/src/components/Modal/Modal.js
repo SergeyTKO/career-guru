@@ -1,14 +1,13 @@
-import {useEffect} from 'react'
-import { withRouter, useHistory } from 'react-router-dom'
-import Menu from '../Menu/Menu'
-import Button from '../Button/Button'
-import styles from './Modal.module.scss'
+import { useEffect } from "react";
+import { withRouter, useHistory } from "react-router-dom";
+import Menu from "../Menu/Menu";
+import Button from "../Button/Button";
+import styles from "./Modal.module.scss";
 
-function Modal(){
+function Modal() {
+  const history = useHistory();
 
-    const history = useHistory();
-
-  const closeModal = e => {
+  const closeModal = (e) => {
     e.stopPropagation();
     history.goBack();
   };
@@ -21,13 +20,15 @@ function Modal(){
     };
   }, []);
 
-
-    return (
-        <div className={styles.modal} >
-        <Menu />
-        <Button buttonHandler={closeModal} btnValue={<i class="fas fa-times"></i>}/>
-        </div>
-    )
+  return (
+    <div className={styles.modal}>
+      <Menu />
+      <Button
+        buttonHandler={closeModal}
+        btnValue={<i class="fas fa-times"></i>}
+      />
+    </div>
+  );
 }
 
-export default withRouter(Modal)   
+export default withRouter(Modal);

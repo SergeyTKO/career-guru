@@ -11,7 +11,7 @@ const appConfig = (application) => {
   application.use(morgan("dev"));
   application.use(express.urlencoded({ extended: true }));
   application.use(express.json());
-  application.use(cookieParser('your secret here'));
+ 
   // application.use(
   //   cors({
   //     origin: "http://localhost:3000", // allow to server to accept request from different origin

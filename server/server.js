@@ -27,44 +27,35 @@ import cookieSession from "cookie-session";
 import sessionFileStore from "session-file-store";
 const FileStore = sessionFileStore(session);
 const googleStrategy = GoogleStrategy.Strategy;
-app.use(
-  session({
-    store: new FileStore(),
-    name: "user_sid",
-    secret: "process.env.COOKIE_KEY",
-    resave: true,
-    saveUninitialized: false,
-    cookie: {
-      expires: 86400000,
-      httpOnly: false,
-    },
-  })
-),
-app.use(cookieParser());
+// app.use(
+//   session({
+//     store: new FileStore(),
+//     name: "user_sid",
+//     secret: "secret",
+//     resave: true,
+//     saveUninitialized: false,
+//     cookie: {
+//       expires: 86400000,
+//       httpOnly: false,
+//     },
+//   })
+// ),
+// app.use(cookieParser("secret"));
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 passport.serializeUser(function (user, done) {
-  done(null, { _id: user._id });
+  done(null, user._id);
 });
-
-passport.deserializeUser(function (user, done) {
-  User.findOne({ _id: id }, "username", (err, user) => {
-    done(null, user);
-  });
+passport.deserializeUser((_id, done) => {
+  User.findById(_id)
+    .then((user) => {
+      done(null, user);
+    })
+    .catch((e) => {
+      done(new Error("Failed to deserialize an user"));
+    });
 });
-// passport.serializeUser(function (user, done) {
-//   done(null, user._id);
-// });
-// passport.deserializeUser((_id, done) => {
-//   User.findById(_id)
-//     .then((user) => {
-//       done(null, user);
-//     })
-//     .catch((e) => {
-//       done(new Error("Failed to deserialize an user"));
-//     });
-// });
 
 passport.use(
   new googleStrategy(
@@ -111,25 +102,25 @@ app.get(
   })
 );
 
-const authCheck = (req, res, next) => {
-  if (!req.user) {
-    res.status(401).json({
-      authenticated: false,
-      message: "user has not been authenticated",
-    });
-  } else {
-    next();
-  }
-};
+// const authCheck = (req, res, next) => {
+//   if (!req.user) {
+//     res.status(401).json({
+//       authenticated: false,
+//       message: "user has not been authenticated",
+//     });
+//   } else {
+//     next();
+//   }
+// };
 
-app.get("/", authCheck, (req, res) => {
-  res.status(200).json({
-    authenticated: true,
-    message: "user successfully authenticated",
-    user: req.user,
-    cookies: req.cookies,
-  });
-});
+// app.get("/", authCheck, (req, res) => {
+//   res.status(200).json({
+//     authenticated: true,
+//     message: "user successfully authenticated",
+//     user: req.user,
+//     cookies: req.cookies,
+//   });
+// });
 
 app.get("/auth/login/success", (req, res) => {
   if (req.user) {
