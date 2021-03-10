@@ -1,13 +1,11 @@
 import axios from "axios";
-import {customerAC} from "../actionCreators";
+import {updateUserStatsAC} from "../actionCreators";
 
-export const customerFetchAC = (count, rightAnswers, user) => (dispatch) => {
-    axios.post('http://localhost:4000/user', {
-        count,
-        rightAnswers,
-        user: user.id,
+export const customerFetchAC = (score, solvedCards, user) => (dispatch) => {
+    axios.put('http://localhost:4000/user', {
+        score,
+        solvedCards,
+        user,
     })
-        .then(function (score, solvedCards) {
-            dispatch(customerAC(score, solvedCards))
-        })
+        .then(res => console.log(res.data))
 }

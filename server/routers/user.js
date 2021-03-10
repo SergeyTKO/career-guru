@@ -1,14 +1,19 @@
-import express from "express";
-const router = express.Router();
-import Users from "../models/users.js";
+import express from 'express'
+import Users from '../models/users.js'
 
-router.route("/user").put(async (req, res) => {
-  const { count, currentTest, _id } = req.body;
+const router = express.Router()
 
-  const editUser = await Users.findById(_id);
-  await editUser.updateOne({ score: count, solvedCards: currentTest });
-  await editUser.save();
-  res.json(editUser._id);
-});
+router.route('/user')
+    .put(async (req, res) => {
+        const {score, solvedCards, user} = req.body
+        console.log(score)
+        console.log(solvedCards)
+        console.log(user)
+        const editUser = await Users.findById({_id: user.id});
+        await editUser.updateOne({score, solvedCards});
+        await editUser.save();
+        console.log(editUser)
+        res.json(editUser)
+    });
 
-export default router;
+export default router
