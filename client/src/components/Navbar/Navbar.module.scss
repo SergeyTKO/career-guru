@@ -10,6 +10,10 @@
   height: 10%;
   justify-content: flex-start;
 
+  h1{
+    margin-left: 1rem;
+  }
+
   a, .logoutBtn {
     @include centered-elements;
     transition: background-color 0.2s ease-in-out;
@@ -44,7 +48,6 @@
   }
 
   .main{
-    margin-right: 1rem; 
 
     &::before {
       content: "Главная";

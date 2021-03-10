@@ -38,8 +38,7 @@ function Card({cardsToTest}) {
 
     return (
         <div className={styles.card}>
-            <div>Вопрос {index + 1} из {result.currentTest.length}</div>
-            <div>{state}</div>
+            <div className={styles.answerStatus}>{state}</div>
             <QuestionCard question={cardsToTest[index].question} result={result} index={index}/>
             <AnswerCard answer={cardsToTest[index].answer} divHandler={divHandler}/>
         </div>

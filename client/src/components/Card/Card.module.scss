@@ -6,6 +6,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    position: relative;
     width: 100%;
     height: 80%;
+    margin-top: 3rem;
+
+    .answerStatus{
+        position: absolute;
+        top:-5%;
+        color: $bright-font-color;
+        text-transform: uppercase;
+        z-index: 1000;
+    }
+
 }
