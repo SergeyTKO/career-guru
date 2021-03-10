@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
       delete user._doc.password;
       res.json({ user, token, success: true });
     } else if (
-      !validator.isStrongPassword(password, { minLength: 8, minUppercase: 1, minNumbers: 1, minSymbols: 0 })
+      !validator.isStrongPassword(password, { minLength: 8, minUppercase: 1, minNumbers: 1})
     ) {
       res.json({
         msg:
