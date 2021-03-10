@@ -16,6 +16,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import { checkTokenAC } from "../../redux/thunk/checkToken";
 import ResultPage from "../ResultPage/ResultPage";
 import { googleFetchAC } from "../../redux/thunk/googleFetchAC";
+import PassedTests from "../PassedTests/PassedTests";
 
 function App() {
   const location = useLocation();
@@ -57,6 +58,12 @@ function App() {
 
           <Route path="/signup">
             {isAuth ? <Redirect to="/home" /> : <AuthPage />}
+          </Route>
+
+          <Route path="/passed">
+            <div>
+              <PassedTests />
+            </div>
           </Route>
 
           <Route path="/cards">

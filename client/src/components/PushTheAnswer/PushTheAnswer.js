@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 function PushTheAnswer({divValue, divHandler}) {
-    const [state, setState] = useState('transparent')
+    const [state, setState] = useState('#393e46')
 
     return (
         <button style={{backgroundColor: state}} value={divValue.answer} onClick={(event) => {
@@ -9,7 +9,7 @@ function PushTheAnswer({divValue, divHandler}) {
             if (divValue.validity === true) setState('green')
             if (divValue.validity === false) setState('red')
             setTimeout(() => {
-                setState('transparent')
+                setState('#393e46')
             }, 1200)
         }}>{divValue.answer}</button>
     );

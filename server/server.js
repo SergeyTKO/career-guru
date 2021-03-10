@@ -79,7 +79,10 @@ passport.use(
           status: "beginner",
           score: 0,
           isAdmin: false,
+          solvedCards: [],
+          favoriteCards: []
         });
+        
         await newUser.save(function (err) {
           if (err) throw err;
           done(null, newUser);

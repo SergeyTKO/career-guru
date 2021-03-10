@@ -105,16 +105,20 @@ button {
       align-items: center;
       justify-content: center;
 
-      div {
+      .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
         padding: 5px;
-        background-color: white;
+        background-color: $font-color;
+        color: $bg-color;
         background-size: auto 85%;
         background-repeat: no-repeat;
         background-position: center center;
-        width: 45vh;
-        max-width: 300px;
+        width: 45%;
+        max-width: 18.5rem;
         height: 85vh;
-        max-height: 570px;
+        max-height: 30rem;
         overflow: auto;
         will-change: transform;
         border-radius: 10px;
@@ -124,7 +128,8 @@ button {
         &::-webkit-scrollbar {
           width: 0;
         }
-      }
+
+       }
     }
 
     img {
@@ -179,4 +184,7 @@ button {
       color: salmon !important;
     }
   }
+}
+.icon{
+  font-size: 20px;
 }

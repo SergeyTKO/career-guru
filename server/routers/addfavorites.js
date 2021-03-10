@@ -5,11 +5,13 @@ import Cards from "../models/cards.js";
 
 router.route("/").post(async (req, res) => {
   const { id, user } = req.body;
-  const card = await Cards.findById({ _id: id });
-  const currentUser = await Users.findById({ _id: user });
-  currentUser.solvedCards.push(card);
+  console.log('addFav' );
+  const card = await Cards.findOne({ _id:id });
+  const currentUser = await Users.findOne({ _id:user });
+  console.log(card, currentUser);
+  currentUser.favoriteCards.push(card);
   await currentUser.save();
-  res.json(card)
+  res.json(card) 
 
 });
 

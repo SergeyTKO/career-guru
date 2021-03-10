@@ -30,7 +30,8 @@ router.post("/", async function (req, res) {
               status: user.status,
               score: user.score,
               isAdmin: true,
-              solvedCards:user.solvedCards
+              solvedCards: user.solvedCards,
+              favoriteCards: user.favoriteCards,
             },
           });
         } else if (!user.isAdmin) {
@@ -49,7 +50,8 @@ router.post("/", async function (req, res) {
               status: user.status,
               score: user.score,
               isAdmin: false,
-              solvedCards:user.solvedCards
+              solvedCards: user.solvedCards,
+              favoriteCards: user.favoriteCards,
             },
           });
         }

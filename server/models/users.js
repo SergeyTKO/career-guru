@@ -13,5 +13,6 @@ export default mongoose.model('users', mongoose.Schema({
   solvedCards: [{type: mongoose.Schema.Types.ObjectId, ref: 'Card'}],
   score: Number,
   isAdmin: Boolean,
-  provider:String
+  provider:String,
+  favoriteCards: [{type: mongoose.Schema.Types.ObjectId, ref: 'Card'}]
 }))

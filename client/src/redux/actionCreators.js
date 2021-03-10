@@ -39,7 +39,7 @@ export const testProgressAC = () => ({
     type: TEST_PROGRESS,
 })
 
-export const customerAC = (data) => ({
+export const updateUserStatsAC = (data) => ({
     type: UPDATE_USERDATA,
     payload: data
 })

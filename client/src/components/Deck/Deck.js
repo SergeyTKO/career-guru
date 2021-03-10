@@ -3,9 +3,10 @@ import { animated, interpolate } from "react-spring";
 import { useSprings } from "react-spring";
 import { useGesture } from "react-use-gesture";
 import { useSelector } from "react-redux";
-import Button from "../Button/Button";
+import styles from "../App/App.module.scss";
 import { useDispatch } from "react-redux";
-import {addFavoritesAC} from '../../redux/thunk/addFavoritesAC'
+import { addFavoritesAC } from "../../redux/thunk/addFavoritesAC";
+import Button from "../Button/Button";
 
 const to = (i) => ({
   x: 0,
@@ -22,9 +23,9 @@ const trans = (r, s) =>
 
 function Deck() {
   const dispatch = useDispatch();
-const user = useSelector((state) => state.auth.user);
-
+  const user = useSelector((state) => state.auth.user);
   const cards = useSelector((state) => state.admin.cards);
+  const [pushBtn, setPushBtn] = useState(false);
   const [gone] = useState(() => new Set());
   const [props, set] = useSprings(cards.length, (i) => ({
     ...to(i),
@@ -62,7 +63,8 @@ const user = useSelector((state) => state.auth.user);
   );
 
   const addFavorites = (e) => {
-    dispatch(addFavoritesAC(e.target.id, user.id))
+    dispatch(addFavoritesAC(e.target.id, user.id));
+    setPushBtn(true);
   };
 
   return (
@@ -82,11 +84,17 @@ const user = useSelector((state) => state.auth.user);
               {...bind(i)}
               style={{ transform: interpolate([rot, scale], trans) }}
             >
-              <div className="card">
+              <div className={styles.card}>
                 <Button
                   id={cards[i]._id}
                   buttonHandler={addFavorites}
-                  btnValue={"Добавить в избранное"}
+                  btnValue={
+                    pushBtn ? (
+                      <i  style = {{fontSize:'30px'}} class="fas fa-heart"></i>
+                    ) : (
+                      <i  style = {{fontSize:'30px'}} class="far fa-heart"></i>
+                    )
+                  }
                 />
                 <h4>Вопрос: {cards[i].question}</h4>
                 <h5>
