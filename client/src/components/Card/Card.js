@@ -36,9 +36,9 @@ function Card({cardsToTest}) {
         dispatch(updateUserStatsAC(result))
         history.push('/results')
     };
-    const arr = [0,1,2,3];
-    _shuffleSelf(arr,4)
-    console.log(arr)
+    // const arr = [0,1,2,3];
+    // _shuffleSelf(arr,4)
+    // console.log(arr)
 
     return (
         <div className={styles.card}>

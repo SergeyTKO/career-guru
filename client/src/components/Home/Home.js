@@ -1,13 +1,16 @@
 import styles from './Home.module.scss'
 import {Link} from 'react-router-dom'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {resetResultsAC} from "../../redux/actionCreators";
 import {useEffect} from 'react';
+import {customerFetchAC} from "../../redux/thunk/customerFetchAC";
 
 function Home() {
     const dispatch = useDispatch();
+    const user = useSelector(state => state.auth.user)
     useEffect(() => {
         dispatch(resetResultsAC());
+        dispatch(customerFetchAC(user.score, user.solvedCards, user))
     }, [dispatch])
 
     return (
