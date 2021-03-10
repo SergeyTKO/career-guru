@@ -5,13 +5,11 @@ import Button from "../Button/Button";
 import Selector from "../Selector/Selector";
 import styles from "./AuthPage.module.scss";
 import { authFetchAC } from "../../redux/thunk/authFetchAC";
-import { useDispatch, useSelector } from 'react-redux'
-
-
+import { useDispatch, useSelector } from "react-redux";
 
 function AuthPage() {
   const dispatch = useDispatch();
-  const error = useSelector(state => state.auth.error)
+  const error = useSelector((state) => state.auth.error);
   const email = useRef();
   const firstName = useRef();
   const lastName = useRef();
@@ -19,17 +17,6 @@ function AuthPage() {
   const password = useRef();
   const secretKey = useRef();
 
-  const [inputs, setInputs] = useState({
-    email: "",
-    firstName: "",
-    lastName: "",
-    checkPsw: "",
-    password: "",
-    secretKey: "",
-  });
-  const handleChange = ({ target: { name, value } }) => {
-    setInputs({ ...inputs, [name]: value });
-  };
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(
@@ -43,42 +30,36 @@ function AuthPage() {
         <Input
           inpType={"text"}
           inpPlaceholder={"Укажите Ваше имя"}
-          onChange={handleChange}
           inpRef={firstName}
           required
         />
         <Input
           inpType={"text"}
           inpPlaceholder={"Укажите Вашу фамилию"}
-          onChange={handleChange}
           inpRef={lastName}
           required
         />
         <Input
           inpType={"email"}
           inpPlaceholder={"Укажите Ваш email"}
-          onChange={handleChange}
           inpRef={email}
           required
         />
         <Input
           inpType={"password"}
           inpPlaceholder={"Придумайте пароль"}
-          onChange={handleChange}
           inpRef={password}
           required
         />
         <Input
           inpType={"password"}
           inpPlaceholder={"Подтвердите пароль"}
-          onChange={handleChange}
           inpRef={checkPsw}
           required
         />
         <Input
           inpType={"text"}
           inpPlaceholder={"Admin key"}
-          onChange={handleChange}
           inpRef={secretKey}
           required
         />
