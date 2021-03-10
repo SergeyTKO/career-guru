@@ -3,6 +3,7 @@
 
 .formWrapper {
   @include centered-elements;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
 
@@ -11,10 +12,14 @@
    @include forms-redact;
   }
 
+  .error{
+    color: $error-color;
+  }
+
   .googleBtn{
     display: flex;
     align-items: center;
-    width: 70%;
+    width: 15rem;
   height: 2.5rem;
   background-color: $google-btn-color;
   border-radius: 2px;

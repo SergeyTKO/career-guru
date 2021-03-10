@@ -54,10 +54,10 @@ router.post("/", async function (req, res) {
           });
         }
       } else {
-        res.json({ msg: "Неверный Логин или пароль" });
+        res.json({ msg: "Неверный логин или пароль" });
       }
     } else {
-      res.json({ msg: "Неверный Логин или пароль" });
+      res.json({ msg: "Неверный логин или пароль" });
     }
   } catch (err) {
     res.json({ msg: err.msg });

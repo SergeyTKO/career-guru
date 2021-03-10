@@ -10,8 +10,8 @@ function Navbar() {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
-  const isAuth = useSelector((state) => state.auth);
-  const isAdmin = useSelector((state) => state.auth.user);
+  const auth = useSelector((state) => state.auth);
+  const isAdmin = useSelector((state) => state.auth.user.isAdmin);
 
   function logout() {
     dispatch(logoutAC());
@@ -20,31 +20,26 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      {isAuth.isAuth ? (
-        <React.Fragment>
-          <Link to="/home" className={styles.main}></Link>
-
-          {isAdmin.isAdmin ? (
-            <p className={styles.logoutBtn} onClick={logout}></p>
-          ) : (
-            <React.Fragment>
-              <div>{isAuth.user.firstName}</div>
-              <div>{isAuth.user.status}</div>
-              <div>{isAuth.user.score}</div>
-              <Link
+      {auth.isAuth && isAdmin ? 
+        <>
+            <h1>АДМИН</h1>
+            <p className={styles.logoutBtn} onClick={logout}></p> </>:
+        auth.isAuth && !isAdmin ?
+          
+          <><Link to="/home" className={styles.main}></Link>
+          <div className={styles.userName}>{auth.user.firstName}</div>
+          <div className={styles.userStatus}>{auth.user.status}</div>
+          <div className={styles.userScore}>{auth.user.score}</div>
+          <Link
                 to={{ pathname: "/menu", state: { background: location } }}
                 className={styles.menu}
-              ></Link>
-            </React.Fragment>
-          )}
-        </React.Fragment>
-      ) : (
-        <React.Fragment>
-          <Link to="/" className={styles.main}></Link>
+              ></Link></>
+        :
+    
+        <><Link to="/" className={styles.main}></Link>
           <Link to="/login" className={styles.login}></Link>
-          <Link to="/signup" className={styles.auth}></Link>
-        </React.Fragment>
-      )}
+          <Link to="/signup" className={styles.auth}></Link></>
+      }
     </nav>
   );
 }

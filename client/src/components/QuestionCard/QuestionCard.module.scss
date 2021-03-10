@@ -3,8 +3,19 @@
 
 .questionCard{
     @include centered-elements;
+    position: relative;
+    text-align: center;
     width: 100%;
+    padding: 1rem;
     max-height: 45%;
     min-height: 8rem;
-    border: 1px solid white;
+    background-color: $cards-bg-color;
+
+    .questionCount{
+        position: absolute;
+        top:0;
+        right: 0;
+        margin: 1rem 1rem 0 0;
+        color: $bright-font-color;
+    }
 }

@@ -13,6 +13,7 @@ function Home() {
     return (
         <div className={styles.homePage}>
             <Link to='/cards'>Популярные вопросы на собеседовании</Link>
+            <Link to='/cards'>Вопросы от пользователей</Link>
             <Link to='/test'>Пройти тестирование</Link>
         </div>
     )

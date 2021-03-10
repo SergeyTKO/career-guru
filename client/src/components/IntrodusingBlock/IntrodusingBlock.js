@@ -5,7 +5,7 @@ function IntrodusingBlock() {
   return (
     <div className={styles.introBlock}>
       <div className={styles.block}>
-        <Link to="/tests" className={styles.clickable}>
+        <Link to="/guest-test" className={styles.clickable}>
           <div className={styles.imgWrapper}>
             <span>
               <i class="fas fa-lightbulb"></i>
