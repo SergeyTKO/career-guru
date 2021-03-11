@@ -9,8 +9,8 @@ function PassedTests(props) {
     return (
         <div className={styles.passedTests}>
         <h1>Вопросы, на которые ты уже знаешь ответ:</h1>
-            {passedTests && passedTests.map(el =>
-                <div key={performance.now()} className={styles.passedTestBlock}>
+            {passedTests && passedTests.map((el, i) =>
+                <div key={i} className={styles.passedTestBlock}>
                     <div><strong>Вопрос: </strong>{el.question}</div>
                     <div><strong>Ответ: </strong>{el.answer[0].answer}</div>
                     <div><strong>Баллы: </strong>{el.count}</div>
