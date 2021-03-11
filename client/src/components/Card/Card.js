@@ -43,7 +43,7 @@ function Card({cardsToTest}) {
     return (
         <div className={styles.card}>
             <div className={styles.answerStatus}>{state}</div>
-            <QuestionCard question={cardsToTest[index].question} result={result} index={index}/>
+            <QuestionCard question={cardsToTest[index].question} result={result} index={index} tags={cardsToTest[index].tags}/>
             <AnswerCard answer={cardsToTest[index].answer} divHandler={divHandler}/>
         </div>
     );

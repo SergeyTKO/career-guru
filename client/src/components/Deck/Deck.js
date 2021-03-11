@@ -5,8 +5,12 @@ import { useGesture } from "react-use-gesture";
 import { useSelector } from "react-redux";
 import styles from "../App/App.module.scss";
 import { useDispatch } from "react-redux";
-import { addFavoritesAC } from "../../redux/thunk/addFavoritesAC";
+import {
+  addFavoritesAC,
+  updateFavoriteFetchAC,
+} from "../../redux/thunk/addFavoritesAC";
 import Button from "../Button/Button";
+import { addFavStateAC } from "../../redux/actionCreators";
 
 const to = (i) => ({
   x: 0,
@@ -63,7 +67,7 @@ function Deck() {
   );
 
   const addFavorites = (e) => {
-    dispatch(addFavoritesAC(e.target.id, user.id));
+    dispatch(addFavoritesAC(user._id, e.target.id));
     setPushBtn(!pushBtn);
   };
 
@@ -90,9 +94,17 @@ function Deck() {
                   buttonHandler={addFavorites}
                   btnValue={
                     pushBtn ? (
-                      <i  id={cards[i]._id} style = {{fontSize:'35px'}} class="fas fa-heart"></i>
+                      <i
+                        id={cards[i]._id}
+                        style={{ fontSize: "35px" }}
+                        class="fas fa-heart"
+                      ></i>
                     ) : (
-                      <i  id={cards[i]._id} style = {{fontSize:'35px'}} class="far fa-heart"></i>
+                      <i
+                        id={cards[i]._id}
+                        style={{ fontSize: "35px" }}
+                        class="far fa-heart"
+                      ></i>
                     )
                   }
                 />

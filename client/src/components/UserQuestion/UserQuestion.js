@@ -24,7 +24,7 @@ function UserQuestion(props) {
             <div className={styles.adminForm}>
                 <form onSubmit={addCardAC}>
                     <input type="text" name="question" placeholder="Вопрос" required/>
-                    <input type="text" name="answer" placeholder="Ответ" required/>
+                    <input type="text" name="answer" placeholder="Ответ" />
                     <input type="text" name="theme" placeholder="Тема" required/>
                     <input type="text" name="company" placeholder="Компания" required/>
                     <button>Добавить</button>

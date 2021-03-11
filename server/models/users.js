@@ -14,5 +14,5 @@ export default mongoose.model('users', mongoose.Schema({
   score: Number,
   isAdmin: Boolean,
   provider:String,
-  favoriteCards: [{type: mongoose.Schema.Types.ObjectId, ref: 'Card'}]
+  favoriteCards: [{type: mongoose.Schema.Types.Object, ref: 'Card'}]
 }))
