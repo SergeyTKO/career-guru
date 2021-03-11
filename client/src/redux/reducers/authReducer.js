@@ -1,4 +1,4 @@
-import {AUTH_SUCSESSFULLY, LOGOUT, ERROR, UPDATE_USERDATA} from "../actionTypes";
+import {AUTH_SUCSESSFULLY, LOGOUT, ERROR, UPDATE_USERDATA, RESET_USERDATA} from "../actionTypes";
 
 const windowState = JSON.parse(window.localStorage.getItem("state"));
 let preloadedState = {};
@@ -32,12 +32,21 @@ export const authReducer = (state = preloadedState, action) => {
                 user: {email: " ", username: " "},
             };
         case UPDATE_USERDATA:
-            console.log(...action.payload.rightAnswers)
-            return {...state,
+            return {
+                ...state,
                 user: {
                     ...state.user,
                     score: state.user.score + action.payload.count,
                     solvedCards: [...state.user.solvedCards, ...action.payload.rightAnswers]
+                }
+            };
+        case RESET_USERDATA:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    score: state.user.score,
+                    solvedCards: []
                 }
             };
         case ERROR:

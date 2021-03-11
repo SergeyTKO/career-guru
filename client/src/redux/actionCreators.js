@@ -1,4 +1,19 @@
-import {INIT_CARDS, ADD_CARDS, UPDATE_USERDATA, DELETE_CARDS,AUTH_SUCSESSFULLY, LOGOUT, ERROR, INIT_TEST, RIGHT_ANSWERS, RESULT_COUNTER, REST_TO_FINISH, RESET_RESULTS, TEST_PROGRESS} from "./actionTypes";
+import {
+    INIT_CARDS,
+    ADD_CARDS,
+    UPDATE_USERDATA,
+    RESET_USERDATA,
+    DELETE_CARDS,
+    AUTH_SUCSESSFULLY,
+    LOGOUT,
+    ERROR,
+    INIT_TEST,
+    RIGHT_ANSWERS,
+    RESULT_COUNTER,
+    REST_TO_FINISH,
+    RESET_RESULTS,
+    TEST_PROGRESS
+} from "./actionTypes";
 
 //ADMIN
 export const initCardsAC = (cards) => ({
@@ -44,7 +59,11 @@ export const updateUserStatsAC = (data) => ({
     payload: data
 })
 
-export const authSucsessAC = (payload) => ({ type: AUTH_SUCSESSFULLY, payload });
+export const resetUserStatsAC = () => ({
+    type: RESET_USERDATA,
+})
 
-export const logoutAC = () => ({ type: LOGOUT });
-export const errorAC = (payload) => ({ type: ERROR, payload });
+export const authSucsessAC = (payload) => ({type: AUTH_SUCSESSFULLY, payload});
+
+export const logoutAC = () => ({type: LOGOUT});
+export const errorAC = (payload) => ({type: ERROR, payload});
