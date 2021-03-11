@@ -15,7 +15,8 @@ import {
     RESET_RESULTS,
     SHUFFLE,
     TEST_PROGRESS,
-    ADD_FAVORITES
+    ADD_FAVORITES,
+    CLEAR_SHUFFLE
 } from "./actionTypes";
 
 //ADMIN
@@ -80,6 +81,10 @@ export const shuffleAC = (data) => ({
     type: SHUFFLE,
     payload: data,
 });
+
+export const clearAC = () => ({
+    type: CLEAR_SHUFFLE
+})
 
 export const authSucsessAC = (payload) => ({type: AUTH_SUCSESSFULLY, payload});
 

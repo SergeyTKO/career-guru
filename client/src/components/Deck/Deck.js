@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {animated, interpolate} from 'react-spring'
 import {useSprings} from 'react-spring'
 import {useGesture} from 'react-use-gesture'
@@ -9,6 +9,7 @@ import {
   addFavoritesAC,
   updateFavoriteFetchAC,
 } from "../../redux/thunk/addFavoritesAC";
+import { clearAC } from "../../redux/actionCreators";
 import Button from "../Button/Button";
 
 const to = (i) => ({
@@ -52,6 +53,10 @@ function Deck() {
     dispatch(addFavoritesAC(user._id, e.target.id));
     setPushBtn(!pushBtn);
   };
+
+  useEffect(()=>{
+    return ()=>dispatch(clearAC())
+  },[])
 
   return (
     <>

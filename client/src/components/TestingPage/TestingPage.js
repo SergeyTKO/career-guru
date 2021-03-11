@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Card from '../Card/Card'
 import styles from './TestingPage.module.scss'
 import {initTestAC, resetUserStatsAC} from "../../redux/actionCreators";
 import Button from "../Button/Button";
 import {useHistory} from "react-router-dom";
+import { clearAC } from "../../redux/actionCreators";
 
 function TestingPage() {
     const dispatch = useDispatch();
@@ -19,6 +20,10 @@ function TestingPage() {
         history.push('/home')
     }
     dispatch(initTestAC(result.splice(0,5)))
+
+    useEffect(()=>{
+        return ()=>dispatch(clearAC())
+      },[])
 
     const cardsToTest = useSelector(state => state.user.result.currentTest)
 
