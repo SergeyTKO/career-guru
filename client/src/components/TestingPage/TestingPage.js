@@ -4,7 +4,6 @@ import Card from '../Card/Card'
 import styles from './TestingPage.module.scss'
 import {initTestAC, resetResultsAC, resetUserStatsAC} from "../../redux/actionCreators";
 import Button from "../Button/Button";
-import {customerFetchAC} from "../../redux/thunk/customerFetchAC";
 import {useHistory} from "react-router-dom";
 
 function TestingPage() {
@@ -19,7 +18,7 @@ function TestingPage() {
         dispatch(resetUserStatsAC())
         history.push('/home')
     }
-    dispatch(initTestAC(result))
+    dispatch(initTestAC(result.splice(0,5)))
 
     const cardsToTest = useSelector(state => state.user.result.currentTest)
 
