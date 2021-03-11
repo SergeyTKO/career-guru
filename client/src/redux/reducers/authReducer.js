@@ -34,11 +34,11 @@ export const authReducer = (state = preloadedState, action) => {
             };
         case LOGOUT:
             window.localStorage.clear();
-            // window.localStorage.removeItem("jwt");
             return {
                 ...state,
                 isAuth: false,
                 user: {email: " ", username: " "},
+
             };
         case UPDATE_USERDATA:
             return {

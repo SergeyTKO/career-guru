@@ -154,15 +154,13 @@ app.get("/auth/login/failed", (req, res) => {
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: 'http://localhost:4000/google',
+    successRedirect: process.env.REACT_APP_URL,
     failureRedirect: "/auth/login/failed",
   })
 );
 
 
-app.get('/google', (req,res)=>{
-  res.json()
-})
+
 
 // app.use(passport.session());
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Menu.module.scss";
-import { logoutAC } from "../../redux/actionCreators";
+import { clearAC, logoutAC } from "../../redux/actionCreators";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -9,6 +9,7 @@ function Menu() {
   const dispatch = useDispatch();
 
   function logout() {
+    dispatch(clearAC())
     dispatch(logoutAC());
     history.push("/");
   }

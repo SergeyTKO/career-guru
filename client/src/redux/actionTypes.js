@@ -17,6 +17,7 @@ export const SHUFFLE = 'SHUFFLE';
 export const AUTH_SUCSESSFULLY = "AUTH_SUCSESSFULLY";
 export const LOGOUT = "LOGOUT";
 export const ADD_FAVORITES = "ADD_FAVORITES";
+export const CLEAR_SHUFFLE = 'CLEAR_SHUFFLE'
 
 
 export const ERROR = "ERROR";
