@@ -10,7 +10,7 @@ function PushTheAnswer({divValue, divHandler}) {
             if (divValue.validity === false) setState('red')
             setTimeout(() => {
                 setState('#393e46')
-            }, 1200)
+            }, 900)
         }}>{divValue.answer}</button>
     );
 }

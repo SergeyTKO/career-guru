@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import { animated, interpolate } from "react-spring";
-import { useSprings } from "react-spring";
-import { useGesture } from "react-use-gesture";
-import { useSelector } from "react-redux";
-import styles from "../App/App.module.scss";
-import { useDispatch } from "react-redux";
+import React, {useState} from 'react'
+import {animated, interpolate} from 'react-spring'
+import {useSprings} from 'react-spring'
+import {useGesture} from 'react-use-gesture'
+import {useDispatch, useSelector} from "react-redux";
+import styles from '../App/App.module.scss'
+import {shuffleFunctionAC} from "../../redux/thunk/shuffleAC";
 import {
   addFavoritesAC,
   updateFavoriteFetchAC,
 } from "../../redux/thunk/addFavoritesAC";
 import Button from "../Button/Button";
-import { addFavStateAC } from "../../redux/actionCreators";
 
 const to = (i) => ({
   x: 0,
@@ -26,45 +25,28 @@ const trans = (r, s) =>
   }deg) scale(${s})`;
 
 function Deck() {
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
-  const cards = useSelector((state) => state.admin.cards);
-  const [pushBtn, setPushBtn] = useState(false);
-  const [gone] = useState(() => new Set());
-  const [props, set] = useSprings(cards.length, (i) => ({
-    ...to(i),
-    from: from(i),
-  }));
-  const bind = useGesture(
-    ({
-      args: [index],
-      down,
-      delta: [xDelta],
-      distance,
-      direction: [xDir],
-      velocity,
-    }) => {
-      const trigger = velocity > 0.2;
-      const dir = xDir < 0 ? -1 : 1;
-      if (!down && trigger) gone.add(index);
-      set((i) => {
-        if (index !== i) return;
-        const isGone = gone.has(index);
-        const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0;
-        const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0);
-        const scale = down ? 1.1 : 1;
-        return {
-          x,
-          rot,
-          scale,
-          delay: undefined,
-          config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
-        };
-      });
-      if (!down && gone.size === cards.length)
-        setTimeout(() => gone.clear() || set((i) => to(i)), 600);
-    }
-  );
+    const dispatch = useDispatch();
+    const oldcards = useSelector(state => state.admin.cards);
+    dispatch(shuffleFunctionAC(oldcards))
+    const cards = useSelector(state => state.user.result.shuffle);
+    const user = useSelector((state) => state.auth.user);
+    const [pushBtn, setPushBtn] = useState(false);
+    const [gone] = useState(() => new Set())
+    const [props, set] = useSprings(cards.length, i => ({...to(i), from: from(i)}))
+    const bind = useGesture(({args: [index], down, delta: [xDelta], distance, direction: [xDir], velocity}) => {
+        const trigger = velocity > 0.2
+        const dir = xDir < 0 ? -1 : 1
+        if (!down && trigger) gone.add(index)
+        set(i => {
+            if (index !== i) return
+            const isGone = gone.has(index)
+            const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0
+            const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0)
+            const scale = down ? 1.1 : 1
+            return {x, rot, scale, delay: undefined, config: {friction: 50, tension: down ? 800 : isGone ? 200 : 500}}
+        })
+        if (!down && gone.size === cards.length) setTimeout(() => gone.clear() || set(i => to(i)), 600)
+    })
 
   const addFavorites = (e) => {
     dispatch(addFavoritesAC(user._id, e.target.id));

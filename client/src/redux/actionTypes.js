@@ -13,6 +13,7 @@ export const RESET_RESULTS = 'RESET_RESULTS';
 export const TEST_PROGRESS = 'TEST_PROGRESS';
 export const UPDATE_USERDATA = 'UPDATE_USERDATA';
 export const RESET_USERDATA = 'RESET_USERDATA';
+export const SHUFFLE = 'SHUFFLE';
 export const AUTH_SUCSESSFULLY = "AUTH_SUCSESSFULLY";
 export const LOGOUT = "LOGOUT";
 export const ADD_FAVORITES = "ADD_FAVORITES";
