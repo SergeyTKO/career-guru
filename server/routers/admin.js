@@ -11,7 +11,7 @@ router
       answer,
       count,
       theme,
-      tags,
+      tags: tags.split(',')
     });
 
     res.json(card);
