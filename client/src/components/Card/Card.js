@@ -5,7 +5,6 @@ import styles from './Card.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {answerAC, resultPlusOneAC, restToFinishAC, testProgressAC, updateUserStatsAC} from "../../redux/actionCreators";
 import {useHistory} from "react-router-dom";
-import _shuffleSelf from "lodash-es/_shuffleSelf";
 
 function Card({cardsToTest}) {
     const [state, setState] = useState('');
@@ -14,7 +13,7 @@ function Card({cardsToTest}) {
     const result = useSelector(state => state.user.result)
     const index = useSelector(state => state.user.result.testProgress)
     const divHandler = (event) => {
-        if (event.target.value === cardsToTest[index].answer[0].answer) {
+        if (event.target.value === cardsToTest[index].answer.filter(el => el.validity)[0].answer) {
             dispatch(answerAC(cardsToTest[index]))
             dispatch(resultPlusOneAC())
             setState('Правильно')
@@ -22,23 +21,20 @@ function Card({cardsToTest}) {
                 dispatch(restToFinishAC())
                 dispatch(testProgressAC())
                 setState('');
-            }, 1200);
+            }, 900);
         } else {
             setState('Неправильно')
             setTimeout(() => {
                 dispatch(restToFinishAC());
                 dispatch(testProgressAC())
                 setState('');
-            }, 1200)
+            }, 900)
         }
     }
     if (result.numOfRestQuestions === 0) {
         dispatch(updateUserStatsAC(result))
         history.push('/results')
-    };
-    // const arr = [0,1,2,3];
-    // _shuffleSelf(arr,4)
-    // console.log(arr)
+    }
 
     return (
         <div className={styles.card}>
