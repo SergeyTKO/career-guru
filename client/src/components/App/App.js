@@ -16,6 +16,7 @@ import ResultPage from "../ResultPage/ResultPage";
 import { googleFetchAC } from "../../redux/thunk/googleFetchAC";
 import PassedTests from "../PassedTests/PassedTests";
 import UserQuestion from "../UserQuestion/UserQuestion";
+import FavoriteCards from "../FavoriteCards/FavoriteCards";
 
 function App() {
   const location = useLocation();
@@ -24,11 +25,16 @@ function App() {
   const isAuth = useSelector((state) => state.auth.isAuth);
   const isAdmin = useSelector((state) => state.auth.user.isAdmin);
 
-
   useEffect(() => {
     dispatch(googleFetchAC());
   }, [dispatch]);
 
+
+  // useEffect(()=>{
+  //   dispatch(googleFetchAC())
+  //       },[])
+    
+  
   // useEffect(() => {
   //   dispatch(checkTokenAC());
   // }, []);
@@ -79,6 +85,7 @@ function App() {
           <PrivateRoute path="/test" children={<TestingPage />} />
 
           <PrivateRoute path="/results" children={<ResultPage />} />
+          <PrivateRoute path="/favorites" children={<FavoriteCards />} />
         </Switch>
       </div>
 

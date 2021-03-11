@@ -1,21 +1,29 @@
-import {AUTH_SUCSESSFULLY, LOGOUT, ERROR, UPDATE_USERDATA, RESET_USERDATA} from "../actionTypes";
+import {
+  AUTH_SUCSESSFULLY,
+  LOGOUT,
+  ERROR,
+  UPDATE_USERDATA,
+  ADD_FAVORITES,
+  RESET_USERDATA,
+} from "../actionTypes";
 
 const windowState = JSON.parse(window.localStorage.getItem("state"));
 let preloadedState = {};
-if (windowState) {
-    preloadedState = {
-        isAuth: windowState.auth.isAuth,
-        user: windowState.auth.user,
-    };
+if (windowState && windowState.auth) {
+  preloadedState = {
+    isAuth: windowState.auth.isAuth,
+    user: windowState.auth.user,
+  };
 } else {
-    preloadedState = {
-        isAuth: false,
-        user: {email: "", firstName: "", solvedCards: []},
-        error: null
-    };
+  preloadedState = {
+    isAuth: false,
+    user: { email: "", firstName: "", solvedCards: [], favoriteCards: [] },
+    error: null,
+  };
 }
 
 export const authReducer = (state = preloadedState, action) => {
+
     switch (action.type) {
         case AUTH_SUCSESSFULLY:
             return {
@@ -50,6 +58,15 @@ export const authReducer = (state = preloadedState, action) => {
                     solvedCards: []
                 }
             };
+      
+       case ADD_FAVORITES:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          favoriteCards: [...state.user.favoriteCards, action.payload],
+        },
+      };
         case ERROR:
             return {
                 ...state,
@@ -58,4 +75,5 @@ export const authReducer = (state = preloadedState, action) => {
         default:
             return state;
     }
+
 };

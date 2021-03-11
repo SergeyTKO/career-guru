@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
           score: 0,
           isAdmin: true,
           solvedCards: [],
+                    favoriteCards: []
         });
         await user.save();
       } else {
@@ -40,6 +41,7 @@ router.post("/", async (req, res) => {
           score: 0,
           isAdmin: false,
           solvedCards: [],
+                    favoriteCards: []
         });
         await user.save();
       }

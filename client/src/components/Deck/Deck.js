@@ -5,16 +5,32 @@ import {useGesture} from 'react-use-gesture'
 import {useDispatch, useSelector} from "react-redux";
 import styles from '../App/App.module.scss'
 import {shuffleFunctionAC} from "../../redux/thunk/shuffleAC";
+import {
+  addFavoritesAC,
+  updateFavoriteFetchAC,
+} from "../../redux/thunk/addFavoritesAC";
+import Button from "../Button/Button";
 
-const to = i => ({x: 0, y: i * -4, scale: 1, rot: -10 + Math.random() * 20, delay: i * 100})
-const from = i => ({x: 0, rot: 0, scale: 1.5, y: -1000})
-const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 10}deg) rotateZ(${r / 10}deg) scale(${s})`
+const to = (i) => ({
+  x: 0,
+  y: i * -4,
+  scale: 1,
+  rot: -10 + Math.random() * 20,
+  delay: i * 100,
+});
+const from = (i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
+const trans = (r, s) =>
+  `perspective(1500px) rotateX(15deg) rotateY(${r / 10}deg) rotateZ(${
+    r / 10
+  }deg) scale(${s})`;
 
 function Deck() {
     const dispatch = useDispatch();
     const oldcards = useSelector(state => state.admin.cards);
     dispatch(shuffleFunctionAC(oldcards))
     const cards = useSelector(state => state.user.result.shuffle);
+    const user = useSelector((state) => state.auth.user);
+    const [pushBtn, setPushBtn] = useState(false);
     const [gone] = useState(() => new Set())
     const [props, set] = useSprings(cards.length, i => ({...to(i), from: from(i)}))
     const bind = useGesture(({args: [index], down, delta: [xDelta], distance, direction: [xDir], velocity}) => {
@@ -32,17 +48,59 @@ function Deck() {
         if (!down && gone.size === cards.length) setTimeout(() => gone.clear() || set(i => to(i)), 600)
     })
 
-    return props.map(({x, y, rot, scale}, i) => (
-        <animated.div key={i} style={{transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`)}}>
-            <animated.div {...bind(i)}
-                          style={{transform: interpolate([rot, scale], trans)}}>
-                <div className={styles.card}>
-                    <h4>Вопрос:{cards[i].question}</h4>
-                    <h5>Ответ: {cards[i].answer.filter(el => el.validity)[0].answer}</h5>
-                </div>
+  const addFavorites = (e) => {
+    dispatch(addFavoritesAC(user._id, e.target.id));
+    setPushBtn(!pushBtn);
+  };
+
+  return (
+    <>
+      {props
+        .map(({ x, y, rot, scale }, i) => (
+          <animated.div
+            key={i}
+            style={{
+              transform: interpolate(
+                [x, y],
+                (x, y) => `translate3d(${x}px,${y}px,0)`
+              ),
+            }}
+          >
+            <animated.div
+              {...bind(i)}
+              style={{ transform: interpolate([rot, scale], trans) }}
+            >
+              <div className={styles.card}>
+                <Button
+                  id={cards[i]._id}
+                  buttonHandler={addFavorites}
+                  btnValue={
+                    pushBtn ? (
+                      <i
+                        id={cards[i]._id}
+                        style={{ fontSize: "35px" }}
+                        class="fas fa-heart"
+                      ></i>
+                    ) : (
+                      <i
+                        id={cards[i]._id}
+                        style={{ fontSize: "35px" }}
+                        class="far fa-heart"
+                      ></i>
+                    )
+                  }
+                />
+                <h4>Вопрос: {cards[i].question}</h4>
+                <h5>
+                  Ответ: {cards[i].answer.filter((el) => el.validity)[0].answer}
+                </h5>
+              </div>
             </animated.div>
-        </animated.div>
-    )).reverse()
+          </animated.div>
+        ))
+        .reverse()}
+    </>
+  );
 }
 
 export default Deck;

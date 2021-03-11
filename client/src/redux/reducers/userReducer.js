@@ -67,6 +67,6 @@ export const userReducer = (state = initialState, action) => {
         case SHUFFLE:
             return {...state, result: {...state.result, shuffle: action.payload}};
         default:
-            return state;
+        return state;
     }
 }

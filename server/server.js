@@ -13,24 +13,52 @@ import dotenv from "dotenv";
 dotenv.config();
 app.use(
   cors({
-    origin: "http://localhost:3000", // allow to server to accept request from different origin
+    origin: "http://localhost:3000",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // allow session cookie from browser to pass through
+    credentials: true,
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 // ------------------GOOGLE AUTH--------------------------------
+import session from "express-session";
+import cookieParser from "cookie-parser";
 import GoogleStrategy from "passport-google-oauth20";
+import cookieSession from "cookie-session";
+import sessionFileStore from "session-file-store";
+const FileStore = sessionFileStore(session);
 const googleStrategy = GoogleStrategy.Strategy;
+app.use(
+  session({
+    store: new FileStore(),
+    name: "user_sid",
+    secret: "secret",
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+      expires: 86400000,
+      httpOnly: false,
+    }, 
+  })
+),
+app.use(cookieParser("secret"));
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser(function (user, done) {
-  done(null, user);
+  done(null, user._id);
 });
-
-passport.deserializeUser(function (obj, done) {
-  done(null, obj);
+passport.deserializeUser((_id, done) => {
+  User.findById(_id)
+    .then((user) => {
+      done(null, user);
+    })
+    .catch((e) => {
+      done(new Error("Failed to deserialize an user"));
+    });
 });
 
 passport.use(
@@ -41,52 +69,73 @@ passport.use(
       callbackURL: "http://localhost:4000/auth/google/callback",
       proxy: true,
     },
-    function (accessToken, refreshToken, profile, done) {
+    async function (accessToken, refreshToken, profile, done) {
       //check user table for anyone with a facebook ID of profile.id
-      User.findOne(
-        {
-          googleId: profile.id,
-        },
-        function (err, user) {
-          if (err) {
-            return done(err);
-          }
+      const currentUser = await User.findOne({ googleId: profile.id });
 
-          if (!user) {
-            user = new User({
-              googleId: profile.id,
-              firstName: profile.displayName,
-              username: profile.username,
-              provider: "google",
-              avatar: profile.photos[0].value,
-              status: "beginner",
-              score: 0,
-              isAdmin: false,
-            });
-            user.save(function (err) {
-              if (err) console.log(err);
-              return done(err, user, accessToken);
-            });
-          } else {
-            //found user. Return
-            return done(err, user, accessToken);
-          }
+      if (!currentUser) {
+        const newUser = await new User({
+          googleId: profile.id,
+          firstName: profile.displayName,
+          username: profile.username,
+          provider: "google",
+          avatar: profile.photos[0].value,
+          status: "beginner",
+          score: 0,
+          isAdmin: false,
+          solvedCards: [],
+          favoriteCards: []
+        });
+        
+        await newUser.save(function (err) {
+          if (err) throw err;
+          done(null, newUser);
+        });
+        if (newUser) {
+          done(null, newUser);
         }
-      );
+      } else {
+        done(null, currentUser);
+      }
     }
   )
 );
 
 app.get(
   "/auth/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
+  passport.authenticate("google", {
+    session: true,
+    scope: ["profile", "email"],
+  })
 );
+
+// const authCheck = (req, res, next) => {
+//   if (!req.user) {
+//     res.status(401).json({
+//       authenticated: false,
+//       message: "user has not been authenticated",
+//     });
+//   } else {
+//     next();
+//   }
+// };
+
+// app.get("/", authCheck, (req, res) => {
+//   res.status(200).json({
+//     authenticated: true,
+//     message: "user successfully authenticated",
+//     user: req.user,
+//     cookies: req.cookies,
+//   });
+// });
 
 app.get("/auth/login/success", (req, res) => {
   if (req.user) {
+    console.log(req.user);
     res.json({
       message: "User Authenticated",
       user: req.user,
+      cookies: req.cookies,
     });
   } else
     res.status(400).json({
@@ -110,18 +159,19 @@ app.get(
   })
 );
 
+
 app.get('/google', (req,res)=>{
   res.json()
 })
 
 // app.use(passport.session());
+
 // ------------------GOOGLE AUTH--------------------------------
 
 const server = http.createServer(app);
 const PORT = process.env.PORT || 4000;
 dbConnect();
 appConfig(app);
-// dbConnect()
 routersConfig(app);
 
 server.listen(PORT, () => console.log(`server on ${PORT}`));

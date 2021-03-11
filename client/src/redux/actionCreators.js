@@ -14,7 +14,8 @@ import {
     REST_TO_FINISH,
     RESET_RESULTS,
     SHUFFLE,
-    TEST_PROGRESS
+    TEST_PROGRESS,
+    ADD_FAVORITES
 } from "./actionTypes";
 
 //ADMIN
@@ -59,6 +60,10 @@ export const testProgressAC = () => ({
 
 export const updateUserStatsAC = (data) => ({
     type: UPDATE_USERDATA,
+    payload: data
+})
+export const addFavStateAC = (data) => ({
+    type: ADD_FAVORITES,
     payload: data
 })
 

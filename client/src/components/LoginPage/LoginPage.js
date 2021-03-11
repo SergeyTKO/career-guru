@@ -13,11 +13,6 @@ function LoginPage() {
   const email = useRef();
   const password = useRef();
   const error = useSelector((state) => state.auth.error);
-  const [inputs, setInputs] = useState({ email: "", password: "" });
-
-  const handleChange = ({ target: { name, value } }) => {
-    setInputs({ ...inputs, [name]: value });
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -27,9 +22,10 @@ function LoginPage() {
     event.preventDefault();
     window.open("http://localhost:4000/auth/google", "_self");
 
-    dispatch(
-      googleFetchAC()
-    );
+//     dispatch(
+//       googleFetchAC()
+//     );
+
   };
   return (
     <div className={styles.formWrapper}>
@@ -39,14 +35,12 @@ function LoginPage() {
         <Input
           inpType={"email"}
           inpPlaceholder={"Введите еmail"}
-          onChange={handleChange}
           inpRef={email}
           required
         />
         <Input
           inpType={"password"}
           inpPlaceholder={"Введите пароль"}
-          onChange={handleChange}
           inpRef={password}
           required
         />
@@ -57,7 +51,9 @@ function LoginPage() {
           <div className={styles.googleIconWrapper}>
             <img className={styles.googleIcon} src={logo} alt='logo'/>
           </div>
-          <p className={styles.googleBtnText}>Войти с помощью Google</p>
+
+          <p onClick = {googleHandler} class={styles.googleBtnText}>Войти с помощью Google</p>
+
         </div>
         <p>
           Еще нет аккаунта? <Link to="/signup">Зарегистрироваться.</Link>
