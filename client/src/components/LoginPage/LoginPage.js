@@ -27,9 +27,9 @@ function LoginPage() {
     event.preventDefault();
     window.open("http://localhost:4000/auth/google", "_self");
 
-    // dispatch(
-    //   googleFetchAC()
-    // );
+    dispatch(
+      googleFetchAC()
+    );
   };
   return (
     <div className={styles.formWrapper}>
@@ -53,7 +53,7 @@ function LoginPage() {
 
         <Button btnValue={"Войти"} buttonHandler={handleSubmit} />
 
-        <div className={styles.googleBtn}>
+        <div className={styles.googleBtn} onClick={googleHandler}>
           <div className={styles.googleIconWrapper}>
             <img className={styles.googleIcon} src={logo} />
           </div>

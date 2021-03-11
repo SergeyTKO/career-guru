@@ -19,7 +19,7 @@ app.use(
   })
 );
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 
 // ------------------GOOGLE AUTH--------------------------------
 import GoogleStrategy from "passport-google-oauth20";
@@ -105,10 +105,14 @@ app.get("/auth/login/failed", (req, res) => {
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: process.env.CLIENT_HOME_PAGE_URL,
+    successRedirect: 'http://localhost:4000/google',
     failureRedirect: "/auth/login/failed",
   })
 );
+
+app.get('/google', (req,res)=>{
+  res.json()
+})
 
 // app.use(passport.session());
 // ------------------GOOGLE AUTH--------------------------------
