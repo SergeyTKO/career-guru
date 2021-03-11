@@ -1,5 +1,6 @@
 import {
     INIT_CARDS,
+    INIT_USER_CARDS,
     ADD_CARDS,
     UPDATE_USERDATA,
     RESET_USERDATA,
@@ -25,6 +26,7 @@ export const addCardsAC = (card) => ({
     type: ADD_CARDS,
     payload: card,
 });
+
 export const deleteCardsAC = (card) => ({
     type: DELETE_CARDS,
     payload: card,
@@ -62,6 +64,11 @@ export const updateUserStatsAC = (data) => ({
 export const resetUserStatsAC = () => ({
     type: RESET_USERDATA,
 })
+
+export const userQuestionCardsAC = (cards) => ({
+    type: INIT_USER_CARDS,
+    payload: cards,
+});
 
 export const authSucsessAC = (payload) => ({type: AUTH_SUCSESSFULLY, payload});
 

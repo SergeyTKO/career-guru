@@ -5,6 +5,7 @@ export const DELETE_CARDS = 'DELETE_CARDS';
 
 //USER
 export const INIT_TEST = 'INIT_TEST';
+export const INIT_USER_CARDS = 'INIT_USER_CARDS';
 export const RIGHT_ANSWERS = 'RIGHT_ANSWERS';
 export const RESULT_COUNTER = 'RESULT_COUNTER';
 export const REST_TO_FINISH = 'REST_TO_FINISH';
