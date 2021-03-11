@@ -21,9 +21,9 @@ function AdminForm() {
     dispatch(adminFetchAC(question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags))
   }
 
-  function deleteCard(e){
-    const {id} = e.target
-    e.preventDefault()
+  function deleteCard(event){
+    const {id} = event.target
+    event.preventDefault()
     dispatch(deleteFetchAC(id))
   }
 
@@ -43,7 +43,7 @@ function AdminForm() {
       <div className={styles.cards}>
       <h1>Карты с вопросами:</h1>
         {cards && cards.map(card => <div className={styles.card}><div key={card._id} card={card}>{card.question}</div>
-        <Button id={card._id} onClick={deleteCard} btnValue={'удалить'}/>
+        <Button id={card._id} buttonHandler={deleteCard} btnValue={'удалить'}/>
         </div>)}
 
       </div>
