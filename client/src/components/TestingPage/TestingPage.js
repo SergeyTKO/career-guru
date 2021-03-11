@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Card from '../Card/Card'
 import styles from './TestingPage.module.scss'
-import {initTestAC, resetResultsAC, resetUserStatsAC} from "../../redux/actionCreators";
+import {initTestAC, resetUserStatsAC} from "../../redux/actionCreators";
 import Button from "../Button/Button";
 import {useHistory} from "react-router-dom";
 

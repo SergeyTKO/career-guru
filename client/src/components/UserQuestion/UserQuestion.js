@@ -3,7 +3,6 @@ import styles from "../AdminForm/AdminForm.module.scss";
 import {userAddQuestionFetchAC} from "../../redux/thunk/userAddQuestionFetchAC";
 import {useDispatch, useSelector} from "react-redux";
 import {initUserCardsFetchAC} from "../../redux/thunk/userAddQuestionFetchAC";
-import {userQuestionCardsAC} from "../../redux/actionCreators";
 
 function UserQuestion(props) {
     const dispatch = useDispatch();
