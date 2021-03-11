@@ -11,7 +11,7 @@ router.post("/", async function (req, res) {
   const { email, password } = req.body;
   let user;
   try {
-    user = await User.findOne({ email });
+    user = await (await User.findOne({ email })).populate()
     if (user) {
       const validPassword = await bcrypt.compare(password, user.password);
       if (validPassword) {
@@ -19,6 +19,7 @@ router.post("/", async function (req, res) {
           const token = jwt.sign({ _id: user._id }, privateKey, {
             expiresIn: 60 * 60000,
           });
+
           res.json({
             token,
             user: {
@@ -38,7 +39,6 @@ router.post("/", async function (req, res) {
           const token = jwt.sign({ _id: user._id }, privateKey, {
             expiresIn: 60 * 60000,
           });
-
           res.json({
             token,
             user: {
@@ -56,10 +56,10 @@ router.post("/", async function (req, res) {
           });
         }
       } else {
-        res.json({ msg: "Неверный Логин или пароль" });
+        res.json({ msg: "Неверный логин или пароль" });
       }
     } else {
-      res.json({ msg: "Неверный Логин или пароль" });
+      res.json({ msg: "Неверный логин или пароль" });
     }
   } catch (err) {
     res.json({ msg: err.msg });

@@ -17,6 +17,7 @@ import { checkTokenAC } from "../../redux/thunk/checkToken";
 import ResultPage from "../ResultPage/ResultPage";
 import { googleFetchAC } from "../../redux/thunk/googleFetchAC";
 import PassedTests from "../PassedTests/PassedTests";
+import FavoriteCards from "../FavoriteCards/FavoriteCards";
 
 function App() {
   const location = useLocation();
@@ -80,6 +81,7 @@ function App() {
           <PrivateRoute path="/test" children={<TestingPage />} />
 
           <PrivateRoute path="/results" children={<ResultPage />} />
+          <PrivateRoute path="/favorites" children={<FavoriteCards />} />
         </Switch>
       </div>
 

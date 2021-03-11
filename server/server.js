@@ -27,22 +27,22 @@ import cookieSession from "cookie-session";
 import sessionFileStore from "session-file-store";
 const FileStore = sessionFileStore(session);
 const googleStrategy = GoogleStrategy.Strategy;
-// app.use(
-//   session({
-//     store: new FileStore(),
-//     name: "user_sid",
-//     secret: "secret",
-//     resave: true,
-//     saveUninitialized: false,
-//     cookie: {
-//       expires: 86400000,
-//       httpOnly: false,
-//     },
-//   })
-// ),
-// app.use(cookieParser("secret"));
+app.use(
+  session({
+    store: new FileStore(),
+    name: "user_sid",
+    secret: "secret",
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+      expires: 86400000,
+      httpOnly: false,
+    }, 
+  })
+),
+app.use(cookieParser("secret"));
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 
 passport.serializeUser(function (user, done) {
   done(null, user._id);

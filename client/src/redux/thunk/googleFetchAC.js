@@ -27,7 +27,7 @@ export const googleFetchAC = () => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Credentials": true,
       },
-    }).then((res)=>res.json()).then((data)=>dispatch(authSucsessAC(data)))
+    }).then((res)=>res.json()).then((data)=>data.user ? dispatch(authSucsessAC(data)) : null)
    
   };
 };

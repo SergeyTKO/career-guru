@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
 import {resetResultsAC, updateUserStatsAC} from "../../redux/actionCreators";
 import {customerFetchAC} from "../../redux/thunk/customerFetchAC";
-import styles from '../ResultPage/ResultPage.module.scss'
+import styles from './ResultPage.module.scss'
 
 function ResultPage(props) {
     const dispatch = useDispatch();

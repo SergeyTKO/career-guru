@@ -22,7 +22,7 @@ function Menu() {
         <li>
           <Link to="/home">Главная</Link>
         </li>
-        <li>Избранное</li>
+        <li> <Link to="/favorites">Избранное</Link></li>
         <li>
           <Link to="/passed">Пройденные тесты</Link>
         </li>

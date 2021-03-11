@@ -1,12 +1,19 @@
 @import "../mixins.scss";
+@import '../variables.scss';
 
 .formWrapper {
   @include centered-elements;
+  flex-direction: column;
   width: 100%;
   height: 100vh;
 
+  
   .authForm {
     @include forms-redact;
+    .error{
+      color: $error-color;
+      font-size: .9rem;
+    }
   }
 }
 

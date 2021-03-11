@@ -21,12 +21,13 @@ function AuthPage() {
     event.preventDefault();
     dispatch(
       authFetchAC(email, password, firstName, lastName, checkPsw, secretKey)
-    );
-  };
-
-  return (
-    <div className={styles.formWrapper}>
+      );
+    };
+    
+    return (
+      <div className={styles.formWrapper}>
       <form className={styles.authForm}>
+    <div className={styles.error}>{error}</div>
         <Input
           inpType={"text"}
           inpPlaceholder={"Укажите Ваше имя"}
@@ -75,7 +76,6 @@ function AuthPage() {
           Уже зарегистрированы? <Link to="/login">Войти.</Link>
         </p>
       </form>
-      <div className="error">{error}</div>
     </div>
   );
 }

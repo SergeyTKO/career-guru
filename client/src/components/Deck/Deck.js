@@ -64,7 +64,7 @@ function Deck() {
 
   const addFavorites = (e) => {
     dispatch(addFavoritesAC(e.target.id, user.id));
-    setPushBtn(true);
+    setPushBtn(!pushBtn);
   };
 
   return (
@@ -90,9 +90,9 @@ function Deck() {
                   buttonHandler={addFavorites}
                   btnValue={
                     pushBtn ? (
-                      <i  style = {{fontSize:'30px'}} class="fas fa-heart"></i>
+                      <i  id={cards[i]._id} style = {{fontSize:'35px'}} class="fas fa-heart"></i>
                     ) : (
-                      <i  style = {{fontSize:'30px'}} class="far fa-heart"></i>
+                      <i  id={cards[i]._id} style = {{fontSize:'35px'}} class="far fa-heart"></i>
                     )
                   }
                 />

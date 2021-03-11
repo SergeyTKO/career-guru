@@ -24,8 +24,9 @@ function LoginPage() {
   };
   return (
     <div className={styles.formWrapper}>
+    <div className={styles.error}>{error}</div>
       <form className={styles.loginForm}>
-        <div className="error">{error}</div>
+        
         <Input
           inpType={"email"}
           inpPlaceholder={"Введите еmail"}

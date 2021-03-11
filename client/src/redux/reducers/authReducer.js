@@ -10,7 +10,7 @@ if (windowState&&windowState.auth) {
 } else {
     preloadedState = {
         isAuth: false,
-        user: {email: "", firstName: "", solvedCards: []},
+        user: {email: "", firstName: "", solvedCards: [] , favoriteCards:[]},
         error: null
     };
 }
