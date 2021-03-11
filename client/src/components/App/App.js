@@ -8,12 +8,10 @@ import StartPage from "../StartPage/StartPage";
 import Deck from "../Deck/Deck";
 import styles from "./App.module.scss";
 import AdminPage from "../AdminForm/AdminForm";
-import { initCardsFetchAC } from "../../redux/thunk/adminFetchAC";
 import { useDispatch, useSelector } from "react-redux";
 import TestingPage from "../TestingPage/TestingPage";
 import Home from "../Home/Home";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import { checkTokenAC } from "../../redux/thunk/checkToken";
 import ResultPage from "../ResultPage/ResultPage";
 import { googleFetchAC } from "../../redux/thunk/googleFetchAC";
 import PassedTests from "../PassedTests/PassedTests";
@@ -28,7 +26,7 @@ function App() {
   const isAdmin = useSelector((state) => state.auth.user.isAdmin);
 
   useEffect(() => {
-    dispatch(initCardsFetchAC());
+    dispatch(googleFetchAC());
   }, [dispatch]);
 
 

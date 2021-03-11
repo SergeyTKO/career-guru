@@ -19,6 +19,10 @@ app.use(
   })
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // ------------------GOOGLE AUTH--------------------------------
 import session from "express-session";
 import cookieParser from "cookie-parser";
@@ -150,10 +154,17 @@ app.get("/auth/login/failed", (req, res) => {
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    successRedirect: process.env.CLIENT_HOME_PAGE_URL,
+    successRedirect: 'http://localhost:4000/google',
     failureRedirect: "/auth/login/failed",
   })
 );
+
+
+app.get('/google', (req,res)=>{
+  res.json()
+})
+
+// app.use(passport.session());
 
 // ------------------GOOGLE AUTH--------------------------------
 

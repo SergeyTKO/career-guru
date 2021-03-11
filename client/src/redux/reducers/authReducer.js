@@ -23,43 +23,43 @@ if (windowState && windowState.auth) {
 }
 
 export const authReducer = (state = preloadedState, action) => {
-  switch (action.type) {
-    case AUTH_SUCSESSFULLY:
-      return {
-        ...state,
-        isAuth: true,
-        user: action.payload.user,
-        error: null,
-      };
-    case LOGOUT:
-      window.localStorage.removeItem("jwt");
-      return {
-        ...state,
-        isAuth: false,
-        user: { email: " ", username: " " },
-      };
-    case UPDATE_USERDATA:
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          score: state.user.score + action.payload.count,
-          solvedCards: [
-            ...state.user.solvedCards,
-            ...action.payload.rightAnswers,
-          ],
-        },
-      };
-    case RESET_USERDATA:
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          score: state.user.score,
-          solvedCards: [],
-        },
-      };
-    case ADD_FAVORITES:
+
+    switch (action.type) {
+        case AUTH_SUCSESSFULLY:
+            return {
+                ...state,
+                isAuth: true,
+                user: action.payload.user,
+                error: null
+            };
+        case LOGOUT:
+            window.localStorage.clear();
+            // window.localStorage.removeItem("jwt");
+            return {
+                ...state,
+                isAuth: false,
+                user: {email: " ", username: " "},
+            };
+        case UPDATE_USERDATA:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    score: state.user.score + action.payload.count,
+                    solvedCards: [...state.user.solvedCards, ...action.payload.rightAnswers]
+                }
+            };
+        case RESET_USERDATA:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    score: state.user.score,
+                    solvedCards: []
+                }
+            };
+      
+       case ADD_FAVORITES:
       return {
         ...state,
         user: {
@@ -67,12 +67,13 @@ export const authReducer = (state = preloadedState, action) => {
           favoriteCards: [...state.user.favoriteCards, action.payload],
         },
       };
-    case ERROR:
-      return {
-        ...state,
-        error: action.payload,
-      };
-    default:
-      return state;
-  }
+        case ERROR:
+            return {
+                ...state,
+                error: action.payload,
+            };
+        default:
+            return state;
+    }
+
 };

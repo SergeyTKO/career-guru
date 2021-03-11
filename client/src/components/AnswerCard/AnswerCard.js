@@ -10,7 +10,9 @@ function AnswerCard({answer, divHandler}) {
         dispatch(shuffleFunctionAC(answer))
     }, [dispatch, answer])
     const answersShuffled = useSelector(state => state.user.result.shuffle)
+    console.log('answe',answer)
     console.log(answersShuffled)
+
     return (
         <div className={styles.answerCard}>
             {answersShuffled && (answersShuffled.map(el =>

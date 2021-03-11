@@ -21,6 +21,11 @@ function LoginPage() {
   const googleHandler = (event) => {
     event.preventDefault();
     window.open("http://localhost:4000/auth/google", "_self");
+
+//     dispatch(
+//       googleFetchAC()
+//     );
+
   };
   return (
     <div className={styles.formWrapper}>
@@ -42,11 +47,13 @@ function LoginPage() {
 
         <Button btnValue={"Войти"} buttonHandler={handleSubmit} />
 
-        <div class={styles.googleBtn}>
-          <div class={styles.googleIconWrapper}>
-            <img class={styles.googleIcon} src={logo} />
+        <div className={styles.googleBtn} onClick={googleHandler}>
+          <div className={styles.googleIconWrapper}>
+            <img className={styles.googleIcon} src={logo} alt='logo'/>
           </div>
+
           <p onClick = {googleHandler} class={styles.googleBtnText}>Войти с помощью Google</p>
+
         </div>
         <p>
           Еще нет аккаунта? <Link to="/signup">Зарегистрироваться.</Link>

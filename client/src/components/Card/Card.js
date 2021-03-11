@@ -36,6 +36,8 @@ function Card({cardsToTest}) {
         history.push('/results')
     }
 
+  
+
     return (
         <div className={styles.card}>
             <div className={styles.answerStatus}>{state}</div>
