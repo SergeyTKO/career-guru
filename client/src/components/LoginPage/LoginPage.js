@@ -53,11 +53,11 @@ function LoginPage() {
 
         <Button btnValue={"Войти"} buttonHandler={handleSubmit} />
 
-        <div class={styles.googleBtn}>
-          <div class={styles.googleIconWrapper}>
-            <img class={styles.googleIcon} src={logo} />
+        <div className={styles.googleBtn}>
+          <div className={styles.googleIconWrapper}>
+            <img className={styles.googleIcon} src={logo} />
           </div>
-          <p class={styles.googleBtnText}>Войти с помощью Google</p>
+          <p className={styles.googleBtnText}>Войти с помощью Google</p>
         </div>
         <p>
           Еще нет аккаунта? <Link to="/signup">Зарегистрироваться.</Link>

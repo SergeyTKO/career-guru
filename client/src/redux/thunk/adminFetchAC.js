@@ -36,10 +36,6 @@ export const adminFetchAC = (question, answerTrue, answerFalse1, answerFalse2, a
     })
 }
 
-
-
-
-
 export const deleteFetchAC = (id) => (dispatch) => {
 
   axios.delete('http://localhost:4000/admin', {

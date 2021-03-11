@@ -19,11 +19,13 @@ function AdminForm() {
 
     const { question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags } = e.target
     dispatch(adminFetchAC(question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags))
+    e.target.reset()
   }
 
   function deleteCard(event){
-    const {id} = event.target
     event.preventDefault()
+    const {id} = event.target
+    console.log(id)
     dispatch(deleteFetchAC(id))
   }
 
@@ -37,12 +39,12 @@ function AdminForm() {
         <input type="text" name="answerFalse3" placeholder="Неправильный ответ" required/>
         <input type="number" name="count" placeholder="счет" required/>
         <input type="text" name="theme" placeholder="тема" required/>
-        <input type="text" name="tags" placeholder="тег" required/>
+        <input type="text" name="tags" placeholder="теги через запятую" required/>
         <button>Добавить</button>
       </form>
       <div className={styles.cards}>
       <h1>Карты с вопросами:</h1>
-        {cards && cards.map(card => <div className={styles.card}><div key={card._id} card={card}>{card.question}</div>
+        {cards && cards.map(card => <div key={card._id} className={styles.card}><div card={card}>{card.question}</div>
         <Button id={card._id} buttonHandler={deleteCard} btnValue={'удалить'}/>
         </div>)}
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Button({ btnValue, buttonHandler, color}) {
+function Button({ btnValue, buttonHandler, color, id}) {
   return (
-    <button style={{backgroundColor: color}} onClick = {(event,_id) => buttonHandler(event,_id)}> { btnValue }</button >
+    <button id={id} style={{backgroundColor: color}} onClick = {(...args) => buttonHandler(...args)}> { btnValue }</button >
     );
 }
 
