@@ -13,6 +13,7 @@ import {
     RESULT_COUNTER,
     REST_TO_FINISH,
     RESET_RESULTS,
+    SHUFFLE,
     TEST_PROGRESS
 } from "./actionTypes";
 
@@ -68,6 +69,11 @@ export const resetUserStatsAC = () => ({
 export const userQuestionCardsAC = (cards) => ({
     type: INIT_USER_CARDS,
     payload: cards,
+});
+
+export const shuffleAC = (data) => ({
+    type: SHUFFLE,
+    payload: data,
 });
 
 export const authSucsessAC = (payload) => ({type: AUTH_SUCSESSFULLY, payload});

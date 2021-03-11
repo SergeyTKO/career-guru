@@ -5,7 +5,8 @@ import {
     RESULT_COUNTER,
     REST_TO_FINISH,
     RESET_RESULTS,
-    TEST_PROGRESS
+    TEST_PROGRESS,
+    SHUFFLE
 } from "../actionTypes";
 
 const windowState = JSON.parse(window.localStorage.getItem('state'));
@@ -63,6 +64,8 @@ export const userReducer = (state = initialState, action) => {
             return {...state, result: {...state.result, testProgress: state.result.testProgress + 1}};
         case INIT_USER_CARDS:
             return {...state, result: {...state.result, userQuestions: action.payload}};
+        case SHUFFLE:
+            return {...state, result: {...state.result, shuffle: action.payload}};
         default:
             return state;
     }
