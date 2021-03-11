@@ -17,6 +17,7 @@ import { checkTokenAC } from "../../redux/thunk/checkToken";
 import ResultPage from "../ResultPage/ResultPage";
 import { googleFetchAC } from "../../redux/thunk/googleFetchAC";
 import PassedTests from "../PassedTests/PassedTests";
+import UserQuestion from "../UserQuestion/UserQuestion";
 import FavoriteCards from "../FavoriteCards/FavoriteCards";
 
 function App() {
@@ -61,6 +62,11 @@ function App() {
             {isAuth ? <Redirect to="/home" /> : <AuthPage />}
           </Route>
 
+          <Route path="/usercard">
+            <div>
+              <UserQuestion />
+            </div>
+          </Route>
           <Route path="/passed">
             <div>
               <PassedTests />

@@ -1,4 +1,12 @@
-import {INIT_TEST, RIGHT_ANSWERS, RESULT_COUNTER, REST_TO_FINISH, RESET_RESULTS, TEST_PROGRESS} from "../actionTypes";
+import {
+    INIT_TEST,
+    INIT_USER_CARDS,
+    RIGHT_ANSWERS,
+    RESULT_COUNTER,
+    REST_TO_FINISH,
+    RESET_RESULTS,
+    TEST_PROGRESS
+} from "../actionTypes";
 
 const windowState = JSON.parse(window.localStorage.getItem('state'));
 let initialState = {};
@@ -27,7 +35,8 @@ export const userReducer = (state = initialState, action) => {
                 result: {...state.result, currentTest: action.payload, numOfRestQuestions: action.payload.length}
             }
         case RIGHT_ANSWERS:
-            return {...state,
+            return {
+                ...state,
                 result: {
                     ...state.result,
                     rightAnswers: [...state.result.rightAnswers, action.payload],
@@ -39,7 +48,8 @@ export const userReducer = (state = initialState, action) => {
         case REST_TO_FINISH:
             return {...state, result: {...state.result, numOfRestQuestions: state.result.numOfRestQuestions - 1}};
         case RESET_RESULTS:
-            return {...state,
+            return {
+                ...state,
                 result: {
                     ...state.result,
                     rightAnswers: state.result.rightAnswers = [],
@@ -51,8 +61,8 @@ export const userReducer = (state = initialState, action) => {
             };
         case TEST_PROGRESS:
             return {...state, result: {...state.result, testProgress: state.result.testProgress + 1}};
-        
-      
+        case INIT_USER_CARDS:
+            return {...state, result: {...state.result, userQuestions: action.payload}};
         default:
         return state;
     }
