@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {resetResultsAC, updateUserStatsAC} from "../../redux/actionCreators";
-import {customerFetchAC} from "../../redux/thunk/customerFetchAC";
+import {resetResultsAC} from "../../redux/actionCreators";
 import styles from './ResultPage.module.scss'
 
-function ResultPage(props) {
+function ResultPage() {
     const dispatch = useDispatch();
     const results = useSelector(state => state.user.result)
     const clickHandler = () => {

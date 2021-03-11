@@ -25,7 +25,8 @@ export const authReducer = (state = preloadedState, action) => {
                 error: null
             };
         case LOGOUT:
-            window.localStorage.removeItem("jwt");
+            window.localStorage.clear();
+            // window.localStorage.removeItem("jwt");
             return {
                 ...state,
                 isAuth: false,

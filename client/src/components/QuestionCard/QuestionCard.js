@@ -3,7 +3,6 @@ import styles from './QuestionCard.module.scss'
 
 function QuestionCard({question, index, result, tags}) {
  
-console.log(tags)
 
   return (
     <div className={styles.questionCard}>

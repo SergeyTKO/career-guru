@@ -55,7 +55,7 @@ function LoginPage() {
 
         <div className={styles.googleBtn} onClick={googleHandler}>
           <div className={styles.googleIconWrapper}>
-            <img className={styles.googleIcon} src={logo} />
+            <img className={styles.googleIcon} src={logo} alt='logo'/>
           </div>
           <p className={styles.googleBtnText}>Войти с помощью Google</p>
         </div>
