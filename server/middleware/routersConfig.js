@@ -13,6 +13,7 @@ const routersConfig = (application) => {
   application.use("/auth", authRouter);
   application.use("/login", loginRouter);
   application.use("/addfavorites", addFavoritesRouter);
+
   
 };
 

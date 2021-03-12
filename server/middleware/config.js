@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import session from "express-session";
 import sessionFileStore from "session-file-store";
 import cors from 'cors'
+import path from 'path'
 
 const FileStore = sessionFileStore(session);
 
@@ -11,7 +12,7 @@ const appConfig = (application) => {
   application.use(morgan("dev"));
   application.use(express.urlencoded({ extended: true }));
   application.use(express.json());
- 
+  application.use(express.static(path.resolve('../client/build')))
   // application.use(
   //   cors({
   //     origin: "http://localhost:3000", // allow to server to accept request from different origin

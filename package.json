@@ -1,1 +1,22 @@
-{}
+{
+  "name": "career-guru",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build":"cd client && npm install && npm run-script build",
+    "start":"cd server && npm install && npm start"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekateraina/career-guru.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ekateraina/career-guru/issues"
+  },
+  "homepage": "https://github.com/ekateraina/career-guru#readme",
+  "description": ""
+}
