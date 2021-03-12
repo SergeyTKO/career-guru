@@ -6,12 +6,11 @@ import {shuffleFunctionAC} from "../../redux/thunk/shuffleAC";
 
 function AnswerCard({answer, divHandler}) {
     const dispatch = useDispatch()
+    const answersShuffled = useSelector(state => state.user.result.shuffle)
+
     useEffect(() => {
         dispatch(shuffleFunctionAC(answer))
     }, [dispatch, answer])
-    const answersShuffled = useSelector(state => state.user.result.shuffle)
-    console.log('answe',answer)
-    console.log(answersShuffled)
 
     return (
         <div className={styles.answerCard}>

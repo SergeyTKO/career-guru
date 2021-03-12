@@ -1,9 +1,8 @@
 import {
-  AUTH_SUCSESSFULLY,
+  AUTH_SUCСESSFULLY,
   LOGOUT,
   ERROR,
   UPDATE_USERDATA,
-  ADD_FAVORITES,
   RESET_USERDATA,
 } from "../actionTypes";
 
@@ -25,7 +24,7 @@ if (windowState && windowState.auth) {
 export const authReducer = (state = preloadedState, action) => {
 
     switch (action.type) {
-        case AUTH_SUCSESSFULLY:
+        case AUTH_SUCСESSFULLY:
             return {
                 ...state,
                 isAuth: true,
@@ -59,15 +58,7 @@ export const authReducer = (state = preloadedState, action) => {
                 }
             };
       
-       case ADD_FAVORITES:
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          favoriteCards: [...state.user.favoriteCards, action.payload],
-        },
-      };
-        case ERROR:
+       case ERROR:
             return {
                 ...state,
                 error: action.payload,

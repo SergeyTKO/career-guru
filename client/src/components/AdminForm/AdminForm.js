@@ -8,12 +8,14 @@ import styles from './AdminForm.module.scss'
 
 
 function AdminForm() {
+
   const dispatch = useDispatch();
+  const cards = useSelector(state => state.admin.cards)
+
   useEffect(() => {
     dispatch(initCardsFetchAC());
   }, [dispatch]);
-  const cards = useSelector(state => state.admin.cards)
-
+  
   function addCardAC(e) {
     e.preventDefault()
 
@@ -25,7 +27,6 @@ function AdminForm() {
   function deleteCard(event){
     event.preventDefault()
     const {id} = event.target
-    console.log(id)
     dispatch(deleteFetchAC(id))
   }
 

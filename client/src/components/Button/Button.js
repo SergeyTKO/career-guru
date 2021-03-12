@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Button({ btnValue, buttonHandler, color, id, value}) {
   return (
 

@@ -11,7 +11,7 @@ export const initCardsFetchAC = () => (dispatch) => {
 };
 
 export const adminFetchAC = (question, answerTrue, answerFalse1, answerFalse2, answerFalse3, count, theme, tags) => (dispatch) => {
-  axios.post('http://localhost:4000/admin', {
+  axios.post(`${process.env.REACT_APP_URL}/admin`, {
     question: question.value,
     answer: [{
       answer: answerTrue.value,
@@ -38,7 +38,7 @@ export const adminFetchAC = (question, answerTrue, answerFalse1, answerFalse2, a
 
 export const deleteFetchAC = (id) => (dispatch) => {
 
-  axios.delete('http://localhost:4000/admin', {
+  axios.delete(`${process.env.REACT_APP_URL}/admin`, {
     data: {id: id}
   })
     .then(function (card) {

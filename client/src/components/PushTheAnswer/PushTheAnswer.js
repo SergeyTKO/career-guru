@@ -3,6 +3,7 @@ import Button from '../Button/Button'
 
 function PushTheAnswer({divValue, divHandler}) {
     const [state, setState] = useState('#393e46')
+
     const changeColor=event=>{
 
         divHandler(event)

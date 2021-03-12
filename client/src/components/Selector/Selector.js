@@ -1,6 +1,5 @@
 import styles from './Selector.module.scss'
 
-
 function Selector({optionsValue}){
 
       return(

@@ -4,9 +4,10 @@ import {userAddQuestionFetchAC} from "../../redux/thunk/userAddQuestionFetchAC";
 import {useDispatch, useSelector} from "react-redux";
 import {initUserCardsFetchAC} from "../../redux/thunk/userAddQuestionFetchAC";
 
-function UserQuestion(props) {
+function UserQuestion() {
     const dispatch = useDispatch();
     const cards = useSelector(state => state.user.result.userQuestions);
+    
     useEffect(() => {
         dispatch(initUserCardsFetchAC());
     }, [dispatch]);

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import styles from "./Menu.module.scss";
-import { clearAC, logoutAC } from "../../redux/actionCreators";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { clearAC, logoutAC } from "../../redux/actionCreators";
+import styles from "./Menu.module.scss";
 
 function Menu() {
   const history = useHistory();
@@ -23,7 +23,7 @@ function Menu() {
         <li>
           <Link to="/home">Главная</Link>
         </li>
-        <li> <Link to="/favorites">Избранное</Link></li>
+        <li>Избранное</li>
         <li>
           <Link to="/passed">Пройденные тесты</Link>
         </li>

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Switch, Route, useLocation, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../Navbar/Navbar";
 import Modal from "../Modal/Modal";
 import AuthPage from "../AuthPage/AuthPage";
@@ -8,15 +9,13 @@ import StartPage from "../StartPage/StartPage";
 import Deck from "../Deck/Deck";
 import styles from "./App.module.scss";
 import AdminPage from "../AdminForm/AdminForm";
-import { useDispatch, useSelector } from "react-redux";
 import TestingPage from "../TestingPage/TestingPage";
 import Home from "../Home/Home";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ResultPage from "../ResultPage/ResultPage";
-import { googleFetchAC } from "../../redux/thunk/googleFetchAC";
 import PassedTests from "../PassedTests/PassedTests";
 import UserQuestion from "../UserQuestion/UserQuestion";
-import FavoriteCards from "../FavoriteCards/FavoriteCards";
+import {checkTokenAC} from '../../redux/thunk/checkTokenAC'
 
 function App() {
   const location = useLocation();
@@ -26,18 +25,9 @@ function App() {
   const isAdmin = useSelector((state) => state.auth.user.isAdmin);
 
   useEffect(() => {
-    dispatch(googleFetchAC());
+    dispatch(checkTokenAC());
   }, [dispatch]);
-
-
-  // useEffect(()=>{
-  //   dispatch(googleFetchAC())
-  //       },[])
-    
-  
-  // useEffect(() => {
-  //   dispatch(checkTokenAC());
-  // }, []);
+     
   return (
     <React.Fragment>
       <Navbar />
@@ -85,7 +75,7 @@ function App() {
           <PrivateRoute path="/test" children={<TestingPage />} />
 
           <PrivateRoute path="/results" children={<ResultPage />} />
-          <PrivateRoute path="/favorites" children={<FavoriteCards />} />
+          
         </Switch>
       </div>
 

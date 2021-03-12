@@ -3,14 +3,9 @@ import {animated, interpolate} from 'react-spring'
 import {useSprings} from 'react-spring'
 import {useGesture} from 'react-use-gesture'
 import {useDispatch, useSelector} from "react-redux";
-import styles from '../App/App.module.scss'
 import {shuffleFunctionAC} from "../../redux/thunk/shuffleAC";
-import {
-  addFavoritesAC,
-  updateFavoriteFetchAC,
-} from "../../redux/thunk/addFavoritesAC";
 import { clearAC } from "../../redux/actionCreators";
-import Button from "../Button/Button";
+import styles from '../App/App.module.scss'
 
 const to = (i) => ({
   x: 0,
@@ -30,8 +25,6 @@ function Deck() {
     const oldcards = useSelector(state => state.admin.cards);
     dispatch(shuffleFunctionAC(oldcards))
     const cards = useSelector(state => state.user.result.shuffle);
-    const user = useSelector((state) => state.auth.user);
-    const [pushBtn, setPushBtn] = useState(false);
     const [gone] = useState(() => new Set())
     const [props, set] = useSprings(cards.length, i => ({...to(i), from: from(i)}))
     const bind = useGesture(({args: [index], down, delta: [xDelta], distance, direction: [xDir], velocity}) => {
@@ -49,14 +42,10 @@ function Deck() {
         if (!down && gone.size === cards.length) setTimeout(() => gone.clear() || set(i => to(i)), 600)
     })
 
-  const addFavorites = (e) => {
-    dispatch(addFavoritesAC(user._id, e.target.id));
-    setPushBtn(!pushBtn);
-  };
 
   useEffect(()=>{
     return ()=>dispatch(clearAC())
-  },[])
+  },[dispatch])
 
   return (
     <>
@@ -76,25 +65,6 @@ function Deck() {
               style={{ transform: interpolate([rot, scale], trans) }}
             >
               <div className={styles.card}>
-                <Button
-                  id={cards[i]._id}
-                  buttonHandler={addFavorites}
-                  btnValue={
-                    pushBtn ? (
-                      <i
-                        id={cards[i]._id}
-                        style={{ fontSize: "35px" }}
-                        class="fas fa-heart"
-                      ></i>
-                    ) : (
-                      <i
-                        id={cards[i]._id}
-                        style={{ fontSize: "35px" }}
-                        class="far fa-heart"
-                      ></i>
-                    )
-                  }
-                />
                 <h4>Вопрос: {cards[i].question}</h4>
                 <h5>
                   Ответ: {cards[i].answer.filter((el) => el.validity)[0].answer}

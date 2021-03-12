@@ -1,31 +1,23 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import Card from '../Card/Card'
-import styles from './TestingPage.module.scss'
-import {initTestAC, resetUserStatsAC} from "../../redux/actionCreators";
-import Button from "../Button/Button";
 import {useHistory} from "react-router-dom";
+import Card from '../Card/Card'
+import Button from "../Button/Button";
+import {initTestAC, resetUserStatsAC} from "../../redux/actionCreators";
 import { clearAC } from "../../redux/actionCreators";
+import styles from './TestingPage.module.scss'
 
 function TestingPage() {
     const dispatch = useDispatch();
-    const cards = useSelector(state => state.admin.cards);
-    const user = useSelector(state => state.auth.user)
-
-    const result = cards.filter(x => !user.solvedCards.some(y => x._id === y._id))
     const history = useHistory()
+
+    const cardsToTest = useSelector(state => state.user.result.currentTest)
+
     const buttonHandler = (event) => {
         event.preventDefault()
         dispatch(resetUserStatsAC())
         history.push('/home')
     }
-    dispatch(initTestAC(result.splice(0,5)))
-
-    useEffect(()=>{
-        return ()=>dispatch(clearAC())
-      },[])
-
-    const cardsToTest = useSelector(state => state.user.result.currentTest)
 
     return (
         <div>
