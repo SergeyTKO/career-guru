@@ -7,14 +7,18 @@ import styles from './ResultPage.module.scss'
 function ResultPage() {
     const dispatch = useDispatch();
     const results = useSelector(state => state.user.result)
+    const user = useSelector(state=>state.auth.user.firstName)
     const clickHandler = () => {
         dispatch(resetResultsAC())
     }
 
     return (
         <div className={styles.resultPage}>
-            <div>Мамкин программист, ты ответил(-а) на {results.resultCounter} вопроса из {results.currentTest.length} и набрал <span>{results.count}</span> баллов</div>
-            <Link to='/' onClick={clickHandler}>Вернуться на главную</Link>
+            <div>{user}, ты ответил(-а) на {results.resultCounter} вопроса из {results.currentTest.length} и набрал <span>{results.count}</span> баллов</div>
+            <div className={styles.btnWrapper}>
+            <Link to='/' onClick={clickHandler}>На главную</Link>
+            <Link to='/passed' onClick={clickHandler}>Пройденные тесты</Link>
+            </div>
         </div>
     );
 }

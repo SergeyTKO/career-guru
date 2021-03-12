@@ -2,8 +2,7 @@ import React from 'react';
 import {useSelector} from "react-redux";
 import styles from './PassedTests.module.scss'
 
-
-function PassedTests(props) {
+function PassedTests() {
     const passedTests = useSelector(state => state.auth.user.solvedCards);
 
     return (

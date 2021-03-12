@@ -1,4 +1,4 @@
-import { authSucsessAC, errorAC } from "../../redux/actionCreators";
+import { authSucсessAC, errorAC } from "../../redux/actionCreators";
 import axios from "axios";
 
 export const authFetchAC = (
@@ -10,7 +10,7 @@ export const authFetchAC = (
   secretKey
 ) => {
   return (dispatch) => {
-    axios.post(process.env.REACT_APP_URL + "/auth", {
+    axios.post(`${process.env.REACT_APP_URL}/auth`, {
         email: email.current.value,
         password: password.current.value,
         firstName: firstName.current.value,
@@ -21,7 +21,7 @@ export const authFetchAC = (
 
       .then((serverData) => {
         if (serverData.data.user) {
-          dispatch(authSucsessAC(serverData.data));
+          dispatch(authSucсessAC(serverData.data));
           window.localStorage.setItem("jwt", serverData.data.token);
         }
         dispatch(errorAC(serverData.data.msg));

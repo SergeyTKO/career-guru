@@ -1,9 +1,7 @@
 import mongoose from 'mongoose'
 
-
 export default mongoose.model('users', mongoose.Schema({
   avatar: String,
-  googleId:  String,
   accessToken: String,
   firstName: String,
   lastName: String,
@@ -14,5 +12,4 @@ export default mongoose.model('users', mongoose.Schema({
   score: Number,
   isAdmin: Boolean,
   provider:String,
-  favoriteCards: [{type: mongoose.Schema.Types.Object, ref: 'Card'}]
 }))

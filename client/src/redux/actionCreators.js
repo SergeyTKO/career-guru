@@ -5,7 +5,7 @@ import {
     UPDATE_USERDATA,
     RESET_USERDATA,
     DELETE_CARDS,
-    AUTH_SUCSESSFULLY,
+    AUTH_SUCСESSFULLY,
     LOGOUT,
     ERROR,
     INIT_TEST,
@@ -86,7 +86,7 @@ export const clearAC = () => ({
     type: CLEAR_SHUFFLE
 })
 
-export const authSucsessAC = (payload) => ({type: AUTH_SUCSESSFULLY, payload});
+export const authSucсessAC = (payload) => ({type: AUTH_SUCСESSFULLY, payload});
 
 export const logoutAC = () => ({type: LOGOUT});
 export const errorAC = (payload) => ({type: ERROR, payload});
