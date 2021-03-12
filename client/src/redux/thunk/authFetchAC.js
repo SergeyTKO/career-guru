@@ -10,7 +10,7 @@ export const authFetchAC = (
   secretKey
 ) => {
   return (dispatch) => {
-    axios.post(process.env.REACT_APP_URL + "/auth", {
+    axios.post(`${process.env.REACT_APP_URL}/auth`, {
         email: email.current.value,
         password: password.current.value,
         firstName: firstName.current.value,
