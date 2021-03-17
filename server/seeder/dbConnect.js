@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const dbConnect = () => {
-  mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`, {useNewUrlParser: true, useUnifiedTopology: true});
+const atlas = `mongodb+srv://Sergey:mongodbatlas@cluster0.ombdm.mongodb.net/hardSkills`
   mongoose.connect(atlas, {
     useUnifiedTopology: true,
     useNewUrlParser: true,

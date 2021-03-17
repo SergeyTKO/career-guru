@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import styles from "../AdminForm/AdminForm.module.scss";
 import {userAddQuestionFetchAC} from "../../redux/thunk/userAddQuestionFetchAC";
 import {useDispatch, useSelector} from "react-redux";
 import {initUserCardsFetchAC} from "../../redux/thunk/userAddQuestionFetchAC";
+import styles from './UserQuestion.module.scss'
 
 function UserQuestion() {
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function UserQuestion() {
 
     return (
         <div>
-            <div className={styles.adminForm}>
+            <div className={styles.userForm}>
                 <form onSubmit={addCardAC}>
                     <input type="text" name="question" placeholder="Вопрос" required/>
                     <input type="text" name="answer" placeholder="Ответ" />
@@ -29,7 +29,7 @@ function UserQuestion() {
                     <input type="text" name="company" placeholder="Компания" required/>
                     <button>Добавить</button>
                 </form>
-                <div>{cards && cards.map(el => <div key={el._id}>
+                <div className={styles.cards}>{cards && cards.map(el => <div key={el._id} className={styles.card} >
                     <div>{el.question}</div>
                     <div>{el.answer}</div>
                     <div>{el.theme}</div>
