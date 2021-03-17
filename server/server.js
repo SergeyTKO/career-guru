@@ -9,13 +9,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config();
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true,
-  })
-);
+app.use(cors());
 
 const server = http.createServer(app);
 const PORT = process.env.PORT || 4000;

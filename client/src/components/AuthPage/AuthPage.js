@@ -1,5 +1,5 @@
 import React, {useRef } from "react";
-import { Link } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import Selector from "../Selector/Selector";
@@ -16,12 +16,13 @@ function AuthPage() {
   const checkPsw = useRef();
   const password = useRef();
   const secretKey = useRef();
-
+    const history = useHistory()
   const handleSubmit = (event) => {
-    event.preventDefault();
+      event.preventDefault();
     dispatch(
       authFetchAC(email, password, firstName, lastName, checkPsw, secretKey)
       );
+    history.push('/home')
     };
     
     return (
